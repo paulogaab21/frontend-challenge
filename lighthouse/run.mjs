@@ -9,7 +9,7 @@ import { fileURLToPath } from 'node:url'
 import { parseArgs } from 'node:util'
 
 import { chromium } from '@playwright/test'
-import { launch } from 'chrome-launcher'
+import { killAll, launch } from 'chrome-launcher'
 import lighthouse from 'lighthouse'
 
 import { lighthouseConfig, pages, profiles, thresholds } from './config.mjs'
@@ -54,7 +54,17 @@ function killChrome(chrome) {
   if (!killed.has(chrome))
     killed.set(
       chrome,
-      Promise.resolve().then(() => chrome.kill()),
+      (async () => {
+        const child = chrome.process
+        // The launcher wrapper returns void from kill(). Wait for process close so
+        // its temporary-profile cleanup also runs before a signal handler exits.
+        const closed =
+          child && child.exitCode === null && child.signalCode === null
+            ? new Promise((resolve) => child.once('close', resolve))
+            : Promise.resolve()
+        await chrome.kill()
+        await closed
+      })(),
     )
   return killed.get(chrome)
 }
@@ -359,6 +369,11 @@ async function measure(base, profile, page, number) {
       chromeFlags: ['--headless=new'],
       handleSIGINT: false,
       logLevel: 'error',
+    }).catch((error) => {
+      // launch() registers a Launcher before waiting for its debugger socket.
+      // A startup rejection can therefore leave a partial Chrome process behind.
+      for (const cleanupError of killAll()) console.error('Chrome startup cleanup:', cleanupError)
+      throw error
     })
     activeChrome = await pendingChrome
     const versionResponse = await fetch(`http://127.0.0.1:${activeChrome.port}/json/version`, {
