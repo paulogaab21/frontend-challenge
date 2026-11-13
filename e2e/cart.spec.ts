@@ -16,8 +16,7 @@ test('mobile detail quantity increase remains reachable by pointer', async ({
   page,
   isMobile,
 }) => {
-  test.skip(!isMobile, 'The overlap affects the mobile fixed purchase bar only.')
-  test.fixme(isMobile, 'The fixed mock devtools pill covers the mobile detail quantity + button.')
+  test.skip(!isMobile, 'Only the mobile layout has the fixed purchase bar.')
   await app.goto(`/nft/${NFT_IDS.emeraldApe}`)
   await page
     .getByRole('button', { name: 'Aumentar quantidade', exact: true })

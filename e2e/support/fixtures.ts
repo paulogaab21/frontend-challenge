@@ -44,11 +44,16 @@ interface GotoOptions {
   scenario?: string
   /** false opts out on the first navigation; a date chooses a different ticking epoch. */
   clock?: boolean | string | Date
+  /**
+   * false returns as soon as the simulated backend is intercepting, without waiting
+   * for the page's first queries — for tests that observe the loading state itself.
+   */
+  settle?: boolean
 }
 
 interface AppHelpers {
   goto: (path?: string, options?: GotoOptions) => Promise<void>
-  ready: () => Promise<void>
+  ready: (options?: { settle?: boolean }) => Promise<void>
 }
 
 interface Fixtures {
@@ -98,7 +103,7 @@ export const test = base.extend<Fixtures>({
   app: async ({ page, baseURL }, provide) => {
     let clockInstalled = false
     let navigated = false
-    const ready = async () => {
+    const ready = async ({ settle = true }: { settle?: boolean } = {}) => {
       await page.waitForFunction(
         () => Boolean(window.__kurioMocks && navigator.serviceWorker.controller),
         undefined,
@@ -106,7 +111,7 @@ export const test = base.extend<Fixtures>({
       )
       // Let initial page queries finish before a test applies a one-shot scenario.
       // WebSockets do not count as in-flight HTTP requests for this load state.
-      await page.waitForLoadState('networkidle')
+      if (settle) await page.waitForLoadState('networkidle')
     }
     await provide({
       ready,
@@ -131,7 +136,7 @@ export const test = base.extend<Fixtures>({
         const url = new URL(route, baseURL)
         if (options.scenario) url.searchParams.set('scenario', options.scenario)
         await page.goto(url.href)
-        await ready()
+        await ready({ settle: options.settle })
       },
     })
   },

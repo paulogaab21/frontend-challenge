@@ -12,7 +12,7 @@ test('slow catalog reserves its grid and filters without layout shift', async ({
   isMobile,
 }, testInfo) => {
   await observeLayoutShifts(page)
-  await app.goto('/', { scenario: 'slow-network' })
+  await app.goto('/', { scenario: 'slow-network', settle: false })
   await expect(page.getByRole('status', { name: 'Carregando NFTs', exact: true })).toBeVisible()
   const grid = market(page).getByRole('list').first()
   const gridBox = await grid.boundingBox()
@@ -39,7 +39,7 @@ test('slow detail shows its skeleton and replaces it without layout shift', asyn
   api,
 }, testInfo) => {
   await observeLayoutShifts(page)
-  await app.goto(`/nft/${NFT_IDS.emeraldApe}`, { scenario: 'slow-network' })
+  await app.goto(`/nft/${NFT_IDS.emeraldApe}`, { scenario: 'slow-network', settle: false })
   const skeleton = page.getByRole('status', { name: 'Carregando NFT', exact: true })
   await expect(skeleton).toBeVisible()
   await expect(
@@ -73,7 +73,7 @@ test('slow cart summary keeps its reserved space while the quote loads', async (
   await api.addToCart(NFT_IDS.goldenBeat, 'fifty')
   await observeLayoutShifts(page)
   await mocks.setScenario('slow-network')
-  await app.goto('/carrinho')
+  await app.goto('/carrinho', { settle: false })
   const summary = page.getByRole('region', { name: 'Resumo da carteira', exact: true })
   await expect(summary).toHaveAttribute('aria-busy', 'true')
   const before = await summary.boundingBox()

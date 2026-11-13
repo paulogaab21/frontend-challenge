@@ -185,8 +185,7 @@ test('an empty search can be cleared', async ({ app, page, api, isMobile }) => {
   expect((await expectCatalog(page, api)).totalItems).toBe(54)
 })
 
-test.fixme('invalid URL parameters are ignored without an error', async ({ app, page, api }) => {
-  // Catalog route validation leaves rejected raw keys in route search (src/features/catalog/search.ts:49).
+test('invalid URL parameters are ignored without an error', async ({ app, page, api }) => {
   await app.goto('/?pagina=abc&categoria=nope&ordem=x')
   expect((await expectCatalog(page, api, '/nfts')).page).toBe(1)
   await expect(market(page).getByRole('alert')).toHaveCount(0)

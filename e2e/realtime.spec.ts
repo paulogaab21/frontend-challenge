@@ -70,74 +70,54 @@ test('a live price change inside review requires accepting the new total before 
 })
 
 for (const scenario of ['price-change-at-checkout', 'sold-out-at-checkout']) {
-  test(`${scenario} rejects the stale API quote and leaves no order`, async ({
+  test(`${scenario}: the API refuses the stale quote, the review shows what changed and no order exists`, async ({
     api,
     mocks,
     page,
   }) => {
-    test.fixme(
-      true,
-      'Submitting temporarily unmounts CheckoutForm; a 409 returns to the page with the review dialog closed instead of showing its changes/blockers.',
-    )
-    await api.addToCart(NFT_IDS.emeraldApe, 'fifty', 2)
-    await mocks.setScenario(scenario)
-    await gotoPage(page, '/pagamento')
-    const dialog = await connectedReview(page)
-    const refusal = page.waitForResponse(
-      (response) => new URL(response.url()).pathname === '/api/orders' && response.status() === 409,
-    )
-    await dialog.getByRole('button', { name: 'Confirmar e pagar' }).click()
-    expect(((await (await refusal).json()) as { code: string }).code).toBe('QUOTE_STALE')
-    await expect(
-      dialog.getByText(
-        scenario === 'price-change-at-checkout'
-          ? 'Os valores do seu pedido mudaram'
-          : 'Itens indisponíveis',
-        { exact: true },
-      ),
-    ).toBeVisible()
-    await expect(dialog.getByRole('button', { name: 'Confirmar e pagar' })).toBeDisabled()
-    expect(
+    const priceChanged = scenario === 'price-change-at-checkout'
+    const ordersOfAna = async () =>
       Object.values((await mocks.snapshot()).orders).filter(
         (order) => order.userId === users.ana.id,
-      ),
-    ).toEqual([])
-  })
-
-  test(`${scenario} returns the corrected quote, exposes the page notice and creates no order`, async ({
-    api,
-    mocks,
-    page,
-  }) => {
+      )
     await api.addToCart(NFT_IDS.emeraldApe, 'fifty', 2)
     await mocks.setScenario(scenario)
     await gotoPage(page, '/pagamento')
     const dialog = await connectedReview(page)
+    const confirm = dialog.getByRole('button', { name: 'Confirmar e pagar' })
     const refused = page.waitForResponse(
       (response) => new URL(response.url()).pathname === '/api/orders' && response.status() === 409,
     )
-    await dialog.getByRole('button', { name: 'Confirmar e pagar' }).click()
+    await confirm.click()
+
+    // Contract: 409 QUOTE_STALE carries the quote recomputed against the catalog.
     const problem = apiErrorSchema.parse(await (await refused).json())
     expect(problem.code).toBe('QUOTE_STALE')
     const { quote } = quoteStaleDetailsSchema.parse(problem.details)
-    const priceChanged = scenario === 'price-change-at-checkout'
     expect(quote.purchasable).toBe(priceChanged)
     expect(quote.total).toBe(priceChanged ? '2.596' : '2.396')
-    await expect(
-      page.getByRole('heading', {
-        name: priceChanged ? 'Seu carrinho foi atualizado' : 'Itens indisponíveis',
-        exact: true,
-      }),
-    ).toBeVisible()
-    expect(
-      Object.values((await mocks.snapshot()).orders).filter(
-        (order) => order.userId === users.ana.id,
-      ),
-    ).toEqual([])
     const edition = (await mocks.snapshot()).nfts[NFT_IDS.emeraldApe]!.editions.find(
       (entry) => entry.id === 'fifty',
     )!
     expect(priceChanged ? edition.price : edition.available).toBe(priceChanged ? '1.29' : 0)
+
+    // Interface: the review stays open, explains the refusal and blocks the payment.
+    await expect(
+      dialog.getByText(priceChanged ? 'Os valores do seu pedido mudaram' : 'Itens indisponíveis', {
+        exact: true,
+      }),
+    ).toBeVisible()
+    await expect(confirm).toBeDisabled()
+    expect(await ordersOfAna()).toEqual([])
+
+    if (priceChanged) {
+      // Accepting the new values is the renewed confirmation the purchase requires.
+      await expect(dialog.getByTestId('review-total')).toHaveText('2.596 ETH')
+      await dialog.getByRole('button', { name: 'Aceitar novos valores' }).click()
+      await confirm.click()
+      expect((await expectReceipt(page, api)).total).toBe('2.596')
+      expect(await ordersOfAna()).toHaveLength(1)
+    }
   })
 }
 

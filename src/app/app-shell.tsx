@@ -119,11 +119,9 @@ export function AppShell({
         }
         mobileTopBar={mobileTopBar}
         mobileTabBar={mobileTab === false ? false : { activeTab: mobileTab, cartCount }}
-        // At least one viewport tall from md up: the footer always starts below the
-        // fold, so content arriving after the skeletons can never push it around in
-        // view (no layout shift). No outline: <main> only takes focus as the target
-        // of the skip link and of route changes.
-        mainClassName={cn('focus:outline-none md:min-h-dvh', mainClassName)}
+        // No outline: <main> only takes focus as the target of the skip link and of
+        // route changes.
+        mainClassName={cn('focus:outline-none', mainClassName)}
       >
         {children}
       </PageShell>

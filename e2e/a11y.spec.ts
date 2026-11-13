@@ -99,12 +99,8 @@ test('auth dialog or filter drawer traps focus, exposes labels and closes with E
   if (isMobile) await expect(trigger).toBeFocused()
 })
 
-test.fixme('route-driven auth dialog restores focus to the sign-in link', async ({
-  app,
-  page,
-  api,
-}) => {
-  // AuthPage replaces HomePage and loses its opener during navigation (src/features/auth/auth-page.tsx:155).
+test('route-driven auth dialog restores focus to the sign-in link', async ({ app, page, api }) => {
+  // The dialog is a route: closing it navigates back and hands focus to the header link.
   await page.setViewportSize({ width: 1440, height: 900 })
   await app.goto()
   await expectCatalog(page, api)
@@ -280,7 +276,7 @@ for (const width of [390, 768, 1440, 720]) {
 
 test('reduced motion leaves loading skeletons static', async ({ app, page }) => {
   await page.emulateMedia({ reducedMotion: 'reduce' })
-  await app.goto('/', { scenario: 'slow-network' })
+  await app.goto('/', { scenario: 'slow-network', settle: false })
   const loading = page.getByRole('status', { name: 'Carregando NFTs', exact: true })
   await expect(loading).toBeVisible()
   const animations = await loading.evaluate((element) =>

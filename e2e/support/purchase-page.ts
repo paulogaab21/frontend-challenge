@@ -39,15 +39,10 @@ export async function buyDetail(
 ): Promise<void> {
   await page.getByRole('radio', { name: edition, exact: true }).check()
   for (let count = 1; count < quantity; count++) {
-    const increase = page
+    await page
       .getByRole('button', { name: 'Aumentar quantidade', exact: true })
       .filter({ visible: true })
-    if (isMobile) {
-      // Keep the purchase flow operable by keyboard while the devtools pill's
-      // pointer overlap is tracked by a separate fixme regression.
-      await increase.focus()
-      await page.keyboard.press('Enter')
-    } else await increase.click()
+      .click()
   }
   await page
     .getByRole('button', { name: isMobile ? 'Comprar NFT' : 'COMPRAR', exact: true })
