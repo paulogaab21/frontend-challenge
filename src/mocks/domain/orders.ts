@@ -4,6 +4,7 @@ import {
   type NetworkId,
   type Order,
   type OrderDeclineReason,
+  type SimulatedTransaction,
   type WalletProvider,
 } from '@/contracts'
 import { addEth, fromWei, toWei } from '@/lib/money'
@@ -296,19 +297,6 @@ export function settleOrder(
 /* -------------------------------------------------------------------------- */
 /* Simulated block explorer                                                   */
 /* -------------------------------------------------------------------------- */
-
-export interface SimulatedTransaction {
-  hash: string
-  orderId: string
-  network: NetworkId
-  explorerName: string
-  from: string
-  to: string
-  value: string
-  fee: string
-  block: number
-  confirmedAt: string
-}
 
 export function findTransaction(userId: string, hash: string): SimulatedTransaction {
   const order = Object.values(db.state.orders).find(
