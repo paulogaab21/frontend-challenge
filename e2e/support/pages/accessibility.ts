@@ -28,3 +28,27 @@ export async function expectFieldError(field: Locator, message: RegExp) {
   )
   expect(errors.some((error) => message.test(error.text) && error.role === 'alert')).toBe(true)
 }
+
+export async function tabTo(page: Page, target: Locator, maximum = 90) {
+  for (let index = 0; index < maximum; index++) {
+    await page.keyboard.press('Tab')
+    if (await target.evaluate((element) => element === document.activeElement)) return
+  }
+  await expect(target).toBeFocused()
+}
+
+export async function expectPainted(locator: Locator) {
+  await expect
+    .poll(() =>
+      locator.evaluate((element) => {
+        let current: Element | null = element
+        let opacity = 1
+        while (current) {
+          opacity *= Number(getComputedStyle(current).opacity)
+          current = current.parentElement
+        }
+        return opacity
+      }),
+    )
+    .toBe(1)
+}
