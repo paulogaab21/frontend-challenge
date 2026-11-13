@@ -1,4 +1,4 @@
-import { type QueryClient } from '@tanstack/react-query'
+import type { QueryClient } from '@tanstack/react-query'
 
 import { quoteReview } from '@/features/cart/review'
 import { purchaseAttempt } from '@/features/checkout/attempt-store'

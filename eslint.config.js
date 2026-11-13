@@ -42,6 +42,11 @@ export default tseslint.config(
         'error',
         { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
       ],
+      // With `verbatimModuleSyntax`, `import { type A } from 'x'` still loads 'x' for
+      // its side effects. An import that only brings types must say `import type`,
+      // otherwise it can pull a whole module (socket.io-client, the mock layer) into
+      // the start-up path.
+      '@typescript-eslint/no-import-type-side-effects': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_', caughtErrorsIgnorePattern: '^_' },

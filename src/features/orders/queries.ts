@@ -1,7 +1,7 @@
 import { queryOptions, useQuery } from '@tanstack/react-query'
 import { useSyncExternalStore } from 'react'
 
-import { type OrderStatus } from '@/contracts'
+import type { OrderStatus } from '@/contracts'
 import { useSession } from '@/features/auth/session'
 import { queryKeys } from '@/lib/query-keys'
 import { realtime } from '@/lib/realtime/client'

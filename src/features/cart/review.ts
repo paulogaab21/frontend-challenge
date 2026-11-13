@@ -1,4 +1,4 @@
-import { type NetworkId, type Quote, type QuoteIssue } from '@/contracts'
+import type { NetworkId, Quote, QuoteIssue } from '@/contracts'
 import { createStore } from '@/lib/storage'
 
 /**

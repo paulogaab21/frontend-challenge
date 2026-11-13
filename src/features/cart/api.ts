@@ -1,9 +1,4 @@
-import {
-  type AddCartItemRequest,
-  type Cart,
-  type CreateQuoteRequest,
-  type Quote,
-} from '@/contracts'
+import type { AddCartItemRequest, Cart, CreateQuoteRequest, Quote } from '@/contracts'
 import { request } from '@/lib/http'
 
 export function fetchCart(signal?: AbortSignal): Promise<Cart> {

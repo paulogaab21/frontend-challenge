@@ -1,4 +1,4 @@
-import { type ApiErrorBody, type ApiErrorCode } from '@/contracts'
+import type { ApiErrorBody, ApiErrorCode } from '@/contracts'
 
 /**
  * Thrown by the domain functions to answer a request with the standard error

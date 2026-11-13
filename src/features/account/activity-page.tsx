@@ -1,6 +1,6 @@
 import { AlertIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import { type Order } from '@/contracts'
+import type { Order } from '@/contracts'
 import { OrdersList } from '@/features/orders/components/orders-list'
 import { OrdersListSkeleton } from '@/features/orders/components/orders-list-skeleton'
 import { useOrders } from '@/features/orders/queries'

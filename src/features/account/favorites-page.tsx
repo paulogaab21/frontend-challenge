@@ -1,7 +1,7 @@
 import { AlertIcon, HeartIcon } from '@/components/icons'
 import { SiteLink } from '@/components/layout/site-link'
 import { Button } from '@/components/ui/button'
-import { type NftSummary } from '@/contracts'
+import type { NftSummary } from '@/contracts'
 import { NftGrid } from '@/features/catalog/components/nft-grid'
 import { NftGridSkeleton } from '@/features/catalog/components/nft-grid-skeleton'
 import { useFavorites } from '@/features/catalog/queries'

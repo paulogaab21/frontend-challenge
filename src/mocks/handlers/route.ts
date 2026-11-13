@@ -1,5 +1,5 @@
 import { delay, http, HttpResponse, type HttpHandler, type PathParams } from 'msw'
-import { type z } from 'zod'
+import type { z } from 'zod'
 
 import { env } from '@/lib/env'
 

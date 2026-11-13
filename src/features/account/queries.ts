@@ -1,16 +1,16 @@
 import { queryOptions, useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 
-import {
-  type ActiveConnectionResponse,
-  type ChangePasswordRequest,
-  type ConnectWalletRequest,
-  type CreateWalletRequest,
-  type Profile,
-  type Session,
-  type UpdateProfileRequest,
-  type UpdateWalletRequest,
-  type Wallet,
-  type WalletsResponse,
+import type {
+  ActiveConnectionResponse,
+  ChangePasswordRequest,
+  ConnectWalletRequest,
+  CreateWalletRequest,
+  Profile,
+  Session,
+  UpdateProfileRequest,
+  UpdateWalletRequest,
+  Wallet,
+  WalletsResponse,
 } from '@/contracts'
 import { isCurrentScope, useSession } from '@/features/auth/session'
 import { queryKeys } from '@/lib/query-keys'

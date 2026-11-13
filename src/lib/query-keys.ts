@@ -1,4 +1,4 @@
-import { type NetworkId, type NftListParams } from '@/contracts'
+import type { NetworkId, NftListParams } from '@/contracts'
 
 /**
  * Every TanStack Query key of the app, in one place.

@@ -11,7 +11,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
-import { type CartItem, type NftSummary } from '@/contracts'
+import type { CartItem, NftSummary } from '@/contracts'
 import { NftCarousel } from '@/features/catalog/components/nft-carousel'
 import { NftCarouselSkeleton } from '@/features/catalog/components/nft-carousel-skeleton'
 import { nftListQueryOptions } from '@/features/catalog/queries'

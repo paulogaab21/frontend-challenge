@@ -1,10 +1,4 @@
-import {
-  type EditionId,
-  type NetworkId,
-  type Order,
-  type Quote,
-  type WalletConnection,
-} from '@/contracts'
+import type { EditionId, NetworkId, Order, Quote, WalletConnection } from '@/contracts'
 import { type EthAmount, mulEth } from '@/lib/money'
 import { readJson, removeKey, writeJson } from '@/lib/storage'
 

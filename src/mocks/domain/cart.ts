@@ -1,12 +1,12 @@
-import {
-  type AppliedCoupon,
-  type Cart,
-  type CartItem,
-  type Edition,
-  type EditionId,
-  type NetworkId,
-  type Quote,
-  type QuoteIssue,
+import type {
+  AppliedCoupon,
+  Cart,
+  CartItem,
+  Edition,
+  EditionId,
+  NetworkId,
+  Quote,
+  QuoteIssue,
 } from '@/contracts'
 import {
   addEth,

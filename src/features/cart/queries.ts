@@ -9,7 +9,7 @@ import {
 } from '@tanstack/react-query'
 import { useMemo } from 'react'
 
-import { type AddCartItemRequest, type Cart, type NetworkId, type Quote } from '@/contracts'
+import type { AddCartItemRequest, Cart, NetworkId, Quote } from '@/contracts'
 import { isCurrentScope, useSession } from '@/features/auth/session'
 import { isApiError } from '@/lib/http'
 import { mulEth } from '@/lib/money'
