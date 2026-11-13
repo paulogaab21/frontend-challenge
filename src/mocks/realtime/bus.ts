@@ -1,4 +1,4 @@
-import { type RealtimeEvent } from '@/contracts'
+import type { RealtimeEvent } from '@/contracts'
 
 /**
  * In-process bridge between the database (which decides *that* something changed)

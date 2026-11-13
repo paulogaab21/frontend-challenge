@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 import { AppShell } from '@/app/app-shell'
 import {
@@ -10,7 +10,7 @@ import {
   ShoppingIcon,
   UserIcon,
 } from '@/components/icons'
-import { type MobileTab } from '@/components/layout/mobile-tab-bar'
+import type { MobileTab } from '@/components/layout/mobile-tab-bar'
 import { useLogout } from '@/features/auth/session'
 import { useDocumentTitle } from '@/lib/use-document-title'
 

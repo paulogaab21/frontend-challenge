@@ -2,12 +2,7 @@ import { useState } from 'react'
 
 import { AlertIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import {
-  type Wallet,
-  type WalletFields,
-  type WalletFieldsInput,
-  type WalletRole,
-} from '@/contracts'
+import type { Wallet, WalletFields, WalletFieldsInput, WalletRole } from '@/contracts'
 import { toFormFailure, type FormFailure } from '@/lib/form-errors'
 import { errorMessage } from '@/lib/http'
 import { notify } from '@/lib/notify'

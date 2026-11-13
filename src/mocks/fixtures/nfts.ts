@@ -1,12 +1,12 @@
-import {
-  type ArtworkId,
-  type CategoryId,
-  type Edition,
-  type EditionId,
-  type GalleryView,
-  type NetworkId,
-  type NftBadge,
-  type NftReview,
+import type {
+  ArtworkId,
+  CategoryId,
+  Edition,
+  EditionId,
+  GalleryView,
+  NetworkId,
+  NftBadge,
+  NftReview,
 } from '@/contracts'
 import { type EthAmount, fromWei, toWei } from '@/lib/money'
 

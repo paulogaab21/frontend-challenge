@@ -1,4 +1,4 @@
-import { type LoginRequest, type RegisterRequest, type Session } from '@/contracts'
+import type { LoginRequest, RegisterRequest, Session } from '@/contracts'
 import { request } from '@/lib/http'
 
 export function fetchSession(signal?: AbortSignal): Promise<Session> {

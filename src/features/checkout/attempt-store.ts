@@ -1,4 +1,4 @@
-import { type CreateOrderInput } from '@/contracts'
+import type { CreateOrderInput } from '@/contracts'
 import { isDeepEqual } from '@/lib/stable-json'
 import { createStore, randomId, readJson, removeKey, writeJson } from '@/lib/storage'
 

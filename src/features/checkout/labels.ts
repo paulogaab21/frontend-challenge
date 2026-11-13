@@ -1,4 +1,4 @@
-import { type NetworkId, type WalletProvider } from '@/contracts'
+import type { NetworkId, WalletProvider } from '@/contracts'
 
 export const PROVIDER_LABELS: Record<WalletProvider, string> = {
   walletconnect: 'WalletConnect',

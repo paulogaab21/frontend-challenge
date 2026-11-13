@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 import { AppShell } from '@/app/app-shell'
 import { CloseIcon, FilterIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import { type NftSummary } from '@/contracts'
+import type { NftSummary } from '@/contracts'
 import { errorMessage } from '@/lib/http'
 import { useDocumentTitle } from '@/lib/use-document-title'
 

@@ -1,9 +1,4 @@
-import {
-  type EditionId,
-  type NetworkId,
-  type OrderDeclineReason,
-  type RealtimeEvent,
-} from '@/contracts'
+import type { EditionId, NetworkId, OrderDeclineReason, RealtimeEvent } from '@/contracts'
 import { type EthAmount, isEthAmount } from '@/lib/money'
 
 import { mockConfig, SCENARIOS, type FailureRule, type MockConfig, type Scenario } from './config'

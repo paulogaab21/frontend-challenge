@@ -4,7 +4,7 @@ import { Artwork } from '@/components/artwork'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Skeleton } from '@/components/ui/skeleton'
-import { type AppliedCoupon, type Quote, type QuoteItem } from '@/contracts'
+import type { AppliedCoupon, Quote, QuoteItem } from '@/contracts'
 import { formatEth, isZeroEth } from '@/lib/money'
 import { cn } from '@/lib/utils'
 

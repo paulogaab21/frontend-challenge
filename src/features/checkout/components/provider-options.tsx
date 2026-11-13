@@ -2,7 +2,7 @@ import { useId } from 'react'
 
 import { WalletIcon } from '@/components/icons'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
-import { type WalletProvider } from '@/contracts'
+import type { WalletProvider } from '@/contracts'
 import { cn } from '@/lib/utils'
 
 import { PROVIDER_LABELS } from '../labels'

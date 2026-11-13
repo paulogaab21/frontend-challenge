@@ -5,7 +5,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { shortenAddress, type Wallet } from '@/contracts'
 import { cn } from '@/lib/utils'
 
-import { type WalletChoice } from '../draft-store'
+import type { WalletChoice } from '../draft-store'
 import { NETWORK_LABELS as NETWORKS } from '../labels'
 
 export interface WalletChoiceGroupProps {

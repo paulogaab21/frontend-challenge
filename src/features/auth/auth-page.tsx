@@ -2,7 +2,7 @@ import { useRouter } from '@tanstack/react-router'
 import { useState } from 'react'
 
 import { Dialog, DialogContent } from '@/components/ui/dialog'
-import { type LoginRequest, type RegisterFormValues } from '@/contracts'
+import type { LoginRequest, RegisterFormValues } from '@/contracts'
 import { HomePage } from '@/features/catalog/home-page'
 import { errorMessage, isApiError } from '@/lib/http'
 import { notify } from '@/lib/notify'
