@@ -1,0 +1,216 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+/*
+ * Kurio design tokens — extracted 1:1 from the Figma file ("Marketplace de NFTs").
+ * The product ships a single dark theme, so the tokens live on :root.
+ *
+ * Layer 1: raw palette (--kurio-*), named after the Figma fills.
+ * Layer 2: shadcn/ui semantic tokens mapped onto the palette.
+ * Layer 3: Tailwind theme (@theme inline) exposing both layers as utilities.
+ */
+:root {
+  /* ---- palette ---- */
+  --kurio-ink: #140d0a; /* page background, text on copper */
+  --kurio-surface: #241612; /* cards, panels, dialogs */
+  --kurio-surface-raised: #2f1d15; /* mobile cards, hover on surface */
+  --kurio-band: #38220f; /* footer brand band, filled inputs */
+  --kurio-border: #3f2319; /* default 1px borders */
+  --kurio-border-strong: #55321f; /* emphasized borders, chips */
+  --kurio-copper: #d28a4c; /* primary actions, active markers */
+  --kurio-copper-soft: #dd9a5f; /* mobile gradient start */
+  --kurio-amber: #e89b55; /* accent text: prices, active tab, links */
+  --kurio-cream: #f5f1eb; /* primary text */
+  --kurio-sand: #cfb28c; /* secondary text */
+  --kurio-khaki: #b39463; /* tertiary text, placeholders, old price */
+  --kurio-coral: #f0805f; /* required mark, validation errors */
+  --kurio-green: #46a358; /* success */
+
+  /* ---- shadcn/ui semantic tokens ---- */
+  --background: var(--kurio-ink);
+  --foreground: var(--kurio-cream);
+  --card: var(--kurio-surface);
+  --card-foreground: var(--kurio-cream);
+  --popover: var(--kurio-surface);
+  --popover-foreground: var(--kurio-cream);
+  --primary: var(--kurio-copper);
+  --primary-foreground: var(--kurio-ink);
+  --secondary: var(--kurio-band);
+  --secondary-foreground: var(--kurio-cream);
+  --muted: var(--kurio-surface-raised);
+  --muted-foreground: var(--kurio-sand);
+  --accent: var(--kurio-surface-raised);
+  --accent-foreground: var(--kurio-cream);
+  --destructive: var(--kurio-coral);
+  --destructive-foreground: var(--kurio-ink);
+  --success: var(--kurio-green);
+  --border: var(--kurio-border);
+  --input: var(--kurio-border);
+  --ring: var(--kurio-amber);
+  --radius: 0.375rem; /* 6px — buttons and inputs in the Figma */
+
+  /* ---- layout ---- */
+  --container-max: 75rem; /* 1200px content column of the 1440 frames */
+  --gutter: 1.5rem;
+  --header-height: 4.3125rem; /* 69px: 24px top padding + 45px row */
+}
+
+@theme inline {
+  /* typography: the whole file uses Roboto Mono */
+  --font-mono:
+    'Roboto Mono Variable', 'Roboto Mono', ui-monospace, 'SFMono-Regular', 'Menlo', 'Consolas',
+    monospace;
+  --font-sans: var(--font-mono);
+
+  /* Figma type scale (px): 9 10 12 13 14 15 16 17 18 20 22 24 28 32 43 */
+  --text-2xs: 0.5625rem;
+  --text-2xs--line-height: 0.75rem;
+  --text-10: 0.625rem;
+  --text-10--line-height: 0.875rem;
+  --text-13: 0.8125rem;
+  --text-13--line-height: 1.375rem;
+  --text-15: 0.9375rem;
+  --text-15--line-height: 1.25rem;
+  --text-17: 1.0625rem;
+  --text-17--line-height: 1.375rem;
+  --text-22: 1.375rem;
+  --text-22--line-height: 1.75rem;
+  --text-28: 1.75rem;
+  --text-28--line-height: 2.25rem;
+  --text-hero: 2.6875rem; /* 43px */
+  --text-hero--line-height: 4.375rem; /* 70px */
+
+  --tracking-brand: 0.1em;
+
+  /* palette utilities: bg-ink, text-sand, border-copper ... */
+  --color-ink: var(--kurio-ink);
+  --color-surface: var(--kurio-surface);
+  --color-surface-raised: var(--kurio-surface-raised);
+  --color-band: var(--kurio-band);
+  --color-line: var(--kurio-border);
+  --color-line-strong: var(--kurio-border-strong);
+  --color-copper: var(--kurio-copper);
+  --color-copper-soft: var(--kurio-copper-soft);
+  --color-amber: var(--kurio-amber);
+  --color-cream: var(--kurio-cream);
+  --color-sand: var(--kurio-sand);
+  --color-khaki: var(--kurio-khaki);
+  --color-coral: var(--kurio-coral);
+  --color-success: var(--success);
+
+  /* shadcn/ui semantic utilities */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* radii used by the Figma: 4 (pagination) 6 (controls) 8 (cards) 10 (mobile inputs)
+     15 (NFT artwork) 16 (mobile cards) 24 (hero artwork) 30 (mobile pills) */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.625rem;
+  --radius-2xl: 0.9375rem;
+  --radius-3xl: 1rem;
+  --radius-4xl: 1.5rem;
+
+  --container-content: var(--container-max);
+
+  --animate-shimmer: shimmer 1.6s linear infinite;
+
+  @keyframes shimmer {
+    from {
+      background-position: 200% 0;
+    }
+    to {
+      background-position: -200% 0;
+    }
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/60;
+  }
+
+  html {
+    color-scheme: dark;
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background font-mono text-foreground antialiased;
+    min-height: 100dvh;
+    font-size: 0.875rem;
+    line-height: 1.5rem;
+    overflow-x: clip;
+  }
+
+  /* One consistent, clearly visible focus indicator for keyboard users. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--kurio-copper);
+    color: var(--kurio-ink);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility container-page {
+  width: 100%;
+  max-width: calc(var(--container-max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* Skeleton shimmer: a moving highlight over the surface color. Static when the
+   user prefers reduced motion (the base layer already stops the animation). */
+@utility shimmer {
+  background-color: var(--kurio-surface);
+  background-image: linear-gradient(
+    100deg,
+    transparent 20%,
+    color-mix(in srgb, var(--kurio-copper) 14%, transparent) 50%,
+    transparent 80%
+  );
+  background-size: 200% 100%;
+  animation: var(--animate-shimmer);
+}
+
+/* Copper gradient used by the mobile primary actions in the Figma. */
+@utility bg-copper-gradient {
+  background-image: linear-gradient(90deg, var(--kurio-copper-soft) 0%, #a9713f 100%);
+}

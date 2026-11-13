@@ -1,0 +1,33 @@
+# dependencies
+node_modules/
+
+# builds
+dist/
+dist-ssr/
+*.tsbuildinfo
+
+# local env overrides (committed .env.* files hold only non-secret defaults)
+.env.local
+.env.*.local
+
+# design references exported from Figma (large, local only)
+.design/
+
+# test + audit artifacts (reports are regenerated; baselines are versioned)
+playwright-report/
+test-results/
+blob-report/
+.playwright/
+lighthouse/.tmp/
+
+# tooling
+.vite/
+.eslintcache
+coverage/
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+.vercel
