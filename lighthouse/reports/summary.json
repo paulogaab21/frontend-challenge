@@ -1,0 +1,1556 @@
+{
+  "date": "2026-11-13T10:47:26.999Z",
+  "command": "npm run lighthouse -- --build --no-assert",
+  "git": {
+    "commit": "695902870e6d51a2d0c8fca99dda2df478a591da",
+    "branch": "seapen",
+    "dirty": true
+  },
+  "runsRequested": 3,
+  "groupsExpected": 4,
+  "baseUrl": "http://127.0.0.1:4173",
+  "pass": false,
+  "error": null,
+  "versions": {
+    "lighthouse": "13.6.0",
+    "chromeLauncher": "1.2.3",
+    "playwright": "1.65.0",
+    "vite": "8.3.8",
+    "node": "v24.19.0",
+    "chrome": [
+      "Chrome/157.0.8103.52"
+    ]
+  },
+  "environment": {
+    "os": "Windows_NT 10.0.19044 x64",
+    "platform": "win32",
+    "cpu": "AMD Ryzen 7 5700X3D 8-Core Processor           ",
+    "logicalCores": 16,
+    "totalMemoryBytes": 34278809600
+  },
+  "conditions": {
+    "buildRequested": true,
+    "server": "local Vite preview; dist must be a production demo build",
+    "scenario": "default",
+    "freshChromeProfilePerRun": true,
+    "warmUp": "One home navigation per fresh profile; wait for registered service worker control, then clear HTTP cache",
+    "storageReset": "disabled to retain MSW registration; no profile reused across runs",
+    "profiles": {
+      "mobile": {
+        "formFactor": "mobile",
+        "screenEmulation": {
+          "mobile": true,
+          "width": 412,
+          "height": 823,
+          "deviceScaleFactor": 1.75,
+          "disabled": false
+        },
+        "throttling": {
+          "rttMs": 150,
+          "throughputKbps": 1638.4,
+          "requestLatencyMs": 562.5,
+          "downloadThroughputKbps": 1474.5600000000002,
+          "uploadThroughputKbps": 675,
+          "cpuSlowdownMultiplier": 4
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+        "throttlingMethod": "simulate",
+        "onlyCategories": [
+          "performance",
+          "accessibility",
+          "best-practices",
+          "seo"
+        ],
+        "disableStorageReset": true
+      },
+      "desktop": {
+        "formFactor": "desktop",
+        "throttling": {
+          "rttMs": 40,
+          "throughputKbps": 10240,
+          "cpuSlowdownMultiplier": 1,
+          "requestLatencyMs": 0,
+          "downloadThroughputKbps": 0,
+          "uploadThroughputKbps": 0
+        },
+        "screenEmulation": {
+          "mobile": false,
+          "width": 1350,
+          "height": 940,
+          "deviceScaleFactor": 1,
+          "disabled": false
+        },
+        "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+        "throttlingMethod": "simulate",
+        "onlyCategories": [
+          "performance",
+          "accessibility",
+          "best-practices",
+          "seo"
+        ],
+        "disableStorageReset": true
+      }
+    },
+    "thresholds": {
+      "performance": 90,
+      "accessibility": 95,
+      "best-practices": 95,
+      "seo": 90
+    },
+    "assertionsEnabled": false
+  },
+  "results": [
+    {
+      "profile": "mobile",
+      "page": {
+        "slug": "home",
+        "title": "Início",
+        "path": "/"
+      },
+      "runs": [
+        {
+          "number": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 753.0852,
+            "cls": 0.0007826286596006384,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:47:35.898Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 2975.5,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "mobile",
+            "throttling": {
+              "rttMs": 150,
+              "throughputKbps": 1638.4,
+              "requestLatencyMs": 562.5,
+              "downloadThroughputKbps": 1474.5600000000002,
+              "uploadThroughputKbps": 675,
+              "cpuSlowdownMultiplier": 4
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": true,
+              "width": 412,
+              "height": 823,
+              "deviceScaleFactor": 1.75,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        },
+        {
+          "number": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 753.0558000000001,
+            "cls": 0.0007826286596006384,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:47:44.192Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 3106.5,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "mobile",
+            "throttling": {
+              "rttMs": 150,
+              "throughputKbps": 1638.4,
+              "requestLatencyMs": 562.5,
+              "downloadThroughputKbps": 1474.5600000000002,
+              "uploadThroughputKbps": 675,
+              "cpuSlowdownMultiplier": 4
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": true,
+              "width": 412,
+              "height": 823,
+              "deviceScaleFactor": 1.75,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        },
+        {
+          "number": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 753.7405000000001,
+            "cls": 0.0007826286596006384,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:47:52.252Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 2982.5,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "mobile",
+            "throttling": {
+              "rttMs": 150,
+              "throughputKbps": 1638.4,
+              "requestLatencyMs": 562.5,
+              "downloadThroughputKbps": 1474.5600000000002,
+              "uploadThroughputKbps": 675,
+              "cpuSlowdownMultiplier": 4
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": true,
+              "width": 412,
+              "height": 823,
+              "deviceScaleFactor": 1.75,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        }
+      ],
+      "aggregate": {
+        "scores": {
+          "performance": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 90,
+            "pass": true
+          },
+          "accessibility": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 95,
+            "pass": true
+          },
+          "best-practices": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 95,
+            "pass": true
+          },
+          "seo": {
+            "values": [
+              91,
+              91,
+              91
+            ],
+            "median": 91,
+            "target": 90,
+            "pass": true
+          }
+        },
+        "metrics": {
+          "lcp": {
+            "values": [
+              753.0852,
+              753.0558000000001,
+              753.7405000000001
+            ],
+            "median": 753.0852,
+            "unit": "ms"
+          },
+          "cls": {
+            "values": [
+              0.0007826286596006384,
+              0.0007826286596006384,
+              0.0007826286596006384
+            ],
+            "median": 0.0007826286596006384,
+            "unit": "unitless"
+          },
+          "tbt": {
+            "values": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "unit": "ms"
+          }
+        },
+        "pass": true
+      }
+    },
+    {
+      "profile": "mobile",
+      "page": {
+        "slug": "nft-detail",
+        "title": "Detalhe do NFT",
+        "path": "/nft/emerald-ape-042"
+      },
+      "runs": [
+        {
+          "number": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 94,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 752.9856,
+            "cls": 0,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:48:00.212Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 2982,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "mobile",
+            "throttling": {
+              "rttMs": 150,
+              "throughputKbps": 1638.4,
+              "requestLatencyMs": 562.5,
+              "downloadThroughputKbps": 1474.5600000000002,
+              "uploadThroughputKbps": 675,
+              "cpuSlowdownMultiplier": 4
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": true,
+              "width": 412,
+              "height": 823,
+              "deviceScaleFactor": 1.75,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        },
+        {
+          "number": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 94,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 752.9392,
+            "cls": 0,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:48:08.224Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 3128.5,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "mobile",
+            "throttling": {
+              "rttMs": 150,
+              "throughputKbps": 1638.4,
+              "requestLatencyMs": 562.5,
+              "downloadThroughputKbps": 1474.5600000000002,
+              "uploadThroughputKbps": 675,
+              "cpuSlowdownMultiplier": 4
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": true,
+              "width": 412,
+              "height": 823,
+              "deviceScaleFactor": 1.75,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        },
+        {
+          "number": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 94,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 752.9206999999999,
+            "cls": 0,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:48:16.172Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 3057.5,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "mobile",
+            "throttling": {
+              "rttMs": 150,
+              "throughputKbps": 1638.4,
+              "requestLatencyMs": 562.5,
+              "downloadThroughputKbps": 1474.5600000000002,
+              "uploadThroughputKbps": 675,
+              "cpuSlowdownMultiplier": 4
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": true,
+              "width": 412,
+              "height": 823,
+              "deviceScaleFactor": 1.75,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Mobile Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        }
+      ],
+      "aggregate": {
+        "scores": {
+          "performance": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 90,
+            "pass": true
+          },
+          "accessibility": {
+            "values": [
+              94,
+              94,
+              94
+            ],
+            "median": 94,
+            "target": 95,
+            "pass": false
+          },
+          "best-practices": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 95,
+            "pass": true
+          },
+          "seo": {
+            "values": [
+              91,
+              91,
+              91
+            ],
+            "median": 91,
+            "target": 90,
+            "pass": true
+          }
+        },
+        "metrics": {
+          "lcp": {
+            "values": [
+              752.9856,
+              752.9392,
+              752.9206999999999
+            ],
+            "median": 752.9392,
+            "unit": "ms"
+          },
+          "cls": {
+            "values": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "unit": "unitless"
+          },
+          "tbt": {
+            "values": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "unit": "ms"
+          }
+        },
+        "pass": false
+      }
+    },
+    {
+      "profile": "desktop",
+      "page": {
+        "slug": "home",
+        "title": "Início",
+        "path": "/"
+      },
+      "runs": [
+        {
+          "number": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 202.9212,
+            "cls": 0.0001260835303388495,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:48:24.169Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 2728,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "desktop",
+            "throttling": {
+              "rttMs": 40,
+              "throughputKbps": 10240,
+              "requestLatencyMs": 0,
+              "downloadThroughputKbps": 0,
+              "uploadThroughputKbps": 0,
+              "cpuSlowdownMultiplier": 1
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": false,
+              "width": 1350,
+              "height": 940,
+              "deviceScaleFactor": 1,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        },
+        {
+          "number": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 203.002,
+            "cls": 0.0001260835303388495,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:48:32.246Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 3073.5,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "desktop",
+            "throttling": {
+              "rttMs": 40,
+              "throughputKbps": 10240,
+              "requestLatencyMs": 0,
+              "downloadThroughputKbps": 0,
+              "uploadThroughputKbps": 0,
+              "cpuSlowdownMultiplier": 1
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": false,
+              "width": 1350,
+              "height": 940,
+              "deviceScaleFactor": 1,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        },
+        {
+          "number": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 203.1411,
+            "cls": 0.0001260835303388495,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:48:40.270Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 3090,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "desktop",
+            "throttling": {
+              "rttMs": 40,
+              "throughputKbps": 10240,
+              "requestLatencyMs": 0,
+              "downloadThroughputKbps": 0,
+              "uploadThroughputKbps": 0,
+              "cpuSlowdownMultiplier": 1
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": false,
+              "width": 1350,
+              "height": 940,
+              "deviceScaleFactor": 1,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        }
+      ],
+      "aggregate": {
+        "scores": {
+          "performance": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 90,
+            "pass": true
+          },
+          "accessibility": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 95,
+            "pass": true
+          },
+          "best-practices": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 95,
+            "pass": true
+          },
+          "seo": {
+            "values": [
+              91,
+              91,
+              91
+            ],
+            "median": 91,
+            "target": 90,
+            "pass": true
+          }
+        },
+        "metrics": {
+          "lcp": {
+            "values": [
+              202.9212,
+              203.002,
+              203.1411
+            ],
+            "median": 203.002,
+            "unit": "ms"
+          },
+          "cls": {
+            "values": [
+              0.0001260835303388495,
+              0.0001260835303388495,
+              0.0001260835303388495
+            ],
+            "median": 0.0001260835303388495,
+            "unit": "unitless"
+          },
+          "tbt": {
+            "values": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "unit": "ms"
+          }
+        },
+        "pass": true
+      }
+    },
+    {
+      "profile": "desktop",
+      "page": {
+        "slug": "nft-detail",
+        "title": "Detalhe do NFT",
+        "path": "/nft/emerald-ape-042"
+      },
+      "runs": [
+        {
+          "number": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 94,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 202.79020000000003,
+            "cls": 0,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:48:48.331Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 3126.5,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "desktop",
+            "throttling": {
+              "rttMs": 40,
+              "throughputKbps": 10240,
+              "requestLatencyMs": 0,
+              "downloadThroughputKbps": 0,
+              "uploadThroughputKbps": 0,
+              "cpuSlowdownMultiplier": 1
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": false,
+              "width": 1350,
+              "height": 940,
+              "deviceScaleFactor": 1,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        },
+        {
+          "number": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 94,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 202.8977,
+            "cls": 0,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:48:56.263Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 2993,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "desktop",
+            "throttling": {
+              "rttMs": 40,
+              "throughputKbps": 10240,
+              "requestLatencyMs": 0,
+              "downloadThroughputKbps": 0,
+              "uploadThroughputKbps": 0,
+              "cpuSlowdownMultiplier": 1
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": false,
+              "width": 1350,
+              "height": 940,
+              "deviceScaleFactor": 1,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        },
+        {
+          "number": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 94,
+            "best-practices": 100,
+            "seo": 91
+          },
+          "metrics": {
+            "lcp": 202.83300000000003,
+            "cls": 0,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": false,
+            "registrations": [],
+            "httpCacheCleared": true,
+            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+          },
+          "date": "2026-11-13T10:49:04.050Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 3018,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "desktop",
+            "throttling": {
+              "rttMs": 40,
+              "throughputKbps": 10240,
+              "requestLatencyMs": 0,
+              "downloadThroughputKbps": 0,
+              "uploadThroughputKbps": 0,
+              "cpuSlowdownMultiplier": 1
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": false,
+              "width": 1350,
+              "height": 940,
+              "deviceScaleFactor": 1,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        }
+      ],
+      "aggregate": {
+        "scores": {
+          "performance": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 90,
+            "pass": true
+          },
+          "accessibility": {
+            "values": [
+              94,
+              94,
+              94
+            ],
+            "median": 94,
+            "target": 95,
+            "pass": false
+          },
+          "best-practices": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 95,
+            "pass": true
+          },
+          "seo": {
+            "values": [
+              91,
+              91,
+              91
+            ],
+            "median": 91,
+            "target": 90,
+            "pass": true
+          }
+        },
+        "metrics": {
+          "lcp": {
+            "values": [
+              202.79020000000003,
+              202.8977,
+              202.83300000000003
+            ],
+            "median": 202.83300000000003,
+            "unit": "ms"
+          },
+          "cls": {
+            "values": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "unit": "unitless"
+          },
+          "tbt": {
+            "values": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "unit": "ms"
+          }
+        },
+        "pass": false
+      }
+    }
+  ]
+}
