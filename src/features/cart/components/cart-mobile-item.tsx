@@ -29,7 +29,7 @@ export function CartMobileItem({
   const soldOut = item.available === 0
   return (
     <li aria-busy={pending || undefined} className="min-w-0 space-y-2">
-      <div className="grid min-h-[100px] grid-cols-[100px_minmax(0,1fr)] gap-x-[9px] overflow-hidden rounded-[14px] bg-surface shadow-lg">
+      <div className="grid min-h-[100px] grid-cols-[100px_minmax(0,1fr)] gap-x-[9px] overflow-hidden rounded-[14px] bg-surface shadow-lg max-[360px]:grid-cols-1">
         <SiteLink
           to={href}
           className={soldOut ? 'self-start opacity-40' : 'self-start'}
@@ -37,7 +37,7 @@ export function CartMobileItem({
         >
           <Artwork id={item.artwork} sizes="100px" alt="" className="w-[100px] rounded-[14px]" />
         </SiteLink>
-        <div className="min-w-0 py-[10px] pr-3">
+        <div className="min-w-0 py-[10px] pr-3 max-[360px]:px-3">
           <SiteLink
             to={href}
             className="block text-15 leading-5 font-bold break-words hover:text-amber"

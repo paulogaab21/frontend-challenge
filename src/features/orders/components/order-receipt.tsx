@@ -27,10 +27,10 @@ export function OrderReceipt({ order, closeTo, explorerTo }: OrderReceiptProps) 
           Seus NFTs agora estão na sua carteira
         </h1>
       </header>
-      <dl className="grid grid-cols-2 gap-y-4 border-y border-copper px-6 py-[17px] text-sm leading-[19px] text-sand md:grid-cols-[1.25fr_1.1fr_1fr_0.8fr] md:px-9">
+      <dl className="grid grid-cols-2 gap-y-4 border-y border-copper px-6 py-[14px] text-sm leading-[18px] text-sand md:grid-cols-[146px_144px_126px_minmax(0,1fr)] md:px-9">
         <div className="min-w-0 border-r border-copper pr-3">
           <dt className="font-bold">ID da transação</dt>
-          <dd className="text-15" title={order.transaction?.hash}>
+          <dd className="text-15 leading-[18px]" title={order.transaction?.hash}>
             <span aria-hidden="true">
               {order.transaction ? shortenAddress(order.transaction.hash) : '—'}
             </span>
@@ -39,23 +39,23 @@ export function OrderReceipt({ order, closeTo, explorerTo }: OrderReceiptProps) 
         </div>
         <div className="min-w-0 pl-4 md:border-r md:border-copper md:px-4">
           <dt>Data</dt>
-          <dd className="text-15">
+          <dd className="text-15 leading-[18px]">
             <time dateTime={order.settledAt ?? undefined}>{formatOrderDate(order.settledAt)}</time>
           </dd>
         </div>
         <div className="min-w-0 border-r border-copper pr-3 md:px-4">
           <dt>Total</dt>
-          <dd className="text-15 break-words">{formatEth(order.total)}</dd>
+          <dd className="text-15 leading-[18px] break-words">{formatEth(order.total)}</dd>
         </div>
         <div className="min-w-0 pl-4">
           <dt className="font-bold">Carteira</dt>
-          <dd className="text-15 break-words">{order.wallet.label}</dd>
+          <dd className="text-15 leading-[18px] break-words">{order.wallet.label}</dd>
         </div>
       </dl>
       <div className="px-5 pt-5 md:px-11">
         <h2 className="mb-2 text-15 leading-5 font-bold">Detalhes da transação</h2>
         <OrderItemsTable order={order} />
-        <div className="mt-3 border-t border-copper/30 pt-3 pb-[17px] text-center">
+        <div className="mt-[10px] border-t border-copper/30 pt-3 pb-5 text-center">
           <p className="text-sm leading-[22px] text-sand">
             Transação confirmada na {networks[order.network]}. A propriedade foi transferida para
             sua carteira conectada e registrada na rede.

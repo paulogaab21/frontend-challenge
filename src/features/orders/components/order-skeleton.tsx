@@ -19,19 +19,19 @@ export function OrderSkeleton({ closeTo, rows = 3 }: OrderSkeletonProps) {
       <div role="status" aria-label="Carregando pedido">
         <div className="px-6 pt-[22px] pb-[14px]">
           <Skeleton className="mx-auto size-20" />
-          <Skeleton className="mx-auto mt-4 h-6 w-full max-w-[356px]" />
+          <Skeleton className="mx-auto mt-4 h-12 w-full max-w-[356px] md:h-6" />
         </div>
-        <div className="grid grid-cols-2 gap-y-4 border-y border-copper px-6 py-[17px] md:grid-cols-4 md:px-9">
+        <div className="grid grid-cols-2 gap-y-4 border-y border-copper px-6 py-[14px] md:grid-cols-4 md:px-9">
           {Array.from({ length: 4 }, (_, index) => (
             <div key={index} className="space-y-1 px-2">
-              <Skeleton className="h-[15px] w-full" />
-              <Skeleton className="h-[19px] w-full" />
+              <Skeleton className="h-[14px] w-full" />
+              <Skeleton className="h-[18px] w-full" />
             </div>
           ))}
         </div>
         <div className="px-5 pt-5 md:px-11">
           <Skeleton className="mb-2 h-5 w-48 max-w-full" />
-          <div className="grid h-7 grid-cols-[54%_18%_28%] items-start border-b border-copper/30 md:grid-cols-[60%_16%_24%]">
+          <div className="grid h-7 grid-cols-[54%_18%_28%] items-start border-b border-copper/30 md:grid-cols-[60.6%_16%_23.4%]">
             {Array.from({ length: 3 }, (_, index) => (
               <Skeleton key={index} className="h-5 w-4/5" />
             ))}
@@ -40,7 +40,7 @@ export function OrderSkeleton({ closeTo, rows = 3 }: OrderSkeletonProps) {
             {Array.from({ length: rows }, (_, index) => (
               <div
                 key={index}
-                className="grid min-h-[70px] grid-cols-[54%_18%_28%] items-center md:grid-cols-[60%_16%_24%]"
+                className="grid min-h-[70px] grid-cols-[54%_18%_28%] items-center md:grid-cols-[60.6%_16%_23.4%]"
               >
                 <div className="flex flex-col gap-2 pr-2 md:flex-row md:items-center md:gap-3">
                   <Skeleton className="size-[70px] shrink-0" />
@@ -54,14 +54,14 @@ export function OrderSkeleton({ closeTo, rows = 3 }: OrderSkeletonProps) {
               </div>
             ))}
           </div>
-          <div className="mt-3 space-y-3 md:ml-[169px]">
+          <div className="mt-3 space-y-[10px] md:ml-[169px]">
             <Skeleton className="h-5 w-full" />
             <Skeleton className="h-5 w-full" />
           </div>
-          <div className="mt-3 border-t border-copper/30 pt-3 pb-[17px]">
-            <Skeleton className="mx-auto h-[66px] w-full" />
+          <div className="mt-[10px] border-t border-copper/30 pt-3 pb-5">
+            <Skeleton className="mx-auto h-[88px] w-full md:h-[66px]" />
             <Skeleton className="mx-auto mt-5 h-12 w-[186px] max-w-full" />
-            <Skeleton className="mx-auto mt-3 h-4 w-full" />
+            <Skeleton className="mx-auto mt-3 h-8 w-full md:h-4" />
           </div>
         </div>
       </div>

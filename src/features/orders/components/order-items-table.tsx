@@ -14,9 +14,9 @@ export function OrderItemsTable({ order }: OrderItemsTableProps) {
         className="-my-3 w-full table-fixed border-separate border-spacing-x-0 border-spacing-y-3 text-left"
       >
         <colgroup>
-          <col className="w-[54%] md:w-[60%]" />
+          <col className="w-[54%] md:w-[60.6%]" />
           <col className="w-[18%] md:w-[16%]" />
-          <col className="w-[28%] md:w-[24%]" />
+          <col className="w-[28%] md:w-[23.4%]" />
         </colgroup>
         <thead>
           <tr className="text-xs md:text-base">
@@ -42,7 +42,7 @@ export function OrderItemsTable({ order }: OrderItemsTableProps) {
                   <Artwork
                     id={item.artwork}
                     sizes="70px"
-                    className="w-[70px] shrink-0 rounded-lg"
+                    className="w-[min(70px,100%)] shrink-0 rounded-lg"
                   />
                   <div className="min-w-0">
                     <p className="text-xs leading-5 font-bold break-words md:text-base">
@@ -66,7 +66,7 @@ export function OrderItemsTable({ order }: OrderItemsTableProps) {
           ))}
         </tbody>
       </table>
-      <dl className="mt-3 space-y-3 text-sm leading-5 md:ml-[169px] md:text-15">
+      <dl className="mt-3 space-y-[10px] text-sm leading-5 md:ml-[169px] md:text-15">
         {!isZeroEth(order.discount) && (
           <div className="flex flex-wrap justify-between gap-x-2">
             <dt>
@@ -82,7 +82,7 @@ export function OrderItemsTable({ order }: OrderItemsTableProps) {
             {formatEth(order.networkFee)}
           </dd>
         </div>
-        <div className="flex flex-wrap justify-between gap-x-2 text-base font-bold">
+        <div className="flex flex-wrap justify-between gap-x-2 text-base leading-5 font-bold">
           <dt>Total</dt>
           <dd className="text-lg leading-5 text-amber">{formatEth(order.total)}</dd>
         </div>

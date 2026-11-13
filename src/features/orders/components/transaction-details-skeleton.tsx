@@ -1,3 +1,4 @@
+import { InfoIcon } from '@/components/icons'
 import { Skeleton } from '@/components/ui/skeleton'
 
 export type TransactionDetailsSkeletonProps = Record<string, never>
@@ -9,24 +10,27 @@ export function TransactionDetailsSkeleton() {
       aria-label="Carregando transação"
       className="mx-auto max-w-[780px] rounded-lg border border-line bg-surface p-5 md:p-8"
     >
-      <Skeleton className="h-7 w-64 max-w-full" />
-      <Skeleton className="mt-4 h-[82px] w-full md:h-[82px]" />
-      <div className="mt-6 divide-y divide-line">
-        <div className="space-y-1 py-3">
-          <Skeleton className="h-5 w-40" />
-          <Skeleton className="h-[35px] w-full" />
+      <h2 className="text-xl font-bold">Detalhes da transação</h2>
+      <p className="mt-4 flex items-start gap-3 rounded-lg border border-copper/50 bg-band p-4 text-sm text-sand">
+        <InfoIcon size={20} className="shrink-0 text-copper" />
+        Explorador simulado — esta transação não existe em uma blockchain real.
+      </p>
+      <div className="mt-6 divide-y divide-line text-sm">
+        <div className="py-3">
+          <p className="font-bold text-sand">Hash da transação</p>
+          <Skeleton className="mt-1 h-[60px] w-full md:h-[35px]" />
         </div>
-        {Array.from({ length: 8 }, (_, index) => (
-          <div
-            key={index}
-            className="grid min-h-[49px] grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3"
-          >
-            <Skeleton className="h-5 w-full" />
-            <Skeleton
-              className={index === 3 || index === 4 ? 'h-10 w-full md:h-5' : 'h-5 w-full'}
-            />
-          </div>
-        ))}
+        {['Status', 'Bloco', 'Data e hora', 'De', 'Para', 'Valor', 'Taxa de rede', 'Rede'].map(
+          (label) => (
+            <div
+              key={label}
+              className={`grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3 ${['Data e hora', 'De', 'Para'].includes(label) ? 'min-h-[65px] md:min-h-[49px]' : 'min-h-[49px]'}`}
+            >
+              <p className="font-bold text-sand">{label}</p>
+              <Skeleton className="h-5 w-full" />
+            </div>
+          ),
+        )}
       </div>
       <div className="h-5" />
       <Skeleton className="mt-4 h-10 w-60 max-w-full" />

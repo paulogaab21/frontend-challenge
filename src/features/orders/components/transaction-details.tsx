@@ -30,35 +30,38 @@ export function TransactionDetails({ transaction, orderTo }: TransactionDetailsP
       <dl className="mt-6 divide-y divide-line text-sm">
         <div className="py-3">
           <dt className="font-bold text-sand">Hash da transação</dt>
-          <dd className="mt-1 flex items-start gap-2">
+          <dd className="mt-1 flex min-h-[60px] items-start gap-2 md:min-h-[35px]">
             <code className="min-w-0 flex-1 font-mono break-all">{transaction.hash}</code>
             <Button
               variant="ghost"
               size="icon"
               aria-label="Copiar hash da transação"
-              onClick={() => {
-                void navigator.clipboard
-                  .writeText(transaction.hash)
-                  .then(() => setCopyStatus('Hash copiado.'))
-                  .catch(() => setCopyStatus('Não foi possível copiar o hash.'))
+              onClick={async () => {
+                try {
+                  if (!navigator.clipboard) throw new Error('Clipboard unavailable')
+                  await navigator.clipboard.writeText(transaction.hash)
+                  setCopyStatus('Hash copiado.')
+                } catch {
+                  setCopyStatus('Não foi possível copiar o hash.')
+                }
               }}
             >
               <CopyIcon size={18} />
             </Button>
           </dd>
         </div>
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
+        <div className="grid min-h-[49px] grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
           <dt className="font-bold text-sand">Status</dt>
           <dd className="flex items-center gap-2">
             <CheckIcon size={18} className="text-amber" />
             Confirmada
           </dd>
         </div>
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
+        <div className="grid min-h-[49px] grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
           <dt className="font-bold text-sand">Bloco</dt>
           <dd className="break-words">{transaction.block}</dd>
         </div>
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
+        <div className="grid min-h-[65px] grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3 md:min-h-[49px]">
           <dt className="font-bold text-sand">Data e hora</dt>
           <dd>
             <time dateTime={transaction.confirmedAt}>
@@ -68,23 +71,23 @@ export function TransactionDetails({ transaction, orderTo }: TransactionDetailsP
             </time>
           </dd>
         </div>
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
+        <div className="grid min-h-[65px] grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3 md:min-h-[49px]">
           <dt className="font-bold text-sand">De</dt>
           <dd className="break-all">{transaction.from}</dd>
         </div>
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
+        <div className="grid min-h-[65px] grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3 md:min-h-[49px]">
           <dt className="font-bold text-sand">Para</dt>
           <dd className="break-all">{transaction.to}</dd>
         </div>
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
+        <div className="grid min-h-[49px] grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
           <dt className="font-bold text-sand">Valor</dt>
           <dd className="break-words text-amber">{formatEth(transaction.value)}</dd>
         </div>
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
+        <div className="grid min-h-[49px] grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
           <dt className="font-bold text-sand">Taxa de rede</dt>
           <dd className="break-words">{formatEth(transaction.fee)}</dd>
         </div>
-        <div className="grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
+        <div className="grid min-h-[49px] grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-3 py-3">
           <dt className="font-bold text-sand">Rede</dt>
           <dd>{networks[transaction.network]}</dd>
         </div>

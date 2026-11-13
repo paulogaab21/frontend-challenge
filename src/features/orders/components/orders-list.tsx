@@ -45,7 +45,7 @@ export function OrdersList({ orders, getHref, exploreTo }: OrdersListProps) {
             >
               <div className="min-w-0">
                 <h3 className="text-base font-bold break-words">Pedido {order.id}</h3>
-                <p className="mt-2 text-sm text-sand">
+                <p className="mt-2 text-sm leading-5 text-sand">
                   <time dateTime={order.createdAt}>{formatOrderDate(order.createdAt)}</time> ·{' '}
                   {order.items.reduce((count, item) => count + item.quantity, 0)} itens
                 </p>
