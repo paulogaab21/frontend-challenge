@@ -1,7 +1,7 @@
-import { nftListParamsSchema, type FavoritesResponse } from '@/contracts'
+import { nftListParamsSchema, type FavoritesResponse, type HighlightsResponse } from '@/contracts'
 
 import { db } from '../db'
-import { findNft, listNfts, toDetail, toSummary } from '../domain/catalog'
+import { findNft, listHighlights, listNfts, toDetail, toSummary } from '../domain/catalog'
 import { problems } from '../domain/problem'
 import { fieldErrorsOf, route } from './route'
 
@@ -47,6 +47,11 @@ export const catalogHandlers = [
     },
     { auth: 'none' },
   ),
+
+  /** Highlights of the home page ("NFT em destaque"). Public. */
+  route('GET', '/highlights', (): HighlightsResponse => ({ items: listHighlights() }), {
+    auth: 'none',
+  }),
 
   /** NFT detail. 404 NOT_FOUND for unknown ids. Public. */
   route<{ nftId: string }>('GET', '/nfts/:nftId', ({ params }) => toDetail(findNft(params.nftId)), {

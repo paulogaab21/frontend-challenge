@@ -61,7 +61,7 @@ export function SiteHeader({
       <div
         className={cn(
           'relative flex min-h-[45px] flex-wrap items-start justify-between gap-x-6 gap-y-4 xl:flex-nowrap',
-          divider && 'border-b-[0.3px] border-copper',
+          divider && 'border-b border-hairline',
         )}
       >
         <Link

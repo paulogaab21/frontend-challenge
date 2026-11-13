@@ -34,6 +34,8 @@ export interface NftRecord {
   defaultEditionId: EditionId
   editions: Edition[]
   badges: NftBadge[]
+  /** Highlighted by the marketplace (home banner). */
+  featured: boolean
   listedAt: string
   description: string
   details: string[]
@@ -164,6 +166,7 @@ interface Seed {
   defaultEditionId: EditionId
   availability: Partial<Record<EditionId, number>>
   badges?: NftBadge[]
+  featured?: boolean
   attributes: string[]
   creator: string
 }
@@ -202,6 +205,7 @@ const FIGMA_SEEDS: Seed[] = [
     price: '1.69',
     defaultEditionId: 'fifty',
     availability: { ten: 6, fifty: 22, open: 180 },
+    featured: true,
     attributes: ['Chapéu bucket', 'Moletom', 'Sereno'],
     creator: 'Iara Montes',
   },
@@ -479,6 +483,7 @@ function toRecord(seed: Seed, index: number): NftRecord {
     defaultEditionId: seed.defaultEditionId,
     editions,
     badges: seed.badges ?? [],
+    featured: seed.featured ?? false,
     listedAt,
     description: `Um colecionável digital finalizado à mão da coleção ${collectionName}, verificado na ${networkLabel}, com arte desbloqueável e acesso para colecionadores.`,
     details: [

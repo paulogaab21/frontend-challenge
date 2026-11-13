@@ -143,11 +143,9 @@ export function createOrder(
   // placed meanwhile would buy the same items again.
   const pending = listOrders(userId).find((order) => order.status === 'pending')
   if (pending) {
-    throw problems.conflict(
-      'ORDER_PENDING',
-      'Você já tem um pedido aguardando confirmação.',
-      { orderId: pending.id },
-    )
+    throw problems.conflict('ORDER_PENDING', 'Você já tem um pedido aguardando confirmação.', {
+      orderId: pending.id,
+    })
   }
 
   const cartKey = `user:${userId}`

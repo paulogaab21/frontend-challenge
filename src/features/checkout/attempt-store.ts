@@ -35,9 +35,7 @@ export interface PurchaseAttempt {
   createdAt: string
 }
 
-const store = createStore<PurchaseAttempt | null>(
-  readJson<PurchaseAttempt>(STORAGE_KEY, 'session'),
-)
+const store = createStore<PurchaseAttempt | null>(readJson<PurchaseAttempt>(STORAGE_KEY, 'session'))
 
 function persist(attempt: PurchaseAttempt | null): void {
   if (attempt) writeJson(STORAGE_KEY, attempt, 'session')
@@ -47,6 +45,12 @@ function persist(attempt: PurchaseAttempt | null): void {
 
 export const purchaseAttempt = {
   subscribe: store.subscribe,
+
+  /** Read-only variant of `get`, safe to use as a render-time snapshot. */
+  peek(userId: string | null): PurchaseAttempt | null {
+    const attempt = store.get()
+    return attempt && attempt.userId === userId ? attempt : null
+  },
 
   /** The unresolved attempt of `userId`, if any. Someone else's is discarded. */
   get(userId: string | null): PurchaseAttempt | null {

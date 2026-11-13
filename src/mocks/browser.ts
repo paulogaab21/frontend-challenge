@@ -35,7 +35,6 @@ function applyUrlSwitches(control: MockControl): void {
 
 export async function startMockServer(): Promise<MockControl> {
   const control = createMockControl()
-  window.__kurioMocks = control
   applyUrlSwitches(control)
 
   const worker = setupWorker(...handlers)
@@ -47,6 +46,8 @@ export async function startMockServer(): Promise<MockControl> {
   })
 
   realtimeServer.start()
+  // Published only now: its presence means REST and realtime are both intercepted.
+  window.__kurioMocks = control
   // Orders and wallet connections that were mid-flight before a reload carry on.
   resumeSettlements()
   resumeConnections()

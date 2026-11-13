@@ -13,7 +13,7 @@ export function NftDetailTabs({ nft, defaultTab = 'details' }: NftDetailTabsProp
     <Tabs defaultValue={defaultTab} className="gap-4">
       <TabsList
         aria-label="Informações do NFT"
-        className="w-full justify-start border-b-[0.3px] border-copper"
+        className="w-full justify-start border-b border-hairline"
       >
         <TabsTrigger value="details" className="text-17 font-bold">
           Detalhes do NFT

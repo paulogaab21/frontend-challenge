@@ -1,7 +1,7 @@
 import { queryOptions, useQuery } from '@tanstack/react-query'
 import { useSyncExternalStore } from 'react'
 
-import { type Order, type OrderStatus } from '@/contracts'
+import { type OrderStatus } from '@/contracts'
 import { useSession } from '@/features/auth/session'
 import { queryKeys } from '@/lib/query-keys'
 import { realtime } from '@/lib/realtime/client'
@@ -21,7 +21,8 @@ export function orderQueryOptions(scope: string, orderId: string) {
       return order
     },
     // A settled order never changes again: no point in refetching it.
-    staleTime: (query) => (query.state.data && query.state.data.status !== 'pending' ? Infinity : 0),
+    staleTime: (query) =>
+      query.state.data && query.state.data.status !== 'pending' ? Infinity : 0,
   })
 }
 
@@ -71,9 +72,8 @@ export function useOrders(status?: OrderStatus) {
  * Orders still waiting for confirmation. The checkout refuses to start another
  * purchase while one exists — that is what makes "refresh / come back later" safe.
  */
-export function usePendingOrders(): { orders: Order[]; isLoading: boolean } {
-  const query = useOrders('pending')
-  return { orders: query.data?.items ?? [], isLoading: query.isPending }
+export function usePendingOrders() {
+  return useOrders('pending')
 }
 
 export function transactionQueryOptions(scope: string, hash: string) {

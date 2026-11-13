@@ -13,7 +13,7 @@ import {
   type NftListParams,
   type NftSummary,
 } from '@/contracts'
-import { useSession } from '@/features/auth/session'
+import { isCurrentScope, useSession } from '@/features/auth/session'
 import { queryKeys } from '@/lib/query-keys'
 import { realtime } from '@/lib/realtime/client'
 
@@ -64,6 +64,21 @@ export function useNftList(params: NftListParams) {
   return useQuery({ ...nftListQueryOptions(params), placeholderData: keepPreviousData })
 }
 
+/**
+ * Highlights of the home page. Kept under the list prefix so real-time patches and
+ * catalog invalidation reach it like any other list of NFT cards.
+ */
+export function highlightsQueryOptions() {
+  return queryOptions({
+    queryKey: [...queryKeys.nfts.lists(), 'highlights'] as const,
+    queryFn: async ({ signal }) => {
+      const highlights = await api.fetchHighlights(signal)
+      for (const nft of highlights.items) realtime.observe('nft', nft.id, nft.version)
+      return highlights
+    },
+  })
+}
+
 export function nftDetailQueryOptions(nftId: string) {
   return queryOptions({
     queryKey: queryKeys.nfts.detail(nftId),
@@ -89,22 +104,24 @@ export function favoritesQueryOptions(scope: string) {
 export function useFavorites() {
   const { isAuthenticated, scope } = useSession()
   const query = useQuery({ ...favoritesQueryOptions(scope), enabled: isAuthenticated })
-  const ids = useMemo(
-    () => new Set(isAuthenticated ? (query.data?.items.map((item) => item.id) ?? []) : []),
-    [isAuthenticated, query.data],
-  )
-  return { ...query, ids }
+  const items = isAuthenticated ? query.data?.items : undefined
+  /** Ids of the favorites, for O(1) "is this card a favorite?" checks. */
+  const ids = useMemo(() => new Set(items?.map((item) => item.id)), [items])
+  return { query, ids }
 }
 
-interface ToggleFavoriteInput {
+export interface ToggleFavoriteInput {
   nft: NftSummary
   /** Desired state after the mutation. */
   favorite: boolean
 }
 
+export const favoriteMutationKey = (scope: string) => ['favorite', scope] as const
+
 /**
  * Optimistic toggle: the heart flips immediately, the request follows. If the API
  * rejects it, the cached list is restored to the snapshot taken before the change.
+ * Nothing is written when the identity changed while the request was in flight.
  */
 export function useToggleFavorite() {
   const queryClient = useQueryClient()
@@ -112,6 +129,7 @@ export function useToggleFavorite() {
   const key = queryKeys.private.favorites(scope)
 
   return useMutation({
+    mutationKey: favoriteMutationKey(scope),
     mutationFn: ({ nft, favorite }: ToggleFavoriteInput) =>
       favorite ? api.addFavorite(nft.id) : api.removeFavorite(nft.id),
 
@@ -130,14 +148,17 @@ export function useToggleFavorite() {
       return { previous }
     },
 
+    // Rollback: put back exactly what was there before the optimistic write.
     onError: (_error, _input, context) => {
-      queryClient.setQueryData(key, context?.previous)
+      if (isCurrentScope(scope)) queryClient.setQueryData(key, context?.previous)
     },
 
     onSuccess: (response) => {
-      queryClient.setQueryData(key, response)
+      if (isCurrentScope(scope)) queryClient.setQueryData(key, response)
     },
 
-    onSettled: () => queryClient.invalidateQueries({ queryKey: key }),
+    onSettled: () => {
+      if (isCurrentScope(scope)) return queryClient.invalidateQueries({ queryKey: key })
+    },
   })
 }

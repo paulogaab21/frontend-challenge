@@ -12,7 +12,7 @@ import { AuthFormSkeleton } from '@/features/auth/components/auth-form-skeleton'
 import { HeroCarousel } from '@/features/catalog/components/hero-carousel'
 import { CatalogFilters } from '@/features/catalog/components/catalog-filters'
 import { NftGrid } from '@/features/catalog/components/nft-grid'
-import { sampleSlides, sampleFacets, sampleCards, nftHref } from './_sample'
+import { sampleSlides, sampleFacets, sampleCards, nftHref } from './-sample'
 import { ShowcaseControls } from './-showcase-controls'
 import { useDesktop } from './-use-desktop'
 export const Route = createFileRoute('/dev/auth')({ component: AuthShowcase })

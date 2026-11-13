@@ -6,7 +6,7 @@ export interface NftCarouselSkeletonProps {
 export function NftCarouselSkeleton({ count = 5 }: NftCarouselSkeletonProps) {
   return (
     <div role="status" aria-label="Carregando coleção">
-      <div className="flex h-[37px] items-start border-b-[0.3px] border-copper">
+      <div className="flex h-[37px] items-start border-b border-hairline">
         <Skeleton variant="line" className="w-48" />
       </div>
       <div className="mt-8 flex gap-[26px] overflow-hidden pb-2">

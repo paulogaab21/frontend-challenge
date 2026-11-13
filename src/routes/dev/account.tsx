@@ -11,7 +11,7 @@ import { WalletSummary } from '@/features/account/components/wallet-summary'
 import { WalletsSection } from '@/features/account/components/wallets-section'
 import { ProfileFormSkeleton } from '@/features/account/components/profile-form-skeleton'
 import { WalletsListSkeleton } from '@/features/account/components/wallets-list-skeleton'
-import { sampleProfile, sampleWallets } from './_sample'
+import { sampleProfile, sampleWallets } from './-sample'
 import { ShowcaseControls } from './-showcase-controls'
 export const Route = createFileRoute('/dev/account')({ component: AccountShowcase })
 function AccountShowcase() {

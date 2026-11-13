@@ -79,7 +79,7 @@ export function NftPurchasePanel({
           <span className="text-sand">({nft.rating.count})</span>
         </span>
       </div>
-      <div className="hidden flex-wrap items-center justify-between gap-2 border-b-[0.3px] border-copper py-2 md:flex">
+      <div className="hidden flex-wrap items-center justify-between gap-2 border-b border-hairline py-2 md:flex">
         <p className="text-22 leading-7 font-bold text-amber" aria-live="polite">
           {selected ? formatEth(selected.price) : 'Esgotado'}
         </p>

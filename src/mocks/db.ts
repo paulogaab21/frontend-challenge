@@ -29,7 +29,7 @@ import {
  */
 
 const DB_KEY = 'kurio.mock.db'
-const SCHEMA_VERSION = 4
+const SCHEMA_VERSION = 5
 
 export interface SessionRecord {
   token: string

@@ -65,7 +65,7 @@ export function AccountLayout({
             ))}
           </ul>
         </nav>
-        <div className="border-t-[0.3px] border-copper">
+        <div className="border-t border-hairline">
           <Button
             variant="link"
             className="flex h-12 items-center gap-2 px-4 text-15 font-bold"

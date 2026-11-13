@@ -20,7 +20,7 @@ import { NftCarouselSkeleton } from '@/features/catalog/components/nft-carousel-
 import { NftDetailSkeleton } from '@/features/catalog/components/nft-detail-skeleton'
 import { NftNotFound } from '@/features/catalog/components/nft-not-found'
 import type { EditionId } from '@/contracts'
-import { sampleNft, sampleCards, nftHref } from './_sample'
+import { sampleNft, sampleCards, nftHref } from './-sample'
 import { ShowcaseControls } from './-showcase-controls'
 export const Route = createFileRoute('/dev/nft')({ component: NftShowcase })
 function NftShowcase() {

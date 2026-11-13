@@ -55,3 +55,13 @@ export function safeRedirect(target: unknown, fallback = '/'): string {
   }
   return target
 }
+
+/** Splits an in-app href ("/pagamento?x=1#resumo") into the parts the router takes. */
+export function splitHref(href: string): { to: string; search: RawSearch; hash?: string } {
+  const url = new URL(safeRedirect(href), 'http://kurio.local')
+  return {
+    to: url.pathname,
+    search: parseSearch(url.search),
+    hash: url.hash ? url.hash.slice(1) : undefined,
+  }
+}

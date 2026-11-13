@@ -2,10 +2,12 @@ import {
   keepPreviousData,
   queryOptions,
   useMutation,
+  useMutationState,
   useQuery,
   useQueryClient,
   type QueryClient,
 } from '@tanstack/react-query'
+import { useMemo } from 'react'
 
 import { type AddCartItemRequest, type Cart, type NetworkId, type Quote } from '@/contracts'
 import { isCurrentScope, useSession } from '@/features/auth/session'
@@ -92,7 +94,32 @@ export function refreshCart(queryClient: QueryClient, scope: string): Promise<vo
 /* Mutations                                                                  */
 /* -------------------------------------------------------------------------- */
 
-const cartMutationKey = (scope: string) => ['cart', scope] as const
+export const cartMutationKey = (scope: string) => ['cart', scope] as const
+
+interface PendingCartVariables {
+  nftId?: string
+  itemId?: string
+}
+
+function usePendingCartVariables(): PendingCartVariables[] {
+  const { scope } = useSession()
+  return useMutationState({
+    filters: { mutationKey: cartMutationKey(scope), status: 'pending' },
+    select: (mutation) => (mutation.state.variables ?? {}) as PendingCartVariables,
+  })
+}
+
+/** Ids of the NFTs being added to the cart right now. */
+export function usePendingCartAdds(): ReadonlySet<string> {
+  const pending = usePendingCartVariables()
+  return useMemo(() => new Set(pending.flatMap((variables) => variables.nftId ?? [])), [pending])
+}
+
+/** Ids of the cart lines with a quantity change or removal in flight. */
+export function usePendingCartItems(): ReadonlySet<string> {
+  const pending = usePendingCartVariables()
+  return useMemo(() => new Set(pending.flatMap((variables) => variables.itemId ?? [])), [pending])
+}
 
 /**
  * Cart mutations run one at a time (same mutation scope), so answers are applied

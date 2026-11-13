@@ -128,8 +128,9 @@ export function useCreateWallet() {
 }
 
 export function useUpdateWallet() {
-  return useWalletMutation(({ walletId, input }: { walletId: string; input: UpdateWalletRequest }) =>
-    api.updateWallet(walletId, input),
+  return useWalletMutation(
+    ({ walletId, input }: { walletId: string; input: UpdateWalletRequest }) =>
+      api.updateWallet(walletId, input),
   )
 }
 

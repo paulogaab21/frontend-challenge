@@ -89,7 +89,12 @@ export function NftGallery({
                 selected === index && 'border-copper ring-1 ring-copper',
               )}
             >
-              <GalleryArtwork view={item} name={name} sizes="100px" className="size-full" />
+              <GalleryArtwork
+                view={item}
+                name={name}
+                sizes={`${Math.ceil(100 * item.zoom)}px`}
+                className="size-full"
+              />
             </button>
           ))}
         </div>
@@ -102,7 +107,11 @@ export function NftGallery({
           <GalleryArtwork
             view={view}
             name={name}
-            sizes="(min-width:1280px) 404px, (min-width:1024px) 34vw, 42vw"
+            sizes={
+              view.zoom > 1
+                ? `${Math.ceil(404 * view.zoom)}px`
+                : '(min-width:1280px) 404px, (min-width:1024px) 34vw, 42vw'
+            }
             priority={priority}
             className="rounded-4xl"
           />

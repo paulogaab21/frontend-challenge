@@ -95,6 +95,9 @@
   --color-band: var(--kurio-band);
   --color-line: var(--kurio-border);
   --color-line-strong: var(--kurio-border-strong);
+  /* The Figma draws its rules as 0.3px copper strokes; browsers round that up to a
+     full pixel, so the same visual weight is a 1px line at reduced opacity. */
+  --color-hairline: color-mix(in srgb, var(--kurio-copper) 38%, transparent);
   --color-copper: var(--kurio-copper);
   --color-copper-soft: var(--kurio-copper-soft);
   --color-amber: var(--kurio-amber);

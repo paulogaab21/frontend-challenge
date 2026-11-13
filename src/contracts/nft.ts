@@ -167,6 +167,16 @@ export const nftListResponseSchema = paginatedSchema(nftSummarySchema).extend({
 export type NftListResponse = z.infer<typeof nftListResponseSchema>
 
 /* -------------------------------------------------------------------------- */
+/* GET /highlights                                                            */
+/* -------------------------------------------------------------------------- */
+
+/** NFTs the marketplace is highlighting on the home page, most recent first. */
+export const highlightsResponseSchema = z.object({
+  items: z.array(nftSummarySchema),
+})
+export type HighlightsResponse = z.infer<typeof highlightsResponseSchema>
+
+/* -------------------------------------------------------------------------- */
 /* Favorites                                                                  */
 /* -------------------------------------------------------------------------- */
 

@@ -43,7 +43,10 @@ export function fetchOrders(
   return request<OrderListResponse>({ url: '/orders', method: 'GET', params, signal })
 }
 
-export function fetchTransaction(hash: string, signal?: AbortSignal): Promise<SimulatedTransaction> {
+export function fetchTransaction(
+  hash: string,
+  signal?: AbortSignal,
+): Promise<SimulatedTransaction> {
   return request<SimulatedTransaction>({
     url: `/transactions/${encodeURIComponent(hash)}`,
     method: 'GET',

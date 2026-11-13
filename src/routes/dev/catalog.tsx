@@ -21,7 +21,7 @@ import { FeaturedBanner } from '@/features/catalog/components/featured-banner'
 import { PromoCards } from '@/features/catalog/components/promo-cards'
 import { BlogSection } from '@/features/catalog/components/blog-section'
 import type { NftSort, NftTab } from '@/contracts'
-import { sampleSlides, sampleCards, sampleFacets, nftHref } from './_sample'
+import { sampleSlides, sampleCards, sampleFacets, nftHref } from './-sample'
 import { ShowcaseControls } from './-showcase-controls'
 export const Route = createFileRoute('/dev/catalog')({ component: CatalogShowcase })
 function CatalogShowcase() {

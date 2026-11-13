@@ -1,5 +1,6 @@
 import {
   type FavoritesResponse,
+  type HighlightsResponse,
   type NftDetail,
   type NftListParams,
   type NftListResponse,
@@ -12,6 +13,10 @@ export function fetchNfts(params: NftListParams, signal?: AbortSignal): Promise<
 
 export function fetchNft(nftId: string, signal?: AbortSignal): Promise<NftDetail> {
   return request<NftDetail>({ url: `/nfts/${encodeURIComponent(nftId)}`, method: 'GET', signal })
+}
+
+export function fetchHighlights(signal?: AbortSignal): Promise<HighlightsResponse> {
+  return request<HighlightsResponse>({ url: '/highlights', method: 'GET', signal })
 }
 
 export function fetchFavorites(signal?: AbortSignal): Promise<FavoritesResponse> {

@@ -193,6 +193,14 @@ export function listNfts(params: NftListParams): NftListResponse {
   }
 }
 
+/** NFTs flagged as highlights by the marketplace, most recent first. */
+export function listHighlights(): NftSummary[] {
+  return allNfts()
+    .filter((nft) => nft.featured)
+    .sort((a, b) => b.listedAt.localeCompare(a.listedAt))
+    .map(toSummary)
+}
+
 /**
  * Single entry point for catalog changes. Bumps the version, stamps the update and
  * publishes `nft.updated`, which keeps REST and realtime views of the NFT in step.

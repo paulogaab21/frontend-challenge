@@ -35,7 +35,7 @@ export function NftCarousel({ title, items, getHref }: NftCarouselProps) {
   }
   return (
     <section aria-labelledby={id} className="min-w-0">
-      <div className="flex items-center justify-between border-b-[0.3px] border-copper pb-3">
+      <div className="flex items-center justify-between border-b border-hairline pb-3">
         <h2 id={id} className="text-17 font-bold text-amber">
           {title}
         </h2>
