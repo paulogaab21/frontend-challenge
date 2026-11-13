@@ -146,26 +146,28 @@ export function CartSummary({
         <dl className="mt-3 space-y-3 text-15 leading-5 md:mt-6">
           <div className="flex flex-wrap items-center justify-between gap-x-2">
             <dt>Subtotal</dt>
-            <dd className="text-base md:text-lg">{amount(quote?.subtotal)}</dd>
+            <dd className="text-base leading-5 md:text-lg md:leading-5">
+              {amount(quote?.subtotal)}
+            </dd>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-x-2">
             <dt>Desconto do lançamento</dt>
             <dd>{amount(quote?.discount, true)}</dd>
           </div>
-          <div>
-            <div className="flex flex-wrap items-center justify-between gap-x-2">
-              <dt>Taxa de rede</dt>
-              <dd className="text-base md:text-lg">{amount(quote?.networkFee)}</dd>
-            </div>
-            <dd className="mt-0.5 text-right text-xs leading-4 text-amber md:mt-3">
-              Taxa estimada
+          <div className="flex flex-wrap items-start justify-between gap-x-2">
+            <dt>Taxa de rede</dt>
+            <dd className="text-right text-base leading-5 md:text-lg md:leading-5">
+              {amount(quote?.networkFee)}
+              <span className="mt-0.5 block text-xs leading-3 text-amber md:mt-3 md:leading-4">
+                Taxa estimada
+              </span>
             </dd>
           </div>
         </dl>
         <dl className="mt-3 text-base leading-5 font-bold md:mt-6">
           <div className="flex flex-wrap items-center justify-between gap-x-2">
             <dt>Total</dt>
-            <dd className="text-lg text-amber">{amount(quote?.total)}</dd>
+            <dd className="text-lg leading-5 text-amber">{amount(quote?.total)}</dd>
           </div>
         </dl>
       </div>

@@ -44,8 +44,10 @@ export function CartItems({
         ))}
       </ul>
       <div className="flow-root hidden md:block">
-        <table className="-my-3 w-full table-fixed border-separate border-spacing-x-0 border-spacing-y-3 text-left text-base">
-          <caption className="sr-only">NFTs no carrinho</caption>
+        <table
+          aria-label="NFTs no carrinho"
+          className="-my-3 w-full table-fixed border-separate border-spacing-x-0 border-spacing-y-3 text-left text-base"
+        >
           <colgroup>
             <col className="w-[39.8%]" />
             <col className="w-[17.7%]" />
@@ -59,12 +61,12 @@ export function CartItems({
                 <th
                   key={label}
                   scope="col"
-                  className="border-b border-copper/30 pb-2 leading-5 font-medium first:font-bold"
+                  className="border-b border-copper/30 pb-[7px] leading-5 font-medium first:font-bold"
                 >
                   {label}
                 </th>
               ))}
-              <th scope="col" className="border-b border-copper/30 pb-2">
+              <th scope="col" className="border-b border-copper/30 pb-[7px]">
                 <span className="sr-only">Remover</span>
               </th>
             </tr>
