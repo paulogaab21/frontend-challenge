@@ -192,6 +192,7 @@ export function NftPurchasePanel({
       </div>
       <div
         className="fixed inset-x-0 bottom-0 z-30 min-h-[164px] rounded-t-[30px] bg-surface px-6 pt-5 pb-[max(34px,env(safe-area-inset-bottom))] shadow-[0_0_20px_var(--background)] md:hidden"
+        role="region"
         aria-label="Comprar NFT"
       >
         <div className="flex items-start justify-between gap-3">

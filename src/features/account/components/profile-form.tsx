@@ -88,7 +88,13 @@ export function ProfileForm({
                   Nome de exibição
                 </FormLabel>
                 <FormControl>
-                  <Input {...field} required autoComplete="name" className="rounded-[3px]" />
+                  <Input
+                    {...field}
+                    onBlur={deferBlurForSubmit(field.onBlur)}
+                    required
+                    autoComplete="name"
+                    className="rounded-[3px]"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -103,7 +109,13 @@ export function ProfileForm({
                   Nome de usuário
                 </FormLabel>
                 <FormControl>
-                  <Input {...field} required autoComplete="username" className="rounded-[3px]" />
+                  <Input
+                    {...field}
+                    onBlur={deferBlurForSubmit(field.onBlur)}
+                    required
+                    autoComplete="username"
+                    className="rounded-[3px]"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -169,7 +181,13 @@ export function ProfileForm({
                     />
                     <div className="min-w-0 flex-1">
                       <FormControl>
-                        <Input {...field} required autoComplete="off" className="rounded-[3px]" />
+                        <Input
+                          {...field}
+                          onBlur={deferBlurForSubmit(field.onBlur)}
+                          required
+                          autoComplete="off"
+                          className="rounded-[3px]"
+                        />
                       </FormControl>
                       <FormMessage />
                     </div>
@@ -187,7 +205,13 @@ export function ProfileForm({
                   Apelido da carteira
                 </FormLabel>
                 <FormControl>
-                  <Input {...field} required autoComplete="off" className="rounded-[3px]" />
+                  <Input
+                    {...field}
+                    onBlur={deferBlurForSubmit(field.onBlur)}
+                    required
+                    autoComplete="off"
+                    className="rounded-[3px]"
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
