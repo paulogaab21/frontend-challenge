@@ -29,7 +29,7 @@ import {
  */
 
 const DB_KEY = 'kurio.mock.db'
-const SCHEMA_VERSION = 3
+const SCHEMA_VERSION = 4
 
 export interface SessionRecord {
   token: string
@@ -162,8 +162,8 @@ function seedOrder(now: number): OrderRecord {
     transaction: {
       hash: '0x4be1c07d9a3f5e2b8c6d1a0f7e4b3c2d9a8f6e5d4c3b2a1f0e9d8c7b6a5f4e3d',
       explorerName: 'Etherscan',
-      explorerUrl:
-        'https://etherscan.io/tx/0x4be1c07d9a3f5e2b8c6d1a0f7e4b3c2d9a8f6e5d4c3b2a1f0e9d8c7b6a5f4e3d',
+      // Simulated: the explorer is an in-app page, never the real block explorer.
+      explorerUrl: '/transacao/0x4be1c07d9a3f5e2b8c6d1a0f7e4b3c2d9a8f6e5d4c3b2a1f0e9d8c7b6a5f4e3d',
     },
     createdAt,
     updatedAt: createdAt,

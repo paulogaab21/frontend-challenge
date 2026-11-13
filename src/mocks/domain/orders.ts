@@ -80,7 +80,8 @@ export function publishOrder(order: OrderRecord, options?: PublishOptions): void
         status: order.status,
         declineReason: order.declineReason,
         statusMessage: order.statusMessage,
-        transactionHash: order.transaction?.hash ?? null,
+        transaction: order.transaction,
+        settledAt: order.settledAt,
         updatedAt: order.updatedAt,
       },
     },
@@ -136,6 +137,17 @@ export function createOrder(
       )
     }
     return { order: existing, replayed: true }
+  }
+
+  // The cart keeps its items until the payment is confirmed, so a second order
+  // placed meanwhile would buy the same items again.
+  const pending = listOrders(userId).find((order) => order.status === 'pending')
+  if (pending) {
+    throw problems.conflict(
+      'ORDER_PENDING',
+      'Você já tem um pedido aguardando confirmação.',
+      { orderId: pending.id },
+    )
   }
 
   const cartKey = `user:${userId}`

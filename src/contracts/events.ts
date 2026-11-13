@@ -2,7 +2,7 @@ import { z } from 'zod'
 
 import { ethAmountSchema, isoDateSchema, versionSchema } from './common'
 import { editionSchema } from './nft'
-import { orderDeclineReasonSchema, orderStatusSchema } from './order'
+import { orderDeclineReasonSchema, orderStatusSchema, orderTransactionSchema } from './order'
 import { walletConnectionStatusSchema } from './wallet'
 
 /**
@@ -57,7 +57,9 @@ export const orderUpdatedEventSchema = z.object({
     status: orderStatusSchema,
     declineReason: orderDeclineReasonSchema.nullable(),
     statusMessage: z.string().nullable(),
-    transactionHash: z.string().nullable(),
+    /** Present once the order is confirmed — everything the receipt needs. */
+    transaction: orderTransactionSchema.nullable(),
+    settledAt: isoDateSchema.nullable(),
     updatedAt: isoDateSchema,
   }),
 })

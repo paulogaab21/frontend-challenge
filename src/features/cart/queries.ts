@@ -55,11 +55,15 @@ export function useCartCount(): number {
 export function quoteQueryOptions(scope: string, network: NetworkId, cart: Cart | undefined) {
   return queryOptions({
     queryKey: queryKeys.private.quote(scope, network, cart?.version ?? 0),
-    queryFn: ({ signal }) =>
-      api.createQuote(
+    queryFn: async ({ signal }) => {
+      const quote = await api.createQuote(
         { network, previousFingerprint: quoteReview.acknowledged(scope, network)?.fingerprint },
         signal,
-      ),
+      )
+      // Records what changed since the quote the collector last saw.
+      if (isCurrentScope(scope)) quoteReview.observe(scope, quote)
+      return quote
+    },
     enabled: cart !== undefined && cart.items.length > 0,
     // A quote is only as good as the catalog it was computed from: always refresh
     // it when a screen that shows money is opened.

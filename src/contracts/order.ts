@@ -83,6 +83,15 @@ export type CollectorInput = z.input<typeof collectorSchema>
 /* Resource                                                                   */
 /* -------------------------------------------------------------------------- */
 
+/** Simulated on-chain reference of a confirmed order. */
+export const orderTransactionSchema = z.object({
+  hash: z.string(),
+  explorerName: z.string(),
+  /** In-app path of the simulated explorer page. */
+  explorerUrl: z.string(),
+})
+export type OrderTransaction = z.infer<typeof orderTransactionSchema>
+
 /** Line of the receipt. A frozen copy: later catalog changes never touch it. */
 export const orderItemSchema = z.object({
   nftId: z.string(),
@@ -127,13 +136,7 @@ export const orderSchema = z.object({
     note: z.string().nullable(),
   }),
   /** Simulated on-chain reference; present only once the order is confirmed. */
-  transaction: z
-    .object({
-      hash: z.string(),
-      explorerName: z.string(),
-      explorerUrl: z.string(),
-    })
-    .nullable(),
+  transaction: orderTransactionSchema.nullable(),
   createdAt: isoDateSchema,
   updatedAt: isoDateSchema,
   settledAt: isoDateSchema.nullable(),

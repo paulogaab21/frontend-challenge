@@ -68,6 +68,7 @@ export const apiErrorCodeSchema = z.enum([
   'QUOTE_STALE',
   'QUOTE_EXPIRED',
   'CART_EMPTY',
+  'ORDER_PENDING',
   'IDEMPOTENCY_KEY_REUSED',
   'WALLET_DISCONNECTED',
   // 5xx

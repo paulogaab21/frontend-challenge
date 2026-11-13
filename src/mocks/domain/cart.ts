@@ -2,6 +2,7 @@ import {
   type AppliedCoupon,
   type Cart,
   type CartItem,
+  type Edition,
   type EditionId,
   type NetworkId,
   type Quote,
@@ -50,11 +51,31 @@ function touch(cart: CartRecord): void {
   cart.updatedAt = new Date().toISOString()
 }
 
+/**
+ * Units of an edition the owner of the cart can still buy: the free stock plus what
+ * their own pending orders are holding. Without the second part, someone who just
+ * bought the last units would see their cart flagged as "sold out" while the
+ * payment is being confirmed.
+ */
+function availableFor(key: string, nftId: string, edition: Edition): number {
+  if (!key.startsWith('user:')) return edition.available
+  const userId = key.slice('user:'.length)
+  let held = 0
+  for (const order of Object.values(db.state.orders)) {
+    if (order.userId !== userId || order.status !== 'pending') continue
+    for (const item of order.reserved) {
+      if (item.nftId === nftId && item.editionId === edition.id) held += item.quantity
+    }
+  }
+  return edition.available + held
+}
+
 /** Resolves a line against the live catalog. Lines of removed NFTs are dropped. */
-function toItem(line: CartLine): CartItem | null {
+function toItem(line: CartLine, key: string): CartItem | null {
   const nft = db.state.nfts[line.nftId]
   const edition = nft ? findEdition(nft, line.editionId) : undefined
   if (!nft || !edition) return null
+  const available = availableFor(key, nft.id, edition)
   return {
     id: lineId(line.nftId, line.editionId),
     nftId: nft.id,
@@ -67,14 +88,14 @@ function toItem(line: CartLine): CartItem | null {
     unitPrice: edition.price,
     quantity: line.quantity,
     lineTotal: mulEth(edition.price, line.quantity),
-    available: edition.available,
-    maxQuantity: Math.min(edition.available, edition.maxPerOrder),
+    available,
+    maxQuantity: Math.min(available, edition.maxPerOrder),
     nftVersion: nft.version,
   }
 }
 
 export function toCartDto(cart: CartRecord): Cart {
-  const items = cart.lines.flatMap((line) => toItem(line) ?? [])
+  const items = cart.lines.flatMap((line) => toItem(line, cart.key) ?? [])
   return {
     id: cart.id,
     items,
@@ -109,7 +130,7 @@ export function addItem(key: string, nftId: string, editionId: EditionId, quanti
   const cart = getCart(key)
   const line = cart.lines.find((item) => item.nftId === nftId && item.editionId === editionId)
   const wanted = (line?.quantity ?? 0) + quantity
-  const max = Math.min(edition.available, edition.maxPerOrder)
+  const max = Math.min(availableFor(key, nft.id, edition), edition.maxPerOrder)
   if (wanted > max) throw availabilityProblem(nft.name, edition.label, max)
 
   if (line) line.quantity = wanted
@@ -125,7 +146,7 @@ export function setQuantity(key: string, itemId: string, quantity: number): Cart
 
   const nft = findNft(line.nftId)
   const edition = findEdition(nft, line.editionId)
-  const max = edition ? Math.min(edition.available, edition.maxPerOrder) : 0
+  const max = edition ? Math.min(availableFor(key, nft.id, edition), edition.maxPerOrder) : 0
   // Lowering the quantity is always allowed, even below a now-smaller stock.
   if (quantity > line.quantity && quantity > max) {
     throw availabilityProblem(nft.name, edition?.label ?? '', max)
@@ -161,7 +182,10 @@ export function mergeGuestCart(guestKey: string, userKey: string): void {
       const nft = db.state.nfts[line.nftId]
       const edition = nft ? findEdition(nft, line.editionId) : undefined
       if (!edition) continue
-      const max = Math.max(1, Math.min(edition.available, edition.maxPerOrder))
+      const max = Math.max(
+        1,
+        Math.min(availableFor(userKey, line.nftId, edition), edition.maxPerOrder),
+      )
       const existing = cart.lines.find(
         (item) => item.nftId === line.nftId && item.editionId === line.editionId,
       )
@@ -245,11 +269,11 @@ export function createQuote(
 ): QuoteRecord {
   const cart = getCart(key)
   const now = Date.now()
-  const items = cart.lines.flatMap((line) => toItem(line) ?? [])
+  const items = cart.lines.flatMap((line) => toItem(line, key) ?? [])
   const issues: QuoteIssue[] = []
 
   if (items.length !== cart.lines.length) {
-    cart.lines = cart.lines.filter((line) => toItem(line) !== null)
+    cart.lines = cart.lines.filter((line) => toItem(line, key) !== null)
     issues.push({
       type: 'item_removed',
       blocking: false,

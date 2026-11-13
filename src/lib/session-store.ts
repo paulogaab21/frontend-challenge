@@ -95,6 +95,21 @@ export const sessionStore = {
 }
 
 /**
+ * True when there is a session the client still considers valid. A session whose
+ * expiry time has passed is ended on the spot (as `expired`), so route guards and
+ * requests never act on a token the API is known to reject.
+ */
+export function hasLiveSession(): boolean {
+  const current = session.get()
+  if (!current) return false
+  if (Date.parse(current.expiresAt) <= Date.now()) {
+    sessionStore.end('expired')
+    return false
+  }
+  return true
+}
+
+/**
  * Cache scope of the private data on screen: `user:<id>` for a session,
  * `guest:<token>` for a visitor. It is part of every private query key, so data of
  * two identities can never share a cache entry.
