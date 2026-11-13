@@ -3,8 +3,14 @@ import { cn } from '@/components/ui/class-names'
 import { CloseIcon } from '@/components/icons/close-icon'
 import { Dialog as SheetPrimitive } from 'radix-ui'
 
-function Sheet({ ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
-  return <SheetPrimitive.Root data-slot="sheet" {...props} />
+const SheetModalContext = React.createContext(true)
+
+function Sheet({ modal = true, ...props }: React.ComponentProps<typeof SheetPrimitive.Root>) {
+  return (
+    <SheetModalContext.Provider value={modal}>
+      <SheetPrimitive.Root data-slot="sheet" modal={modal} {...props} />
+    </SheetModalContext.Provider>
+  )
 }
 
 function SheetTrigger({ ...props }: React.ComponentProps<typeof SheetPrimitive.Trigger>) {
@@ -50,6 +56,7 @@ function SheetContent({
       <SheetOverlay />
       <SheetPrimitive.Content
         data-slot="sheet-content"
+        aria-modal={React.useContext(SheetModalContext) || undefined}
         className={cn(
           'fixed z-50 flex max-h-dvh flex-col gap-4 overflow-y-auto border-copper bg-surface text-cream shadow-lg transition ease-in-out data-[state=closed]:animate-out data-[state=closed]:duration-300 data-[state=open]:animate-in data-[state=open]:duration-500',
           side === 'right' &&
