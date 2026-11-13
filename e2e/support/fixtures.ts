@@ -103,6 +103,9 @@ export const test = base.extend<Fixtures>({
         undefined,
         { timeout: 30_000 },
       )
+      // Let initial page queries finish before a test applies a one-shot scenario.
+      // WebSockets do not count as in-flight HTTP requests for this load state.
+      await page.waitForLoadState('networkidle')
     }
     await provide({
       ready,
