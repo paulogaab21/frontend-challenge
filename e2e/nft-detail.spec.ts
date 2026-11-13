@@ -76,7 +76,6 @@ test('quantity stops at the order limit and purchasing sends that quantity to th
   api,
   isMobile,
 }) => {
-  test.fixme(isMobile, 'MockDevtools covers the mobile quantity increase button (src/mocks/devtools.tsx).')
   await app.goto(`/nft/${NFT_IDS.emeraldApe}`)
   const nft = nftDetailSchema.parse((await api.get(`/nfts/${NFT_IDS.emeraldApe}`)).body)
   const edition = nft.editions.find((item) => item.id === nft.defaultEditionId)!
