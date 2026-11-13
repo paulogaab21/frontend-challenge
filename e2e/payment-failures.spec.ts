@@ -1,4 +1,4 @@
-import { type Locator } from '@playwright/test'
+import type { Locator } from '@playwright/test'
 
 import { orderSchema } from '@/contracts'
 import { NFT_IDS, users } from './support/data'
@@ -141,12 +141,9 @@ test('wallet disconnect through Socket.IO blocks review and offers reconnection'
   page,
   mocks,
 }) => {
-  test.fixme(
-    true,
-    'The server publishes wallet.updated with disconnected status, but review keeps payment enabled and shows no reconnect action.',
-  )
   await mocks.setScenario('wallet-disconnects')
   await gotoPage(page, '/pagamento')
+  await expect.poll(() => mocks.connectedSockets()).toBe(1)
   const dialog = await connectedReview(page)
   await page.clock.runFor(4500)
   await expect(dialog.getByRole('button', { name: 'Reconectar carteira' })).toBeVisible()
