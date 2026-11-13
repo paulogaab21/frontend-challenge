@@ -93,8 +93,9 @@ function CheckoutSkeleton() {
  * Payment route. Before showing the form it settles what state the purchase is
  * in, so a refresh or a return visit always lands on the right screen:
  *
- * 1. a previous request whose answer never arrived → recovery panel (re-sends the
- *    same Idempotency-Key, which returns the same order if it was created);
+ * 1. a previous request whose answer never arrived — it timed out, or the page was
+ *    reloaded while it was in flight → recovery panel (re-sends the same
+ *    Idempotency-Key, which returns the same order if it was created);
  * 2. an order still pending → points to it instead of allowing another purchase;
  * 3. an empty cart → nothing to pay;
  * 4. otherwise the checkout form.
@@ -151,7 +152,10 @@ export function CheckoutPage() {
   const pendingOrder = pending.data?.items[0]
 
   let content: ReactNode
-  if (attempt && (!verifying || attempt.status === 'unknown')) {
+  // `unknown` = a request that ended (or was abandoned) without an answer. An
+  // attempt that is `sending` belongs to the review dialog of the form below, which
+  // must stay mounted until its answer arrives.
+  if (attempt && (attempt.status === 'unknown' || verifying)) {
     content = (
       <Panel
         tone="warning"
@@ -177,12 +181,6 @@ export function CheckoutPage() {
             Ainda sem resposta: {recoveryMessage}
           </p>
         )}
-      </Panel>
-    )
-  } else if (attempt) {
-    content = (
-      <Panel title="Enviando seu pedido…" actions={null}>
-        <p role="status">Aguarde: estamos verificando o envio do seu pedido.</p>
       </Panel>
     )
   } else if (!loaded) {

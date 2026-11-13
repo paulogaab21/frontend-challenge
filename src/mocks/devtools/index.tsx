@@ -31,10 +31,13 @@ export function MockDevtools() {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
-        className="fixed bottom-[calc(env(safe-area-inset-bottom)+5.5rem)] left-3 z-50 flex min-h-11 max-w-[calc(100vw-1.5rem)] items-center gap-2 rounded-full border border-line-strong bg-surface px-4 text-xs text-sand shadow-lg hover:text-cream md:bottom-4 md:left-4"
+        // Small screens keep their bottom edge for the tab bar and the sticky purchase
+        // bars, so there the trigger is an icon-only tab on the right edge; from md up
+        // it is the labelled pill in the bottom-left corner.
+        className="fixed top-1/2 right-0 z-50 flex size-11 -translate-y-1/2 items-center justify-center gap-2 rounded-l-full border border-r-0 border-line-strong bg-surface text-xs text-sand shadow-lg hover:text-cream md:top-auto md:right-auto md:bottom-4 md:left-4 md:size-auto md:min-h-11 md:max-w-[calc(100vw-2rem)] md:translate-y-0 md:rounded-full md:border-r md:px-4"
       >
         <Settings2 size={16} aria-hidden="true" className="shrink-0" />
-        <span className="truncate">Mocks · {label ?? scenarioLabel()}</span>
+        <span className="sr-only truncate md:not-sr-only">Mocks · {label ?? scenarioLabel()}</span>
       </button>
       {open && (
         <Suspense

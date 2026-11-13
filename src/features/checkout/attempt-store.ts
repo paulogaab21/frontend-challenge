@@ -27,15 +27,28 @@ export interface PurchaseAttempt {
   userId: string
   request: CreateOrderInput
   /**
-   * - `sending`  a request is in flight (or was, when the page went away);
-   * - `unknown`  a request ended without an answer (timeout, connection lost):
-   *              the order may or may not have been created.
+   * - `sending`  a request is in flight in this page;
+   * - `unknown`  a request ended without an answer (timeout, connection lost, or
+   *              the page was closed/reloaded while it was in flight): the order
+   *              may or may not have been created.
    */
   status: 'sending' | 'unknown'
   createdAt: string
 }
 
-const store = createStore<PurchaseAttempt | null>(readJson<PurchaseAttempt>(STORAGE_KEY, 'session'))
+/**
+ * A request cannot still be in flight when the page loads: whatever was being sent
+ * when the page went away is an attempt whose outcome is unknown.
+ */
+function loadAttempt(): PurchaseAttempt | null {
+  const stored = readJson<PurchaseAttempt>(STORAGE_KEY, 'session')
+  if (stored?.status !== 'sending') return stored
+  const interrupted: PurchaseAttempt = { ...stored, status: 'unknown' }
+  writeJson(STORAGE_KEY, interrupted, 'session')
+  return interrupted
+}
+
+const store = createStore<PurchaseAttempt | null>(loadAttempt())
 
 function persist(attempt: PurchaseAttempt | null): void {
   if (attempt) writeJson(STORAGE_KEY, attempt, 'session')
