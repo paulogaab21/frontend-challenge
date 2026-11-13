@@ -17,13 +17,6 @@ import {
 const notifications = (page: Parameters<typeof cartSummary>[0]) =>
   page.getByRole('region', { name: /Notificações/ })
 
-function needsSocketFix(): void {
-  test.fixme(
-    true,
-    'The production demo bypasses MSW for Socket.IO: handshake returns HTTP 200 and connectedSockets() stays zero.',
-  )
-}
-
 test.beforeEach(async ({ app, api }) => {
   await app.goto('/')
   await api.login(users.ana)
@@ -35,7 +28,6 @@ test('cart price event updates the quote, announces before and after and require
   page,
   isMobile,
 }) => {
-  needsSocketFix()
   await api.addToCart(NFT_IDS.emeraldApe, 'fifty', 2)
   await gotoPage(page, '/carrinho')
   await expect.poll(() => mocks.connectedSockets()).toBe(1)
@@ -61,7 +53,6 @@ test('a live price change inside review requires accepting the new total before 
   mocks,
   page,
 }) => {
-  needsSocketFix()
   await api.addToCart(NFT_IDS.emeraldApe, 'fifty', 2)
   await gotoPage(page, '/pagamento')
   await expect.poll(() => mocks.connectedSockets()).toBe(1)
@@ -155,7 +146,6 @@ test('availability events disable detail purchase and mark the catalog card sold
   page,
   mocks,
 }) => {
-  needsSocketFix()
   await app.goto(`/nft/${NFT_IDS.emeraldApe}`)
   await expect.poll(() => mocks.connectedSockets()).toBe(1)
   const detail = (await mocks.snapshot()).nfts[NFT_IDS.emeraldApe]!
@@ -183,7 +173,6 @@ test('duplicate and stale socket frames cannot roll back a price, while a newer 
   mocks,
   isMobile,
 }) => {
-  needsSocketFix()
   await api.addToCart(NFT_IDS.emeraldApe, 'fifty', 1)
   await gotoPage(page, '/carrinho')
   await expect.poll(() => mocks.connectedSockets()).toBe(1)
@@ -217,7 +206,6 @@ test('a broadcast order event for another account changes no UI and raises no no
   mocks,
   api,
 }) => {
-  needsSocketFix()
   await api.addToCart(NFT_IDS.emeraldApe, 'fifty', 1)
   await gotoPage(page, '/carrinho')
   await expect.poll(() => mocks.connectedSockets()).toBe(1)
@@ -252,7 +240,6 @@ test('socket outage confirms on the server and reconnects to the receipt without
   page,
   mocks,
 }) => {
-  needsSocketFix()
   await api.addToCart(NFT_IDS.emeraldApe, 'fifty', 1)
   await mocks.setScenario('socket-outage')
   await gotoPage(page, '/pagamento')
@@ -280,7 +267,6 @@ test('pending reload resumes live updates and a terminal order cannot be reverse
   page,
   mocks,
 }) => {
-  needsSocketFix()
   await api.addToCart(NFT_IDS.emeraldApe, 'fifty', 1)
   await mocks.setScenario('payment-pending')
   await gotoPage(page, '/pagamento')
@@ -303,7 +289,6 @@ test('sign-out releases private listeners so a prior-user broadcast creates no t
   page,
   mocks,
 }) => {
-  needsSocketFix()
   await gotoPage(page, '/conta/perfil')
   await expect.poll(() => mocks.connectedSockets()).toBe(1)
   await page.getByRole('button', { name: 'Sair', exact: true }).filter({ visible: true }).click()
