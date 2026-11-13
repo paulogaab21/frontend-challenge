@@ -14,7 +14,7 @@ import {
   BreadcrumbSeparator,
 } from '@/components/ui/breadcrumb'
 import { Button } from '@/components/ui/button'
-import { type Edition, type EditionId, type NftDetail, type NftSummary } from '@/contracts'
+import type { Edition, EditionId, NftDetail, NftSummary } from '@/contracts'
 import { useCart } from '@/features/cart/queries'
 import { errorMessage, isApiError } from '@/lib/http'
 import { useDocumentTitle } from '@/lib/use-document-title'

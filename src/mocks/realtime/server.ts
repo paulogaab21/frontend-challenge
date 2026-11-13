@@ -1,7 +1,7 @@
 import { toSocketIo } from '@mswjs/socket.io-binding'
 import { ws, type WebSocketHandlerConnection } from 'msw'
 
-import { type RealtimeEvent } from '@/contracts'
+import type { RealtimeEvent } from '@/contracts'
 import { env } from '@/lib/env'
 
 import { db } from '../db'

@@ -1,4 +1,6 @@
-import { type Socket } from 'socket.io-client'
+// Type-only on purpose: a value import would evaluate socket.io-client at start-up
+// (see the note about the WebSocket interception below).
+import type { Socket } from 'socket.io-client'
 
 import {
   NFT_UPDATED,

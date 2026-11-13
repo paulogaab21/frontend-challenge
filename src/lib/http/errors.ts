@@ -1,4 +1,4 @@
-import { type ApiErrorBody, type ApiErrorCode } from '@/contracts'
+import type { ApiErrorBody, ApiErrorCode } from '@/contracts'
 
 /**
  * Every failure of the HTTP layer is normalized into one of these three classes, so

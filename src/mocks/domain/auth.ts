@@ -1,4 +1,4 @@
-import { type Session, type User } from '@/contracts'
+import type { Session, User } from '@/contracts'
 import { randomId } from '@/lib/storage'
 
 import { mockConfig } from '../config'

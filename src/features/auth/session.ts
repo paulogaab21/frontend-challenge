@@ -7,7 +7,7 @@ import {
 } from '@tanstack/react-query'
 import { useSyncExternalStore } from 'react'
 
-import { type LoginRequest, type RegisterRequest, type Session, type User } from '@/contracts'
+import type { LoginRequest, RegisterRequest, Session, User } from '@/contracts'
 import { queryKeys } from '@/lib/query-keys'
 import { cartTokenStore, currentScope, sessionStore, type StoredSession } from '@/lib/session-store'
 

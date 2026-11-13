@@ -1,4 +1,4 @@
-import { type HeroSlide } from './components/hero-carousel'
+import type { HeroSlide } from './components/hero-carousel'
 
 /**
  * Editorial copy of the home page, as written in the Figma file. This is site

@@ -1,4 +1,4 @@
-import { type ApiErrorCode } from '@/contracts'
+import type { ApiErrorCode } from '@/contracts'
 import { env } from '@/lib/env'
 import { readJson, writeJson } from '@/lib/storage'
 

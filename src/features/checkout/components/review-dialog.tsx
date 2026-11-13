@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 import { AlertIcon, ArrowRightIcon, CheckIcon, SpinnerIcon } from '@/components/icons'
 import { SiteLink } from '@/components/layout/site-link'

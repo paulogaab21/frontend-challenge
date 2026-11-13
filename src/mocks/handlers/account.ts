@@ -12,7 +12,7 @@ import {
   type WalletsResponse,
 } from '@/contracts'
 
-import { type UserRecord } from '../db'
+import type { UserRecord } from '../db'
 import {
   findUserByEmail,
   findUserByUsername,

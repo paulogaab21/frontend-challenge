@@ -1,4 +1,4 @@
-import { type EnsSuffix, type NetworkId, type WalletProvider, type WalletRole } from '@/contracts'
+import type { EnsSuffix, NetworkId, WalletProvider, WalletRole } from '@/contracts'
 
 import { CATALOG_EPOCH, NFT_IDS } from './nfts'
 

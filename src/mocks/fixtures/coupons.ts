@@ -1,5 +1,5 @@
-import { type NetworkId } from '@/contracts'
-import { type EthAmount } from '@/lib/money'
+import type { NetworkId } from '@/contracts'
+import type { EthAmount } from '@/lib/money'
 
 export interface CouponRecord {
   code: string

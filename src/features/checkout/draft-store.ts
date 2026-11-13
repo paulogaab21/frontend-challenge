@@ -1,4 +1,4 @@
-import { type CollectorInput } from '@/contracts'
+import type { CollectorInput } from '@/contracts'
 import { readJson, removeKey, writeJson } from '@/lib/storage'
 
 /**

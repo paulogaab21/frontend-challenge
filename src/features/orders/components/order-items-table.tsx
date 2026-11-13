@@ -68,12 +68,14 @@ export function OrderItemsTable({ order }: OrderItemsTableProps) {
       </table>
       <dl className="mt-3 space-y-[10px] text-sm leading-5 md:ml-[169px] md:text-15">
         {!isZeroEth(order.discount) && (
-          <div className="flex flex-wrap justify-between gap-x-2">
-            <dt>
-              Desconto do lançamento
-              {order.coupon && <span className="block text-xs text-sand">{order.coupon.code}</span>}
+          <div className="flex justify-between gap-x-2">
+            <dt className="min-w-0">
+              Desconto
+              {order.coupon && <span className="text-sand"> ({order.coupon.code})</span>}
             </dt>
-            <dd className="text-right">(-) {formatEth(order.discount)}</dd>
+            <dd className="shrink-0 text-right whitespace-nowrap">
+              (-) {formatEth(order.discount)}
+            </dd>
           </div>
         )}
         <div className="flex flex-wrap justify-between gap-x-2">

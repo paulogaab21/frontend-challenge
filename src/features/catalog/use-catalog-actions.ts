@@ -2,7 +2,7 @@ import { useMutationState } from '@tanstack/react-query'
 import { useRouter } from '@tanstack/react-router'
 import { useCallback, useMemo } from 'react'
 
-import { type EditionId, type NftSummary } from '@/contracts'
+import type { EditionId, NftSummary } from '@/contracts'
 import { useSession } from '@/features/auth/session'
 import { useAddToCart, usePendingCartAdds } from '@/features/cart/queries'
 import { errorMessage } from '@/lib/http'

@@ -1,9 +1,9 @@
-import {
-  type FavoritesResponse,
-  type HighlightsResponse,
-  type NftDetail,
-  type NftListParams,
-  type NftListResponse,
+import type {
+  FavoritesResponse,
+  HighlightsResponse,
+  NftDetail,
+  NftListParams,
+  NftListResponse,
 } from '@/contracts'
 import { request } from '@/lib/http'
 

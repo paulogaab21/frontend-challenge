@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import { AlertIcon } from '@/components/icons'
 import { Button } from '@/components/ui/button'
-import { type ChangePasswordFormValues, type UpdateProfileRequest } from '@/contracts'
+import type { ChangePasswordFormValues, UpdateProfileRequest } from '@/contracts'
 import { toFormFailure, type FormFailure } from '@/lib/form-errors'
 import { errorMessage } from '@/lib/http'
 import { notify } from '@/lib/notify'

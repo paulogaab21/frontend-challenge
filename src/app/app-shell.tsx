@@ -1,10 +1,10 @@
 import { useState, type ReactNode } from 'react'
 
-import { type MobileTab } from '@/components/layout/mobile-tab-bar'
-import { type MobileTopBarProps } from '@/components/layout/mobile-top-bar'
+import type { MobileTab } from '@/components/layout/mobile-tab-bar'
+import type { MobileTopBarProps } from '@/components/layout/mobile-top-bar'
 import { PageShell } from '@/components/layout/page-shell'
-import { type FooterLinkColumn } from '@/components/layout/site-footer'
-import { type HeaderNav } from '@/components/layout/site-header'
+import type { FooterLinkColumn } from '@/components/layout/site-footer'
+import type { HeaderNav } from '@/components/layout/site-header'
 import { useLogout, useSession } from '@/features/auth/session'
 import { useCartCount } from '@/features/cart/queries'
 
