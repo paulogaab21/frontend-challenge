@@ -1,5 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { useCallback, useRef, useSyncExternalStore } from 'react'
+import { useCallback, useSyncExternalStore } from 'react'
 
 import {
   quoteStaleDetailsSchema,
@@ -38,6 +38,13 @@ export type PlaceOrderOutcome =
   | { kind: 'session-expired' }
   | { kind: 'failed'; message: string }
 
+/**
+ * One purchase request at a time per page, whichever component asks for it (the
+ * review dialog or the recovery panel). Synchronous on purpose: it must hold
+ * between two clicks that arrive before React re-renders.
+ */
+let inFlight = false
+
 function orderIdFrom(details: unknown): string | null {
   const orderId = (details as { orderId?: unknown } | null)?.orderId
   return typeof orderId === 'string' ? orderId : null
@@ -48,7 +55,7 @@ function orderIdFrom(details: unknown): string | null {
  *
  * Duplicate protection, in layers:
  * 1. the UI disables the action while a request is in flight, and a synchronous
- *    lock drops a second call that slips in before the re-render;
+ *    page-wide lock drops a second call that slips in before the re-render;
  * 2. every request of the same attempt carries the same `Idempotency-Key` and the
  *    same body (see attempt-store), so the API returns the order it already
  *    created — after a double click, a timeout or a page reload alike;
@@ -60,7 +67,6 @@ function orderIdFrom(details: unknown): string | null {
 export function usePlaceOrder() {
   const queryClient = useQueryClient()
   const { scope } = useSession()
-  const lock = useRef(false)
 
   const mutation = useMutation({
     mutationKey: ['place-order', scope],
@@ -147,12 +153,12 @@ export function usePlaceOrder() {
   /** Sends `request`; a call made while another is in flight is dropped. */
   const place = useCallback(
     async (request: CreateOrderInput): Promise<PlaceOrderOutcome | null> => {
-      if (lock.current) return null
-      lock.current = true
+      if (inFlight) return null
+      inFlight = true
       try {
         return await mutateAsync(request)
       } finally {
-        lock.current = false
+        inFlight = false
       }
     },
     [mutateAsync],
