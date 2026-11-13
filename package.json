@@ -5,7 +5,7 @@
   "description": "Kurio — NFT marketplace (frontend challenge) built with React, TanStack Router/Query, Axios, Socket.IO, Tailwind, shadcn/ui and MSW.",
   "type": "module",
   "engines": {
-    "node": ">=22.12"
+    "node": ">=22.19"
   },
   "scripts": {
     "dev": "vite",

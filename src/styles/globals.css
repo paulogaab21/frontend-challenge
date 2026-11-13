@@ -1,6 +1,12 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* Generated reports and design references are not class sources. */
+@source not '../../lighthouse';
+@source not '../../playwright-report';
+@source not '../../test-results';
+@source not '../../.design';
+
 /*
  * Kurio design tokens — extracted 1:1 from the Figma file ("Marketplace de NFTs").
  * The product ships a single dark theme, so the tokens live on :root.
