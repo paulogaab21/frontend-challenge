@@ -1,0 +1,67 @@
+# Kurio — the demo build (static files + in-browser MSW backend) served by Caddy.
+# Rendered by deploy/deploy.sh on `setup`: __DOMAIN__, __ALIASES__, __IP__ and __ROOT__
+# are replaced; the "aliases" block is dropped when there are none.
+#
+# HTTPS is mandatory, not cosmetic: the simulated REST API is a service worker and
+# browsers only register service workers on secure origins.
+
+__DOMAIN__ {
+	root * __ROOT__/current
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=()"
+		Cross-Origin-Opener-Policy "same-origin"
+		# Everything is first-party: scripts, styles, fonts and images ship with the build.
+		# 'unsafe-inline' is limited to styles (UI primitives inject <style> at runtime);
+		# data:/blob: images are the avatar previews.
+		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+		-Server
+	}
+
+	# Fingerprinted build output never changes.
+	handle /assets/* {
+		header Cache-Control "public, max-age=31536000, immutable"
+		file_server
+	}
+
+	# Responsive artwork variants: stable content per file name.
+	handle /images/* {
+		header Cache-Control "public, max-age=604800"
+		file_server
+	}
+
+	# The backend is simulated in the browser. A request that reaches the server
+	# under these paths means the mock layer is not active: fail loudly instead of
+	# answering with the app shell.
+	handle /api/* {
+		respond "Not found" 404
+	}
+	handle /socket.io/* {
+		respond "Not found" 404
+	}
+
+	# Client-side routing: any other path gets the app shell, so direct access and
+	# refresh work on every route. The shell and the service worker script are
+	# always revalidated, which makes a new release visible immediately.
+	handle {
+		header Cache-Control "no-cache"
+		try_files {path} /index.html
+		file_server
+	}
+}
+
+# BEGIN aliases
+# Alternative host names answer with a redirect to the canonical one.
+__ALIASES__ {
+	redir https://__DOMAIN__{uri} permanent
+}
+# END aliases
+
+# Requests to the bare IP go to the canonical HTTPS host.
+http://__IP__ {
+	redir https://__DOMAIN__{uri} permanent
+}

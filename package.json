@@ -25,7 +25,9 @@
     "e2e:update": "playwright test --update-snapshots",
     "e2e:report": "playwright show-report",
     "lighthouse": "node lighthouse/run.mjs",
-    "assets:images": "node scripts/optimize-images.mjs"
+    "assets:images": "node scripts/optimize-images.mjs",
+    "deploy": "bash deploy/deploy.sh",
+    "deploy:check": "bash deploy/deploy.sh check"
   },
   "dependencies": {
     "@fontsource-variable/roboto-mono": "^5.3.0",
