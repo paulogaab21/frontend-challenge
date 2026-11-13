@@ -45,18 +45,24 @@ const rawSchema = z.object({
 
 export type CatalogSearch = z.infer<typeof rawSchema>
 
+/**
+ * Every key is always present in the result, `undefined` when absent, invalid or
+ * equal to its default. That matters: the router merges this object over the raw
+ * query string, so a key left out here would let the raw (unvalidated) value
+ * through to the page — `?pagina=abc` must read as "no page", not as "abc".
+ */
 export function validateCatalogSearch(search: Record<string, unknown>): CatalogSearch {
   const parsed = rawSchema.parse(search)
-  const result: CatalogSearch = {}
-  if (parsed.q) result.q = parsed.q
-  if (parsed.categoria) result.categoria = parsed.categoria
-  if (parsed.rede) result.rede = parsed.rede
-  if (parsed.precoMin) result.precoMin = parsed.precoMin
-  if (parsed.precoMax) result.precoMax = parsed.precoMax
-  if (parsed.aba && parsed.aba !== 'todos') result.aba = parsed.aba
-  if (parsed.ordem && parsed.ordem !== 'recentes') result.ordem = parsed.ordem
-  if (parsed.pagina && parsed.pagina > 1) result.pagina = parsed.pagina
-  return result
+  return {
+    q: parsed.q || undefined,
+    categoria: parsed.categoria,
+    rede: parsed.rede,
+    precoMin: parsed.precoMin || undefined,
+    precoMax: parsed.precoMax || undefined,
+    aba: parsed.aba && parsed.aba !== 'todos' ? parsed.aba : undefined,
+    ordem: parsed.ordem && parsed.ordem !== 'recentes' ? parsed.ordem : undefined,
+    pagina: parsed.pagina && parsed.pagina > 1 ? parsed.pagina : undefined,
+  }
 }
 
 /** Translates the URL state into the parameters of GET /nfts. */

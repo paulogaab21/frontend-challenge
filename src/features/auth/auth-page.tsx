@@ -65,6 +65,20 @@ export function AuthPage({ mode, redirectTo, reason }: AuthPageProps) {
     void router.navigate({ to, search, hash, replace })
   }
 
+  /**
+   * Closing the dialog abandons the sign-in and goes back to the catalog. The
+   * dialog was opened by a navigation, so the page behind it is a new instance and
+   * the usual "return focus to the trigger" cannot happen by itself: focus is
+   * handed back to the header's sign-in link once the catalog route has rendered.
+   */
+  function dismiss() {
+    void router.navigate({ to: '/' }).then(() => {
+      requestAnimationFrame(() => {
+        document.querySelector<HTMLElement>('[data-auth-entry]')?.focus()
+      })
+    })
+  }
+
   async function submitLogin(values: LoginRequest) {
     setFailure({})
     try {
@@ -144,8 +158,7 @@ export function AuthPage({ mode, redirectTo, reason }: AuthPageProps) {
       <Dialog
         open
         onOpenChange={(open) => {
-          // Closing the dialog abandons the sign-in: back to the catalog.
-          if (!open) void router.navigate({ to: '/' })
+          if (!open) dismiss()
         }}
       >
         <DialogContent className="gap-0 p-0">

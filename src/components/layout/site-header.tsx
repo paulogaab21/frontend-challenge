@@ -158,7 +158,8 @@ export function SiteHeader({
             </DropdownMenu>
           ) : (
             <Button size="header" className="ml-4 gap-1" asChild>
-              <Link to="/entrar">
+              {/* Target for returning focus when the sign-in dialog (a route) closes. */}
+              <Link to="/entrar" data-auth-entry>
                 <LogoutIcon />
                 Entrar
               </Link>

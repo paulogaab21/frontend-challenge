@@ -33,8 +33,8 @@ const nftHref = (nft: NftSummary) => `/nft/${nft.id}`
 
 export interface NftDetailPageProps {
   nftId: string
-  /** Edition requested through the URL (`?edicao=`), if any. */
-  requestedEdition?: EditionId
+  /** Edition requested through the URL (`?edicao=`), if any — not validated yet. */
+  requestedEdition?: string
 }
 
 /**
@@ -42,7 +42,7 @@ export interface NftDetailPageProps {
  * 1. the one in the URL, when the NFT has it (even sold out — the page says so);
  * 2. otherwise the default edition, or the first one that can still be bought.
  */
-function resolveEdition(nft: NftDetail, requested: EditionId | undefined): Edition {
+function resolveEdition(nft: NftDetail, requested: string | undefined): Edition {
   const fromUrl = requested && nft.editions.find((edition) => edition.id === requested)
   if (fromUrl) return fromUrl
   const fallback = nft.editions.find((edition) => edition.id === nft.defaultEditionId)
@@ -61,7 +61,7 @@ function Notice({ tone = 'info', children }: { tone?: 'info' | 'warning'; childr
   )
 }
 
-function Loaded({ nft, requestedEdition }: { nft: NftDetail; requestedEdition?: EditionId }) {
+function Loaded({ nft, requestedEdition }: { nft: NftDetail; requestedEdition?: string }) {
   useDocumentTitle(nft.name)
   const navigate = useNavigate()
   const actions = useCatalogActions()
@@ -147,7 +147,7 @@ function Loaded({ nft, requestedEdition }: { nft: NftDetail; requestedEdition?: 
             void navigate({
               to: '/nft/$nftId',
               params: { nftId: nft.id },
-              search: editionId === nft.defaultEditionId ? {} : { edicao: editionId },
+              search: { edicao: editionId === nft.defaultEditionId ? undefined : editionId },
               replace: true,
               resetScroll: false,
             })
