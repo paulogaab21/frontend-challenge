@@ -9,20 +9,29 @@ export interface NftCarouselProps {
   items: NftSummary[]
   getHref: (nft: NftSummary) => string
 }
+/**
+ * How many "screens" the track scrolls through. A track that is not laid out (a
+ * hidden ancestor, a collapsed section) has no width: it has a single page rather
+ * than the division by zero that would otherwise ask for an infinite list of dots.
+ */
+function countPages(track: HTMLElement, itemCount: number): number {
+  if (track.clientWidth <= 0) return 1
+  const pages = Math.ceil(track.scrollWidth / track.clientWidth)
+  return Math.min(Math.max(1, pages), Math.max(1, itemCount))
+}
 export function NftCarousel({ title, items, getHref }: NftCarouselProps) {
   const id = useId()
   const track = useRef<HTMLUListElement>(null)
   const [page, setPage] = useState(0)
   const [pages, setPages] = useState(1)
+  const itemCount = items.length
   useEffect(() => {
     const el = track.current
     if (!el) return
-    const observer = new ResizeObserver(() =>
-      setPages(Math.max(1, Math.ceil(el.scrollWidth / el.clientWidth))),
-    )
+    const observer = new ResizeObserver(() => setPages(countPages(el, itemCount)))
     observer.observe(el)
     return () => observer.disconnect()
-  }, [items.length])
+  }, [itemCount])
   const scroll = (next: number) => {
     const el = track.current
     if (!el) return
@@ -66,12 +75,14 @@ export function NftCarousel({ title, items, getHref }: NftCarouselProps) {
         className="mt-8 flex snap-x snap-mandatory [scrollbar-width:none] gap-[26px] overflow-x-auto pb-2"
         onScroll={(event) => {
           const el = event.currentTarget
+          if (el.clientWidth <= 0) return
+          const total = countPages(el, itemCount)
+          setPages(total)
           setPage(
             el.scrollLeft >= el.scrollWidth - el.clientWidth - 1
-              ? Math.max(0, Math.ceil(el.scrollWidth / el.clientWidth) - 1)
-              : Math.round(el.scrollLeft / el.clientWidth),
+              ? total - 1
+              : Math.min(total - 1, Math.round(el.scrollLeft / el.clientWidth)),
           )
-          setPages(Math.max(1, Math.ceil(el.scrollWidth / el.clientWidth)))
         }}
       >
         {items.map((nft) => (

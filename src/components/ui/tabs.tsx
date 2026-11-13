@@ -37,7 +37,9 @@ export function TabsTrigger({ className, ...props }: ComponentProps<typeof TabsP
     <TabsPrimitive.Trigger
       data-slot="tabs-trigger"
       className={cn(
-        'relative inline-flex min-h-8 shrink-0 items-center justify-center gap-2 border-b-2 border-transparent pb-1 text-15 font-medium text-cream transition-colors hover:text-amber disabled:cursor-not-allowed disabled:opacity-50 data-[state=active]:border-copper data-[state=active]:text-amber',
+        // `max-w-full`: a label longer than the row wraps inside its tab instead of
+        // pushing the page sideways on narrow screens.
+        'relative inline-flex min-h-8 max-w-full shrink-0 items-center justify-center gap-2 border-b-2 border-transparent pb-1 text-left text-15 font-medium text-cream transition-colors hover:text-amber disabled:cursor-not-allowed disabled:opacity-50 data-[state=active]:border-copper data-[state=active]:text-amber',
         className,
       )}
       {...props}
