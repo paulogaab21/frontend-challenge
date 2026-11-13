@@ -17,6 +17,20 @@ export const cartSummary = (page: Page) =>
   page.getByRole('region', { name: 'Resumo da carteira', exact: true })
 export const reviewDialog = (page: Page) => page.getByRole('dialog', { name: 'Revise seu pedido' })
 
+export async function gotoPage(page: Page, path: string): Promise<void> {
+  await page.goto(path)
+  await page.waitForFunction(() =>
+    Boolean(window.__kurioMocks && navigator.serviceWorker.controller),
+  )
+  await page.waitForLoadState('networkidle')
+}
+
+export async function expandCollector(page: Page, isMobile: boolean): Promise<void> {
+  if (isMobile && !(await page.getByRole('textbox', { name: 'Nome de exibição' }).isVisible())) {
+    await page.getByText('Dados do colecionador', { exact: false }).click()
+  }
+}
+
 export async function buyDetail(
   page: Page,
   isMobile: boolean,
