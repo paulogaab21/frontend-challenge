@@ -1,6 +1,6 @@
 # Kurio Lighthouse audit
 
-Date (UTC): 2026-11-14T03:05:03.978Z. Source commit: `72deca1e4660a3ff55551616c2b120df86abb26c` (frontend-challenge-solution; dirty: false).
+Date (UTC): 2026-11-14T03:12:48.596Z. Source commit: `adc0c1aa15d8200acc005a0b9a62d4e641e74325` (frontend-challenge-solution; dirty: false).
 
 Command: `npm run lighthouse -- --build`
 
@@ -10,27 +10,27 @@ Scores are on a 0–100 scale; assertions use unrounded medians. LCP/TBT are mil
 
 | Profile | Page | Performance ≥90 | Accessibility ≥95 | Best Practices ≥95 | SEO ≥90 | LCP ms | CLS | TBT ms | Result |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| mobile | Início | 98 PASS | 100 PASS | 100 PASS | 100 PASS | 1870.5 | 0.0006 | 115 | PASS |
-| mobile | Detalhe do NFT | 99 PASS | 100 PASS | 100 PASS | 100 PASS | 1722.4 | 0 | 132.3 | PASS |
-| desktop | Início | 100 PASS | 100 PASS | 100 PASS | 100 PASS | 541.7 | 0.0017 | 0 | PASS |
-| desktop | Detalhe do NFT | 100 PASS | 100 PASS | 100 PASS | 100 PASS | 536.9 | 0.0001 | 0 | PASS |
+| mobile | Início | 98 PASS | 100 PASS | 100 PASS | 100 PASS | 1890.1 | 0.0006 | 134.8 | PASS |
+| mobile | Detalhe do NFT | 98 PASS | 100 PASS | 100 PASS | 100 PASS | 1730.5 | 0 | 156.2 | PASS |
+| desktop | Início | 100 PASS | 100 PASS | 100 PASS | 100 PASS | 540.3 | 0.0017 | 0 | PASS |
+| desktop | Detalhe do NFT | 100 PASS | 100 PASS | 100 PASS | 100 PASS | 523.7 | 0.0001 | 0 | PASS |
 
 ## Per-run values
 
 | Profile / page | Run | Performance | Accessibility | Best Practices | SEO | LCP ms | CLS | TBT ms | MSW controls warm-up |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| mobile / home | [1](./mobile/home/run-1.report.html) | 98 | 100 | 100 | 100 | 1869.6 | 0.0006 | 114 | true |
-| mobile / home | [2](./mobile/home/run-2.report.html) | 98 | 100 | 100 | 100 | 1887.7 | 0.0006 | 132 | true |
-| mobile / home | [3](./mobile/home/run-3.report.html) | 98 | 100 | 100 | 100 | 1870.5 | 0.0006 | 115 | true |
-| mobile / nft-detail | [1](./mobile/nft-detail/run-1.report.html) | 99 | 100 | 100 | 100 | 1723.8 | 0 | 132.3 | true |
-| mobile / nft-detail | [2](./mobile/nft-detail/run-2.report.html) | 99 | 100 | 100 | 100 | 1722.4 | 0 | 128.7 | true |
-| mobile / nft-detail | [3](./mobile/nft-detail/run-3.report.html) | 98 | 100 | 100 | 100 | 1721.5 | 0 | 164.1 | true |
-| desktop / home | [1](./desktop/home/run-1.report.html) | 100 | 100 | 100 | 100 | 531.9 | 0.0017 | 0 | true |
-| desktop / home | [2](./desktop/home/run-2.report.html) | 100 | 100 | 100 | 100 | 542.6 | 0.0017 | 0 | true |
-| desktop / home | [3](./desktop/home/run-3.report.html) | 100 | 100 | 100 | 100 | 541.7 | 0.0017 | 0 | true |
-| desktop / nft-detail | [1](./desktop/nft-detail/run-1.report.html) | 100 | 100 | 100 | 100 | 520.3 | 0.0001 | 0 | true |
-| desktop / nft-detail | [2](./desktop/nft-detail/run-2.report.html) | 100 | 100 | 100 | 100 | 536.9 | 0.0001 | 0 | true |
-| desktop / nft-detail | [3](./desktop/nft-detail/run-3.report.html) | 100 | 100 | 100 | 100 | 545.1 | 0.0001 | 0 | true |
+| mobile / home | [1](./mobile/home/run-1.report.html) | 98 | 100 | 100 | 100 | 1890.1 | 0.0006 | 126 | true |
+| mobile / home | [2](./mobile/home/run-2.report.html) | 98 | 100 | 100 | 100 | 1887.1 | 0.0006 | 134.8 | true |
+| mobile / home | [3](./mobile/home/run-3.report.html) | 98 | 100 | 100 | 100 | 1893.9 | 0.0006 | 137 | true |
+| mobile / nft-detail | [1](./mobile/nft-detail/run-1.report.html) | 97 | 100 | 100 | 100 | 1744.1 | 0 | 184.2 | true |
+| mobile / nft-detail | [2](./mobile/nft-detail/run-2.report.html) | 98 | 100 | 100 | 100 | 1730.5 | 0 | 139.2 | true |
+| mobile / nft-detail | [3](./mobile/nft-detail/run-3.report.html) | 98 | 100 | 100 | 100 | 1715.9 | 0 | 156.2 | true |
+| desktop / home | [1](./desktop/home/run-1.report.html) | 100 | 100 | 100 | 100 | 538.1 | 0.0017 | 0 | true |
+| desktop / home | [2](./desktop/home/run-2.report.html) | 100 | 100 | 100 | 100 | 559.7 | 0.0017 | 0 | true |
+| desktop / home | [3](./desktop/home/run-3.report.html) | 100 | 100 | 100 | 100 | 540.3 | 0.0017 | 0 | true |
+| desktop / nft-detail | [1](./desktop/nft-detail/run-1.report.html) | 100 | 100 | 100 | 100 | 523.7 | 0.0001 | 0 | true |
+| desktop / nft-detail | [2](./desktop/nft-detail/run-2.report.html) | 100 | 100 | 100 | 100 | 542.8 | 0.0001 | 0 | true |
+| desktop / nft-detail | [3](./desktop/nft-detail/run-3.report.html) | 100 | 100 | 100 | 100 | 520.2 | 0.0001 | 0 | true |
 
 ## Environment and conditions
 

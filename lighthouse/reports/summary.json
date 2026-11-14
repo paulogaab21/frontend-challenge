@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-14T03:05:03.978Z",
+  "date": "2026-11-14T03:12:48.596Z",
   "command": "npm run lighthouse -- --build",
   "git": {
-    "commit": "72deca1e4660a3ff55551616c2b120df86abb26c",
+    "commit": "adc0c1aa15d8200acc005a0b9a62d4e641e74325",
     "branch": "frontend-challenge-solution",
     "dirty": false
   },
@@ -117,9 +117,9 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 1869.5674499999996,
+            "lcp": 1890.11605,
             "cls": 0.0005502395271922393,
-            "tbt": 114
+            "tbt": 126
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -135,12 +135,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:05:19.858Z",
+          "date": "2026-11-14T03:13:02.444Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3069.5,
+            "benchmarkIndex": 3036,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -215,9 +215,9 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 1887.6837999999998,
+            "lcp": 1887.1476500000003,
             "cls": 0.0005502395271922393,
-            "tbt": 132
+            "tbt": 134.83605000000023
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -233,12 +233,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:05:29.716Z",
+          "date": "2026-11-14T03:13:12.376Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3084,
+            "benchmarkIndex": 3041,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -313,9 +313,9 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 1870.5451000000003,
+            "lcp": 1893.8707999999997,
             "cls": 0.0005502395271922393,
-            "tbt": 115
+            "tbt": 137
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -331,12 +331,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:05:39.413Z",
+          "date": "2026-11-14T03:13:21.981Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3060.5,
+            "benchmarkIndex": 3002,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -449,11 +449,11 @@
         "metrics": {
           "lcp": {
             "values": [
-              1869.5674499999996,
-              1887.6837999999998,
-              1870.5451000000003
+              1890.11605,
+              1887.1476500000003,
+              1893.8707999999997
             ],
-            "median": 1870.5451000000003,
+            "median": 1890.11605,
             "unit": "ms"
           },
           "cls": {
@@ -467,11 +467,11 @@
           },
           "tbt": {
             "values": [
-              114,
-              132,
-              115
+              126,
+              134.83605000000023,
+              137
             ],
-            "median": 115,
+            "median": 134.83605000000023,
             "unit": "ms"
           }
         },
@@ -489,15 +489,15 @@
         {
           "number": 1,
           "scores": {
-            "performance": 99,
+            "performance": 97,
             "accessibility": 100,
             "best-practices": 100,
             "seo": 100
           },
           "metrics": {
-            "lcp": 1723.836,
+            "lcp": 1744.1016999999997,
             "cls": 0,
-            "tbt": 132.274
+            "tbt": 184.22154999999998
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -513,12 +513,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:05:49.063Z",
+          "date": "2026-11-14T03:13:31.623Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3111,
+            "benchmarkIndex": 3029.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -587,15 +587,15 @@
         {
           "number": 2,
           "scores": {
-            "performance": 99,
+            "performance": 98,
             "accessibility": 100,
             "best-practices": 100,
             "seo": 100
           },
           "metrics": {
-            "lcp": 1722.3964499999997,
+            "lcp": 1730.4695500000003,
             "cls": 0,
-            "tbt": 128.67117500000006
+            "tbt": 139.24782499999992
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -611,12 +611,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:05:58.854Z",
+          "date": "2026-11-14T03:13:41.354Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3105.5,
+            "benchmarkIndex": 3106,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -691,9 +691,9 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 1721.5218,
+            "lcp": 1715.8801500000002,
             "cls": 0,
-            "tbt": 164.1087
+            "tbt": 156.20572499999992
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -709,12 +709,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:06:08.595Z",
+          "date": "2026-11-14T03:13:51.476Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3100,
+            "benchmarkIndex": 3096.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -785,11 +785,11 @@
         "scores": {
           "performance": {
             "values": [
-              99,
-              99,
+              97,
+              98,
               98
             ],
-            "median": 99,
+            "median": 98,
             "target": 90,
             "pass": true
           },
@@ -827,11 +827,11 @@
         "metrics": {
           "lcp": {
             "values": [
-              1723.836,
-              1722.3964499999997,
-              1721.5218
+              1744.1016999999997,
+              1730.4695500000003,
+              1715.8801500000002
             ],
-            "median": 1722.3964499999997,
+            "median": 1730.4695500000003,
             "unit": "ms"
           },
           "cls": {
@@ -845,11 +845,11 @@
           },
           "tbt": {
             "values": [
-              132.274,
-              128.67117500000006,
-              164.1087
+              184.22154999999998,
+              139.24782499999992,
+              156.20572499999992
             ],
-            "median": 132.274,
+            "median": 156.20572499999992,
             "unit": "ms"
           }
         },
@@ -873,7 +873,7 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 531.9282999999999,
+            "lcp": 538.0975250000001,
             "cls": 0.001699830456744393,
             "tbt": 0
           },
@@ -891,12 +891,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:06:18.117Z",
+          "date": "2026-11-14T03:14:01.347Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3117.5,
+            "benchmarkIndex": 3029.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -971,7 +971,7 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 542.6129999999999,
+            "lcp": 559.707475,
             "cls": 0.001699830456744393,
             "tbt": 0
           },
@@ -989,12 +989,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:06:28.389Z",
+          "date": "2026-11-14T03:14:11.543Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3200.5,
+            "benchmarkIndex": 3088.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -1069,7 +1069,7 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 541.6847249999998,
+            "lcp": 540.2787500000001,
             "cls": 0.001699830456744393,
             "tbt": 0
           },
@@ -1087,12 +1087,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:06:38.549Z",
+          "date": "2026-11-14T03:14:22.054Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3124,
+            "benchmarkIndex": 2985.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -1205,11 +1205,11 @@
         "metrics": {
           "lcp": {
             "values": [
-              531.9282999999999,
-              542.6129999999999,
-              541.6847249999998
+              538.0975250000001,
+              559.707475,
+              540.2787500000001
             ],
-            "median": 541.6847249999998,
+            "median": 540.2787500000001,
             "unit": "ms"
           },
           "cls": {
@@ -1251,7 +1251,7 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 520.3180000000001,
+            "lcp": 523.721,
             "cls": 0.0001241788928971466,
             "tbt": 0
           },
@@ -1269,12 +1269,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:06:48.775Z",
+          "date": "2026-11-14T03:14:32.489Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3181,
+            "benchmarkIndex": 3104.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -1349,7 +1349,7 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 536.8635999999999,
+            "lcp": 542.8296,
             "cls": 0.0001241788928971466,
             "tbt": 0
           },
@@ -1367,12 +1367,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:06:58.816Z",
+          "date": "2026-11-14T03:14:42.775Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3197,
+            "benchmarkIndex": 3017,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -1447,7 +1447,7 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 545.0688,
+            "lcp": 520.241375,
             "cls": 0.0001241788928971466,
             "tbt": 0
           },
@@ -1465,12 +1465,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T03:07:09.002Z",
+          "date": "2026-11-14T03:14:53.128Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3086.5,
+            "benchmarkIndex": 3039,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -1583,11 +1583,11 @@
         "metrics": {
           "lcp": {
             "values": [
-              520.3180000000001,
-              536.8635999999999,
-              545.0688
+              523.721,
+              542.8296,
+              520.241375
             ],
-            "median": 536.8635999999999,
+            "median": 523.721,
             "unit": "ms"
           },
           "cls": {

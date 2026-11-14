@@ -376,10 +376,10 @@ mede cada página 3 vezes por perfil. Mediana de cada categoria:
 
 | Perfil  | Página         | Performance | Accessibility | Best Practices |   SEO   | LCP    | CLS    | TBT    |
 | ------- | -------------- | :---------: | :-----------: | :------------: | :-----: | ------ | ------ | ------ |
-| mobile  | Início         |   **98**    |    **100**    |    **100**     | **100** | 1,87 s | 0,0006 | 115 ms |
-| mobile  | Detalhe do NFT |   **99**    |    **100**    |    **100**     | **100** | 1,72 s | 0      | 132 ms |
+| mobile  | Início         |   **98**    |    **100**    |    **100**     | **100** | 1,89 s | 0,0006 | 135 ms |
+| mobile  | Detalhe do NFT |   **98**    |    **100**    |    **100**     | **100** | 1,73 s | 0      | 156 ms |
 | desktop | Início         |   **100**   |    **100**    |    **100**     | **100** | 0,54 s | 0,0017 | 0 ms   |
-| desktop | Detalhe do NFT |   **100**   |    **100**    |    **100**     | **100** | 0,54 s | 0,0001 | 0 ms   |
+| desktop | Detalhe do NFT |   **100**   |    **100**    |    **100**     | **100** | 0,52 s | 0,0001 | 0 ms   |
 
 Metas do enunciado: Performance ≥ 90, Accessibility ≥ 95, Best Practices ≥ 95, SEO ≥ 90 —
 todas atingidas, sem simplificações exclusivas para a auditoria (imagens, fontes, mocks e tempo
