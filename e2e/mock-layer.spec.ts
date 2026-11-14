@@ -111,7 +111,12 @@ test('reset removes mutations, carts, favorites changes, registered users and al
   mocks,
 }) => {
   await app.goto()
+  // The mounted application has already asked for its visitor cart, so the state
+  // at this point is no longer the seed. The reference is the known scenario
+  // itself: what a reset produces before anything else happens.
+  await mocks.reset()
   const seed = await mocks.snapshot()
+  expect(seed.carts).toEqual({})
   await mocks.setPrice(NFT_IDS.emeraldApe, '9.99')
   await api.addToCart(NFT_IDS.emeraldApe, 'fifty', 2)
   await api.request('PUT', '/cart/coupon', { code: coupons.percentage })

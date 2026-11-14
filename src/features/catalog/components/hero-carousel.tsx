@@ -162,7 +162,8 @@ export function HeroCarousel({
               }
             }}
             onClick={() => setActive(index)}
-            className="flex size-4 items-center justify-center rounded-full"
+            // 24px hit area around the 8px dot: the minimum target size of WCAG 2.5.8.
+            className="flex size-6 items-center justify-center rounded-full"
           >
             <span
               className={cn(

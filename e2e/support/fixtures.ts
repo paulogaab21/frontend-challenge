@@ -1,6 +1,7 @@
 import {
   expect,
   test as base,
+  type Locator,
   type Page,
   type PageAssertionsToHaveScreenshotOptions,
 } from '@playwright/test'
@@ -43,11 +44,16 @@ interface GotoOptions {
   scenario?: string
   /** false opts out on the first navigation; a date chooses a different ticking epoch. */
   clock?: boolean | string | Date
+  /**
+   * false returns as soon as the simulated backend is intercepting, without waiting
+   * for the page's first queries — for tests that observe the loading state itself.
+   */
+  settle?: boolean
 }
 
 interface AppHelpers {
   goto: (path?: string, options?: GotoOptions) => Promise<void>
-  ready: () => Promise<void>
+  ready: (options?: { settle?: boolean }) => Promise<void>
 }
 
 interface Fixtures {
@@ -97,12 +103,15 @@ export const test = base.extend<Fixtures>({
   app: async ({ page, baseURL }, provide) => {
     let clockInstalled = false
     let navigated = false
-    const ready = async () => {
+    const ready = async ({ settle = true }: { settle?: boolean } = {}) => {
       await page.waitForFunction(
         () => Boolean(window.__kurioMocks && navigator.serviceWorker.controller),
         undefined,
         { timeout: 30_000 },
       )
+      // Let initial page queries finish before a test applies a one-shot scenario.
+      // WebSockets do not count as in-flight HTTP requests for this load state.
+      if (settle) await page.waitForLoadState('networkidle')
     }
     await provide({
       ready,
@@ -127,7 +136,7 @@ export const test = base.extend<Fixtures>({
         const url = new URL(route, baseURL)
         if (options.scenario) url.searchParams.set('scenario', options.scenario)
         await page.goto(url.href)
-        await ready()
+        await ready({ settle: options.settle })
       },
     })
   },
@@ -231,25 +240,70 @@ export async function expectNoHorizontalOverflow(page: Page): Promise<void> {
 
 type ScreenshotOptions = PageAssertionsToHaveScreenshotOptions
 
+/** Scroll full pages to trigger native lazy loading, then restore the original view. */
+export async function prepareScreenshot(page: Page, fullPage = false): Promise<void> {
+  await page.evaluate(async (fullPage) => {
+    await document.fonts.ready
+    const original = { left: scrollX, top: scrollY }
+    async function decodeVisibleImages() {
+      // Let the browser update the lazy-image intersection after scrolling.
+      await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()))
+      const images = Array.from(document.images).filter((image) => {
+        // Closed details can retain image geometry without loading lazy artwork.
+        // Only decode painted images; the baseline preserves collapsed accordions.
+        if (!image.checkVisibility({ checkVisibilityCSS: true, checkOpacity: true })) return false
+        const rect = image.getBoundingClientRect()
+        return (
+          rect.width > 0 &&
+          rect.height > 0 &&
+          rect.bottom > 0 &&
+          rect.right > 0 &&
+          rect.top < innerHeight &&
+          rect.left < innerWidth
+        )
+      })
+      await Promise.all(images.map((image) => image.decode()))
+    }
+    if (fullPage) {
+      try {
+        for (let top = 0; top < document.documentElement.scrollHeight; top += innerHeight) {
+          scrollTo({ top, left: 0, behavior: 'instant' })
+          await decodeVisibleImages()
+        }
+      } finally {
+        scrollTo({ ...original, behavior: 'instant' })
+      }
+    }
+    await decodeVisibleImages()
+  }, fullPage)
+}
+
+async function withHiddenDevtools(page: Page, capture: () => Promise<void>): Promise<void> {
+  const hidden = await page.addStyleTag({
+    content: '[data-mock-devtools] { visibility: hidden !important; }',
+  })
+  try {
+    await capture()
+  } finally {
+    await hidden.evaluate((element) => element.parentNode?.removeChild(element))
+  }
+}
+
 export async function expectScreenshot(
   page: Page,
   name: string,
   options: ScreenshotOptions = {},
 ): Promise<void> {
-  await page.evaluate(async () => {
-    await document.fonts.ready
-    const visibleImages = Array.from(document.images).filter((image) => {
-      const rect = image.getBoundingClientRect()
-      return rect.bottom > 0 && rect.right > 0 && rect.top < innerHeight && rect.left < innerWidth
-    })
-    await Promise.all(visibleImages.map((image) => image.decode()))
-  })
-  const hidden = await page.addStyleTag({
-    content: '[data-mock-devtools] { visibility: hidden !important; }',
-  })
-  try {
-    await expect(page).toHaveScreenshot(name, options)
-  } finally {
-    await hidden.evaluate((element) => element.parentNode?.removeChild(element))
-  }
+  await prepareScreenshot(page, options.fullPage)
+  await withHiddenDevtools(page, () => expect(page).toHaveScreenshot(name, options))
+}
+
+/** A section baseline uses the same fonts, images and devtools policy as page captures. */
+export async function expectElementScreenshot(
+  page: Page,
+  element: Locator,
+  name: string,
+): Promise<void> {
+  await prepareScreenshot(page, true)
+  await withHiddenDevtools(page, () => expect(element).toHaveScreenshot(name))
 }

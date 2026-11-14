@@ -17,7 +17,7 @@ npm run e2e -- --ui
 npm run e2e:report
 ```
 
-The config starts `npm run build && npm run preview -- --port 4173 --strictPort` and waits up to three minutes. The build uses `VITE_ENABLE_MOCKS=true` and `VITE_MOCK_SCENARIO=default`. Port 4173 is reserved for the preview. Locally it can reuse an existing server; make sure that server is an optimized demo build with mocks, rather than an old build or Vite development server. CI always starts its own server. The base URL is `http://localhost:4173`.
+The config starts `npm run build && npm run preview -- --port 4173 --strictPort` and waits up to three minutes. The build uses `VITE_ENABLE_MOCKS=true` and `VITE_MOCK_SCENARIO=default`. Port 4173 is reserved for the preview. Each run owns its server locally and in CI: implicit reuse could select an old build or a previous run's preview that is about to shut down. The base URL is `http://localhost:4173`.
 
 To use an already running optimized demo, opt out of the managed server:
 
@@ -50,7 +50,7 @@ test('example arrangement', async ({ app, api, mocks }) => {
 })
 ```
 
-`app.goto(path = '/', { scenario?, clock? })` installs Playwright's **ticking** clock before the first navigation. Its default starting instant is `FIXED_NOW = 2026-07-29T15:00:00.000Z`, three hours after the catalog fixture epoch. It waits for both `window.__kurioMocks` and a controlling service worker before returning. `app.ready()` repeats that readiness check after a manual `page.reload()`.
+`app.goto(path = '/', { scenario?, clock? })` installs Playwright's **ticking** clock before the first navigation. Its default starting instant is `FIXED_NOW = 2026-07-29T15:00:00.000Z`, three hours after the catalog fixture epoch. It waits for both `window.__kurioMocks` and a controlling service worker, then for initial HTTP queries to settle. `app.ready()` repeats that readiness check after a manual `page.reload()`. This prevents startup queries from consuming a one-shot failure scenario meant for the next action.
 
 `clock` can be a Date/ISO string to choose another ticking start, or `false` on the first navigation to use real time. The chosen clock persists through reloads; subsequent `goto()` calls do not rewind it. Explicit Date/string values on later navigations update the system time. To simulate elapsed time, use `page.clock.fastForward(ms)` (skip ahead, invoke due intervals once) or `page.clock.runFor(ms)` (run every due callback). A clock that keeps ticking allows MSW/network latency, Socket.IO heartbeats and timers to run normally.
 
@@ -91,16 +91,37 @@ test('page layout', async ({ app, page }) => {
 })
 ```
 
-`expectScreenshot` waits for `document.fonts.ready` and decodes every image intersecting the viewport. Broken images fail that check. It temporarily hides `[data-mock-devtools]` with visibility CSS (including its expanded drawer), preserving layout, then restores it even on an assertion failure. It forwards optional Playwright screenshot settings. Wait for the page's actual ready state/skeletons to disappear before calling it.
+`expectScreenshot` waits for `document.fonts.ready` and decodes every painted image intersecting the viewport. With `{ fullPage: true }`, it scrolls through the document to trigger native lazy loading, decodes the images at each position and restores the original scroll position. Images in closed accordions are excluded with `checkVisibility`, since their deferred loading must not block the screenshot. Broken visible images fail that check. It temporarily hides `[data-mock-devtools]` with visibility CSS (including its expanded drawer), preserving layout, then restores it even on an assertion failure. It forwards optional Playwright screenshot settings. Wait for the page's actual ready state/skeletons to disappear before calling it.
+
+`expectElementScreenshot(page, locator, name)` applies the same preparation to a section baseline. `prepareScreenshot(page, fullPage?)` exposes the font/image preparation for report attachments without a committed baseline.
 
 Screenshot assertions disable animations and hide the caret; the maximum differing pixel ratio is 0.005. Baselines live at `e2e/__screenshots__/{projectName}/{testFilePath}/{arg}{ext}` without an OS suffix. **Generate baselines on Windows using the Chromium revision pinned by the Playwright version in `package-lock.json`**: currently Playwright 1.65.0 / Chromium 158.0.8127.18, revision 1254. Do not use a system Chrome channel for baselines. Other operating systems/font renderers can differ even with the same browser revision.
 
 ```powershell
 npm run e2e:update
 npm run e2e:update -- --project=mobile
+# Use an explicit mode when selecting a file (otherwise the optional mode consumes its name):
+npm run e2e -- e2e/visual.spec.ts --update-snapshots=all
+npm run e2e -- e2e/visual.spec.ts
 ```
 
-Review changed images before committing them. This brief provides infrastructure and mock-server specs; product page screenshot baselines and UI purchase specs belong to the next brief.
+Review changed images before committing them. `visual.spec.ts` pins full pages for home, NFT detail, a populated cart and payment, plus the catalog section alone, on both projects (ten PNGs). It uses the default seed/scenario and fixed clock; the home hero is explicitly set to its first slide (autoplay is off in the app). A desktop-context smoke check also captures the four pages at 768px as report attachments and checks horizontal overflow. The payment baseline uses Ana's registered primary wallet; the mobile collector and summary accordions retain their initial collapsed state.
+
+## Purchase and realtime coverage
+
+All five feature specs import the same isolated fixtures and run on both projects:
+
+- `cart.spec.ts`: detail edition/quantity, badge count, accumulated and separate lines, stock limits, totals, removal/empty state, coupon errors/discount/removal, reload and UI login adoption.
+- `purchase.spec.ts`: visitor catalog-to-receipt purchase through UI login, exact API receipt/stock/cart checks, immutable receipt/explorer and manual pending settlement with later-added items retained.
+- `payment-failures.spec.ts`: decline/retry, triple click and Enter-plus-click, timeout recovery with replay header and reload, wallet refusal/disconnection, session expiry with draft restoration, accessible field validation without an order request.
+- `realtime.spec.ts`: live cart/review prices, quote acknowledgment, stock, duplicate/stale frames, foreign-account events, outage/reconnection, pending reload/terminal settlement and sign-out cleanup. Socket cases first require one connected mock client so a missing transport cannot make negative assertions pass vacuously. Separate active cases verify 409 responses, corrected quotes, page notices and no created order.
+- `visual.spec.ts`: the stable baselines and tablet captures described above.
+
+`support/purchase-page.ts` contains responsive cart-line locators, payment/review helpers, real UI login, REST contract parsers and receipt/quote assertions. `gotoPage` waits for the service worker and initial queries after full navigation. Mobile detail quantity is exercised with keyboard activation in the main flow while its separate pointer-overlap regression remains a fixme.
+
+Known product regressions retain their original assertions with explicit `test.fixme` reasons: the mobile mock-devtools pill intercepts the detail quantity-increase button; a stale-price or sold-out HTTP 409 closes the review dialog instead of retaining its changes/blockers. The latter runs once per scenario on both projects. Application source remains with the coordinator. The initial Socket.IO startup bug was fixed upstream in local commit `599c2f0`; its temporary fixmes and console diagnostics were removed, and wallet disconnection is active again.
+
+The legacy reset sanity test in `mock-layer.spec.ts` predates the mounted app: it treats the already-created visitor cart counter as the pristine seed counter. A true reset returns the counter to zero. This file belongs to the coordinator in SEAPEN-04; report that failure without filtering it from the full run or changing its assertions here.
 
 ## Results and troubleshooting
 

@@ -43,7 +43,7 @@ export default defineConfig({
     : {
         command: 'npm run build && npm run preview -- --port 4173 --strictPort',
         url: 'http://localhost:4173',
-        reuseExistingServer: !process.env.CI,
+        reuseExistingServer: false,
         timeout: 180_000,
         env: { VITE_ENABLE_MOCKS: 'true', VITE_MOCK_SCENARIO: 'default' },
       },

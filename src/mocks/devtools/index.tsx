@@ -31,10 +31,12 @@ export function MockDevtools() {
         aria-expanded={open}
         aria-controls={panelId}
         onClick={() => setOpen((value) => !value)}
-        // Small screens keep their bottom edge for the tab bar and the sticky purchase
-        // bars, so there the trigger is an icon-only tab on the right edge; from md up
-        // it is the labelled pill in the bottom-left corner.
-        className="fixed top-1/2 right-0 z-50 flex size-11 -translate-y-1/2 items-center justify-center gap-2 rounded-l-full border border-r-0 border-line-strong bg-surface text-xs text-sand shadow-lg hover:text-cream md:top-auto md:right-auto md:bottom-4 md:left-4 md:size-auto md:min-h-11 md:max-w-[calc(100vw-2rem)] md:translate-y-0 md:rounded-full md:border-r md:px-4"
+        // Small screens have no free corner: the bottom edge belongs to the tab bar
+        // and the purchase bars, and every page has controls near both sides. There
+        // the trigger is a 24px-wide handle that lives entirely inside the page
+        // gutter (24–28px), so it can never cover a control. From md up it is the
+        // labelled pill in the bottom-left corner.
+        className="fixed top-1/2 right-0 z-50 flex h-16 w-6 -translate-y-1/2 items-center justify-center gap-2 rounded-l-md border border-r-0 border-line-strong bg-surface text-xs text-sand shadow-lg hover:text-cream md:top-auto md:right-auto md:bottom-4 md:left-4 md:h-auto md:min-h-11 md:w-auto md:max-w-[calc(100vw-2rem)] md:translate-y-0 md:rounded-full md:border-r md:px-4"
       >
         <Settings2 size={16} aria-hidden="true" className="shrink-0" />
         <span className="sr-only truncate md:not-sr-only">Mocks · {label ?? scenarioLabel()}</span>

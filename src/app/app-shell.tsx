@@ -6,6 +6,7 @@ import { PageShell } from '@/components/layout/page-shell'
 import type { FooterLinkColumn } from '@/components/layout/site-footer'
 import type { HeaderNav } from '@/components/layout/site-header'
 import { useLogout, useSession } from '@/features/auth/session'
+import { cn } from '@/lib/utils'
 import { useCartCount } from '@/features/cart/queries'
 
 import { SearchDialog } from './search-dialog'
@@ -118,7 +119,9 @@ export function AppShell({
         }
         mobileTopBar={mobileTopBar}
         mobileTabBar={mobileTab === false ? false : { activeTab: mobileTab, cartCount }}
-        mainClassName={mainClassName}
+        // No outline: <main> only takes focus as the target of the skip link and of
+        // route changes.
+        mainClassName={cn('focus:outline-none', mainClassName)}
       >
         {children}
       </PageShell>

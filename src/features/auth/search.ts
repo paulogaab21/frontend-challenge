@@ -14,12 +14,17 @@ export interface AuthSearch {
   motivo?: 'sessao-expirada'
 }
 
+/**
+ * Both keys are always present (`undefined` when absent or rejected) so the raw
+ * query-string value can never reach the page — in particular a `redirect` that
+ * points outside the app.
+ */
 export function validateAuthSearch(search: Record<string, unknown>): AuthSearch {
-  const result: AuthSearch = {}
   const target = safeRedirect(search.redirect)
-  if (target !== '/') result.redirect = target
-  if (search.motivo === 'sessao-expirada') result.motivo = 'sessao-expirada'
-  return result
+  return {
+    redirect: target === '/' ? undefined : target,
+    motivo: search.motivo === 'sessao-expirada' ? 'sessao-expirada' : undefined,
+  }
 }
 
 /** Someone already signed in has nothing to do on these pages: move them along. */
