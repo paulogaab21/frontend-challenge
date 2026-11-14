@@ -1,8 +1,8 @@
 {
-  "date": "2026-11-14T02:48:49.645Z",
+  "date": "2026-11-14T03:05:03.978Z",
   "command": "npm run lighthouse -- --build",
   "git": {
-    "commit": "06d2cee9f83e05fc391f93608fd1fe087e803fc0",
+    "commit": "72deca1e4660a3ff55551616c2b120df86abb26c",
     "branch": "frontend-challenge-solution",
     "dirty": false
   },
@@ -117,9 +117,9 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 1886.9303499999996,
+            "lcp": 1869.5674499999996,
             "cls": 0.0005502395271922393,
-            "tbt": 128
+            "tbt": 114
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -135,12 +135,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T02:49:02.744Z",
+          "date": "2026-11-14T03:05:19.858Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3125.5,
+            "benchmarkIndex": 3069.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -215,9 +215,9 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 1876.1164000000003,
+            "lcp": 1887.6837999999998,
             "cls": 0.0005502395271922393,
-            "tbt": 127
+            "tbt": 132
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -233,12 +233,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T02:49:12.666Z",
+          "date": "2026-11-14T03:05:29.716Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3171,
+            "benchmarkIndex": 3084,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -313,9 +313,9 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 1876.1503999999998,
+            "lcp": 1870.5451000000003,
             "cls": 0.0005502395271922393,
-            "tbt": 129
+            "tbt": 115
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -331,12 +331,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T02:49:22.371Z",
+          "date": "2026-11-14T03:05:39.413Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3107,
+            "benchmarkIndex": 3060.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -449,11 +449,11 @@
         "metrics": {
           "lcp": {
             "values": [
-              1886.9303499999996,
-              1876.1164000000003,
-              1876.1503999999998
+              1869.5674499999996,
+              1887.6837999999998,
+              1870.5451000000003
             ],
-            "median": 1876.1503999999998,
+            "median": 1870.5451000000003,
             "unit": "ms"
           },
           "cls": {
@@ -467,11 +467,11 @@
           },
           "tbt": {
             "values": [
-              128,
-              127,
-              129
+              114,
+              132,
+              115
             ],
-            "median": 128,
+            "median": 115,
             "unit": "ms"
           }
         },
@@ -495,9 +495,9 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 1719.3223999999998,
+            "lcp": 1723.836,
             "cls": 0,
-            "tbt": 133.95159999999998
+            "tbt": 132.274
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -513,12 +513,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T02:49:31.950Z",
+          "date": "2026-11-14T03:05:49.063Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3059,
+            "benchmarkIndex": 3111,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -587,15 +587,15 @@
         {
           "number": 2,
           "scores": {
-            "performance": 98,
+            "performance": 99,
             "accessibility": 100,
             "best-practices": 100,
             "seo": 100
           },
           "metrics": {
-            "lcp": 1715.2309000000002,
+            "lcp": 1722.3964499999997,
             "cls": 0,
-            "tbt": 139.15935000000002
+            "tbt": 128.67117500000006
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -611,12 +611,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T02:49:41.800Z",
+          "date": "2026-11-14T03:05:58.854Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3140,
+            "benchmarkIndex": 3105.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -691,9 +691,9 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 1712.0185999999997,
+            "lcp": 1721.5218,
             "cls": 0,
-            "tbt": 142.92989999999998
+            "tbt": 164.1087
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
@@ -709,12 +709,12 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T02:49:51.558Z",
+          "date": "2026-11-14T03:06:08.595Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3171,
+            "benchmarkIndex": 3100,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -786,10 +786,10 @@
           "performance": {
             "values": [
               99,
-              98,
+              99,
               98
             ],
-            "median": 98,
+            "median": 99,
             "target": 90,
             "pass": true
           },
@@ -827,11 +827,11 @@
         "metrics": {
           "lcp": {
             "values": [
-              1719.3223999999998,
-              1715.2309000000002,
-              1712.0185999999997
+              1723.836,
+              1722.3964499999997,
+              1721.5218
             ],
-            "median": 1715.2309000000002,
+            "median": 1722.3964499999997,
             "unit": "ms"
           },
           "cls": {
@@ -845,11 +845,11 @@
           },
           "tbt": {
             "values": [
-              133.95159999999998,
-              139.15935000000002,
-              142.92989999999998
+              132.274,
+              128.67117500000006,
+              164.1087
             ],
-            "median": 139.15935000000002,
+            "median": 132.274,
             "unit": "ms"
           }
         },
@@ -873,7 +873,7 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 545.07465,
+            "lcp": 531.9282999999999,
             "cls": 0.001699830456744393,
             "tbt": 0
           },
@@ -891,483 +891,7 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T02:50:01.494Z",
-          "lighthouseVersion": "13.6.0",
-          "environment": {
-            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
-            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3197.5,
-            "credits": {
-              "axe-core": "4.14.0"
-            }
-          },
-          "settings": {
-            "output": [
-              "html",
-              "json"
-            ],
-            "maxWaitForFcp": 30000,
-            "maxWaitForLoad": 45000,
-            "pauseAfterFcpMs": 1000,
-            "pauseAfterLoadMs": 1000,
-            "networkQuietThresholdMs": 1000,
-            "cpuQuietThresholdMs": 1000,
-            "formFactor": "desktop",
-            "throttling": {
-              "rttMs": 40,
-              "throughputKbps": 10240,
-              "requestLatencyMs": 0,
-              "downloadThroughputKbps": 0,
-              "uploadThroughputKbps": 0,
-              "cpuSlowdownMultiplier": 1
-            },
-            "throttlingMethod": "simulate",
-            "screenEmulation": {
-              "mobile": false,
-              "width": 1350,
-              "height": 940,
-              "deviceScaleFactor": 1,
-              "disabled": false
-            },
-            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
-            "auditMode": false,
-            "gatherMode": false,
-            "clearStorageTypes": [
-              "file_systems",
-              "shader_cache",
-              "service_workers",
-              "cache_storage"
-            ],
-            "disableStorageReset": true,
-            "debugNavigation": false,
-            "channel": "node",
-            "usePassiveGathering": false,
-            "disableFullPageScreenshot": false,
-            "skipAboutBlank": false,
-            "blankPage": "about:blank",
-            "ignoreStatusCode": false,
-            "locale": "en-US",
-            "blockedUrlPatterns": null,
-            "additionalTraceCategories": null,
-            "extraHeaders": null,
-            "precomputedLanternData": null,
-            "onlyAudits": null,
-            "onlyCategories": [
-              "performance",
-              "accessibility",
-              "best-practices",
-              "seo"
-            ],
-            "skipAudits": null
-          },
-          "warnings": []
-        },
-        {
-          "number": 2,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "best-practices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "lcp": 537.9743249999999,
-            "cls": 0.001699830456744393,
-            "tbt": 0
-          },
-          "error": null,
-          "chromeVersion": "Chrome/157.0.8103.52",
-          "warmUp": {
-            "url": "http://127.0.0.1:4173/",
-            "controlled": true,
-            "registrations": [
-              {
-                "scope": "http://127.0.0.1:4173/",
-                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
-              }
-            ],
-            "httpCacheCleared": true,
-            "warning": null
-          },
-          "date": "2026-11-14T02:50:11.734Z",
-          "lighthouseVersion": "13.6.0",
-          "environment": {
-            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
-            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3163.5,
-            "credits": {
-              "axe-core": "4.14.0"
-            }
-          },
-          "settings": {
-            "output": [
-              "html",
-              "json"
-            ],
-            "maxWaitForFcp": 30000,
-            "maxWaitForLoad": 45000,
-            "pauseAfterFcpMs": 1000,
-            "pauseAfterLoadMs": 1000,
-            "networkQuietThresholdMs": 1000,
-            "cpuQuietThresholdMs": 1000,
-            "formFactor": "desktop",
-            "throttling": {
-              "rttMs": 40,
-              "throughputKbps": 10240,
-              "requestLatencyMs": 0,
-              "downloadThroughputKbps": 0,
-              "uploadThroughputKbps": 0,
-              "cpuSlowdownMultiplier": 1
-            },
-            "throttlingMethod": "simulate",
-            "screenEmulation": {
-              "mobile": false,
-              "width": 1350,
-              "height": 940,
-              "deviceScaleFactor": 1,
-              "disabled": false
-            },
-            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
-            "auditMode": false,
-            "gatherMode": false,
-            "clearStorageTypes": [
-              "file_systems",
-              "shader_cache",
-              "service_workers",
-              "cache_storage"
-            ],
-            "disableStorageReset": true,
-            "debugNavigation": false,
-            "channel": "node",
-            "usePassiveGathering": false,
-            "disableFullPageScreenshot": false,
-            "skipAboutBlank": false,
-            "blankPage": "about:blank",
-            "ignoreStatusCode": false,
-            "locale": "en-US",
-            "blockedUrlPatterns": null,
-            "additionalTraceCategories": null,
-            "extraHeaders": null,
-            "precomputedLanternData": null,
-            "onlyAudits": null,
-            "onlyCategories": [
-              "performance",
-              "accessibility",
-              "best-practices",
-              "seo"
-            ],
-            "skipAudits": null
-          },
-          "warnings": []
-        },
-        {
-          "number": 3,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "best-practices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "lcp": 535.2877249999999,
-            "cls": 0.001699830456744393,
-            "tbt": 0
-          },
-          "error": null,
-          "chromeVersion": "Chrome/157.0.8103.52",
-          "warmUp": {
-            "url": "http://127.0.0.1:4173/",
-            "controlled": true,
-            "registrations": [
-              {
-                "scope": "http://127.0.0.1:4173/",
-                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
-              }
-            ],
-            "httpCacheCleared": true,
-            "warning": null
-          },
-          "date": "2026-11-14T02:50:21.963Z",
-          "lighthouseVersion": "13.6.0",
-          "environment": {
-            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
-            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3057.5,
-            "credits": {
-              "axe-core": "4.14.0"
-            }
-          },
-          "settings": {
-            "output": [
-              "html",
-              "json"
-            ],
-            "maxWaitForFcp": 30000,
-            "maxWaitForLoad": 45000,
-            "pauseAfterFcpMs": 1000,
-            "pauseAfterLoadMs": 1000,
-            "networkQuietThresholdMs": 1000,
-            "cpuQuietThresholdMs": 1000,
-            "formFactor": "desktop",
-            "throttling": {
-              "rttMs": 40,
-              "throughputKbps": 10240,
-              "requestLatencyMs": 0,
-              "downloadThroughputKbps": 0,
-              "uploadThroughputKbps": 0,
-              "cpuSlowdownMultiplier": 1
-            },
-            "throttlingMethod": "simulate",
-            "screenEmulation": {
-              "mobile": false,
-              "width": 1350,
-              "height": 940,
-              "deviceScaleFactor": 1,
-              "disabled": false
-            },
-            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
-            "auditMode": false,
-            "gatherMode": false,
-            "clearStorageTypes": [
-              "file_systems",
-              "shader_cache",
-              "service_workers",
-              "cache_storage"
-            ],
-            "disableStorageReset": true,
-            "debugNavigation": false,
-            "channel": "node",
-            "usePassiveGathering": false,
-            "disableFullPageScreenshot": false,
-            "skipAboutBlank": false,
-            "blankPage": "about:blank",
-            "ignoreStatusCode": false,
-            "locale": "en-US",
-            "blockedUrlPatterns": null,
-            "additionalTraceCategories": null,
-            "extraHeaders": null,
-            "precomputedLanternData": null,
-            "onlyAudits": null,
-            "onlyCategories": [
-              "performance",
-              "accessibility",
-              "best-practices",
-              "seo"
-            ],
-            "skipAudits": null
-          },
-          "warnings": []
-        }
-      ],
-      "aggregate": {
-        "scores": {
-          "performance": {
-            "values": [
-              100,
-              100,
-              100
-            ],
-            "median": 100,
-            "target": 90,
-            "pass": true
-          },
-          "accessibility": {
-            "values": [
-              100,
-              100,
-              100
-            ],
-            "median": 100,
-            "target": 95,
-            "pass": true
-          },
-          "best-practices": {
-            "values": [
-              100,
-              100,
-              100
-            ],
-            "median": 100,
-            "target": 95,
-            "pass": true
-          },
-          "seo": {
-            "values": [
-              100,
-              100,
-              100
-            ],
-            "median": 100,
-            "target": 90,
-            "pass": true
-          }
-        },
-        "metrics": {
-          "lcp": {
-            "values": [
-              545.07465,
-              537.9743249999999,
-              535.2877249999999
-            ],
-            "median": 537.9743249999999,
-            "unit": "ms"
-          },
-          "cls": {
-            "values": [
-              0.001699830456744393,
-              0.001699830456744393,
-              0.001699830456744393
-            ],
-            "median": 0.001699830456744393,
-            "unit": "unitless"
-          },
-          "tbt": {
-            "values": [
-              0,
-              0,
-              0
-            ],
-            "median": 0,
-            "unit": "ms"
-          }
-        },
-        "pass": true
-      }
-    },
-    {
-      "profile": "desktop",
-      "page": {
-        "slug": "nft-detail",
-        "title": "Detalhe do NFT",
-        "path": "/nft/emerald-ape-042"
-      },
-      "runs": [
-        {
-          "number": 1,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "best-practices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "lcp": 538.4724,
-            "cls": 0.0001241788928971466,
-            "tbt": 0
-          },
-          "error": null,
-          "chromeVersion": "Chrome/157.0.8103.52",
-          "warmUp": {
-            "url": "http://127.0.0.1:4173/",
-            "controlled": true,
-            "registrations": [
-              {
-                "scope": "http://127.0.0.1:4173/",
-                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
-              }
-            ],
-            "httpCacheCleared": true,
-            "warning": null
-          },
-          "date": "2026-11-14T02:50:32.257Z",
-          "lighthouseVersion": "13.6.0",
-          "environment": {
-            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
-            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3091.5,
-            "credits": {
-              "axe-core": "4.14.0"
-            }
-          },
-          "settings": {
-            "output": [
-              "html",
-              "json"
-            ],
-            "maxWaitForFcp": 30000,
-            "maxWaitForLoad": 45000,
-            "pauseAfterFcpMs": 1000,
-            "pauseAfterLoadMs": 1000,
-            "networkQuietThresholdMs": 1000,
-            "cpuQuietThresholdMs": 1000,
-            "formFactor": "desktop",
-            "throttling": {
-              "rttMs": 40,
-              "throughputKbps": 10240,
-              "requestLatencyMs": 0,
-              "downloadThroughputKbps": 0,
-              "uploadThroughputKbps": 0,
-              "cpuSlowdownMultiplier": 1
-            },
-            "throttlingMethod": "simulate",
-            "screenEmulation": {
-              "mobile": false,
-              "width": 1350,
-              "height": 940,
-              "deviceScaleFactor": 1,
-              "disabled": false
-            },
-            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
-            "auditMode": false,
-            "gatherMode": false,
-            "clearStorageTypes": [
-              "file_systems",
-              "shader_cache",
-              "service_workers",
-              "cache_storage"
-            ],
-            "disableStorageReset": true,
-            "debugNavigation": false,
-            "channel": "node",
-            "usePassiveGathering": false,
-            "disableFullPageScreenshot": false,
-            "skipAboutBlank": false,
-            "blankPage": "about:blank",
-            "ignoreStatusCode": false,
-            "locale": "en-US",
-            "blockedUrlPatterns": null,
-            "additionalTraceCategories": null,
-            "extraHeaders": null,
-            "precomputedLanternData": null,
-            "onlyAudits": null,
-            "onlyCategories": [
-              "performance",
-              "accessibility",
-              "best-practices",
-              "seo"
-            ],
-            "skipAudits": null
-          },
-          "warnings": []
-        },
-        {
-          "number": 2,
-          "scores": {
-            "performance": 100,
-            "accessibility": 100,
-            "best-practices": 100,
-            "seo": 100
-          },
-          "metrics": {
-            "lcp": 532.5948,
-            "cls": 0.0001241788928971466,
-            "tbt": 0
-          },
-          "error": null,
-          "chromeVersion": "Chrome/157.0.8103.52",
-          "warmUp": {
-            "url": "http://127.0.0.1:4173/",
-            "controlled": true,
-            "registrations": [
-              {
-                "scope": "http://127.0.0.1:4173/",
-                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
-              }
-            ],
-            "httpCacheCleared": true,
-            "warning": null
-          },
-          "date": "2026-11-14T02:50:42.321Z",
+          "date": "2026-11-14T03:06:18.117Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
@@ -1439,7 +963,7 @@
           "warnings": []
         },
         {
-          "number": 3,
+          "number": 2,
           "scores": {
             "performance": 100,
             "accessibility": 100,
@@ -1447,8 +971,8 @@
             "seo": 100
           },
           "metrics": {
-            "lcp": 547.5232,
-            "cls": 0.0001241788928971466,
+            "lcp": 542.6129999999999,
+            "cls": 0.001699830456744393,
             "tbt": 0
           },
           "error": null,
@@ -1465,12 +989,110 @@
             "httpCacheCleared": true,
             "warning": null
           },
-          "date": "2026-11-14T02:50:52.571Z",
+          "date": "2026-11-14T03:06:28.389Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3190.5,
+            "benchmarkIndex": 3200.5,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "desktop",
+            "throttling": {
+              "rttMs": 40,
+              "throughputKbps": 10240,
+              "requestLatencyMs": 0,
+              "downloadThroughputKbps": 0,
+              "uploadThroughputKbps": 0,
+              "cpuSlowdownMultiplier": 1
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": false,
+              "width": 1350,
+              "height": 940,
+              "deviceScaleFactor": 1,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        },
+        {
+          "number": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcp": 541.6847249999998,
+            "cls": 0.001699830456744393,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
+            "httpCacheCleared": true,
+            "warning": null
+          },
+          "date": "2026-11-14T03:06:38.549Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 3124,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -1583,11 +1205,389 @@
         "metrics": {
           "lcp": {
             "values": [
-              538.4724,
-              532.5948,
-              547.5232
+              531.9282999999999,
+              542.6129999999999,
+              541.6847249999998
             ],
-            "median": 538.4724,
+            "median": 541.6847249999998,
+            "unit": "ms"
+          },
+          "cls": {
+            "values": [
+              0.001699830456744393,
+              0.001699830456744393,
+              0.001699830456744393
+            ],
+            "median": 0.001699830456744393,
+            "unit": "unitless"
+          },
+          "tbt": {
+            "values": [
+              0,
+              0,
+              0
+            ],
+            "median": 0,
+            "unit": "ms"
+          }
+        },
+        "pass": true
+      }
+    },
+    {
+      "profile": "desktop",
+      "page": {
+        "slug": "nft-detail",
+        "title": "Detalhe do NFT",
+        "path": "/nft/emerald-ape-042"
+      },
+      "runs": [
+        {
+          "number": 1,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcp": 520.3180000000001,
+            "cls": 0.0001241788928971466,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
+            "httpCacheCleared": true,
+            "warning": null
+          },
+          "date": "2026-11-14T03:06:48.775Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 3181,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "desktop",
+            "throttling": {
+              "rttMs": 40,
+              "throughputKbps": 10240,
+              "requestLatencyMs": 0,
+              "downloadThroughputKbps": 0,
+              "uploadThroughputKbps": 0,
+              "cpuSlowdownMultiplier": 1
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": false,
+              "width": 1350,
+              "height": 940,
+              "deviceScaleFactor": 1,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        },
+        {
+          "number": 2,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcp": 536.8635999999999,
+            "cls": 0.0001241788928971466,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
+            "httpCacheCleared": true,
+            "warning": null
+          },
+          "date": "2026-11-14T03:06:58.816Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 3197,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "desktop",
+            "throttling": {
+              "rttMs": 40,
+              "throughputKbps": 10240,
+              "requestLatencyMs": 0,
+              "downloadThroughputKbps": 0,
+              "uploadThroughputKbps": 0,
+              "cpuSlowdownMultiplier": 1
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": false,
+              "width": 1350,
+              "height": 940,
+              "deviceScaleFactor": 1,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        },
+        {
+          "number": 3,
+          "scores": {
+            "performance": 100,
+            "accessibility": 100,
+            "best-practices": 100,
+            "seo": 100
+          },
+          "metrics": {
+            "lcp": 545.0688,
+            "cls": 0.0001241788928971466,
+            "tbt": 0
+          },
+          "error": null,
+          "chromeVersion": "Chrome/157.0.8103.52",
+          "warmUp": {
+            "url": "http://127.0.0.1:4173/",
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
+            "httpCacheCleared": true,
+            "warning": null
+          },
+          "date": "2026-11-14T03:07:09.002Z",
+          "lighthouseVersion": "13.6.0",
+          "environment": {
+            "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+            "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
+            "benchmarkIndex": 3086.5,
+            "credits": {
+              "axe-core": "4.14.0"
+            }
+          },
+          "settings": {
+            "output": [
+              "html",
+              "json"
+            ],
+            "maxWaitForFcp": 30000,
+            "maxWaitForLoad": 45000,
+            "pauseAfterFcpMs": 1000,
+            "pauseAfterLoadMs": 1000,
+            "networkQuietThresholdMs": 1000,
+            "cpuQuietThresholdMs": 1000,
+            "formFactor": "desktop",
+            "throttling": {
+              "rttMs": 40,
+              "throughputKbps": 10240,
+              "requestLatencyMs": 0,
+              "downloadThroughputKbps": 0,
+              "uploadThroughputKbps": 0,
+              "cpuSlowdownMultiplier": 1
+            },
+            "throttlingMethod": "simulate",
+            "screenEmulation": {
+              "mobile": false,
+              "width": 1350,
+              "height": 940,
+              "deviceScaleFactor": 1,
+              "disabled": false
+            },
+            "emulatedUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36",
+            "auditMode": false,
+            "gatherMode": false,
+            "clearStorageTypes": [
+              "file_systems",
+              "shader_cache",
+              "service_workers",
+              "cache_storage"
+            ],
+            "disableStorageReset": true,
+            "debugNavigation": false,
+            "channel": "node",
+            "usePassiveGathering": false,
+            "disableFullPageScreenshot": false,
+            "skipAboutBlank": false,
+            "blankPage": "about:blank",
+            "ignoreStatusCode": false,
+            "locale": "en-US",
+            "blockedUrlPatterns": null,
+            "additionalTraceCategories": null,
+            "extraHeaders": null,
+            "precomputedLanternData": null,
+            "onlyAudits": null,
+            "onlyCategories": [
+              "performance",
+              "accessibility",
+              "best-practices",
+              "seo"
+            ],
+            "skipAudits": null
+          },
+          "warnings": []
+        }
+      ],
+      "aggregate": {
+        "scores": {
+          "performance": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 90,
+            "pass": true
+          },
+          "accessibility": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 95,
+            "pass": true
+          },
+          "best-practices": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 95,
+            "pass": true
+          },
+          "seo": {
+            "values": [
+              100,
+              100,
+              100
+            ],
+            "median": 100,
+            "target": 90,
+            "pass": true
+          }
+        },
+        "metrics": {
+          "lcp": {
+            "values": [
+              520.3180000000001,
+              536.8635999999999,
+              545.0688
+            ],
+            "median": 536.8635999999999,
             "unit": "ms"
           },
           "cls": {

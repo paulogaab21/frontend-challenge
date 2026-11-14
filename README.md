@@ -376,8 +376,8 @@ mede cada página 3 vezes por perfil. Mediana de cada categoria:
 
 | Perfil  | Página         | Performance | Accessibility | Best Practices |   SEO   | LCP    | CLS    | TBT    |
 | ------- | -------------- | :---------: | :-----------: | :------------: | :-----: | ------ | ------ | ------ |
-| mobile  | Início         |   **98**    |    **100**    |    **100**     | **100** | 1,88 s | 0,0006 | 128 ms |
-| mobile  | Detalhe do NFT |   **98**    |    **100**    |    **100**     | **100** | 1,72 s | 0      | 139 ms |
+| mobile  | Início         |   **98**    |    **100**    |    **100**     | **100** | 1,87 s | 0,0006 | 115 ms |
+| mobile  | Detalhe do NFT |   **99**    |    **100**    |    **100**     | **100** | 1,72 s | 0      | 132 ms |
 | desktop | Início         |   **100**   |    **100**    |    **100**     | **100** | 0,54 s | 0,0017 | 0 ms   |
 | desktop | Detalhe do NFT |   **100**   |    **100**    |    **100**     | **100** | 0,54 s | 0,0001 | 0 ms   |
 
