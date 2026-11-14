@@ -2,20 +2,41 @@ import type { Locator, Page } from '@playwright/test'
 import { expect } from '../fixtures'
 
 interface ShiftWindow extends Window {
-  __shadCls?: { value: number }
+  __shadCls?: { value: number; entries: unknown[] }
 }
 
 export async function observeLayoutShifts(page: Page) {
   await page.addInitScript(() => {
-    const measurement = { value: 0 }
+    const measurement: { value: number; entries: unknown[] } = { value: 0, entries: [] }
     ;(window as ShiftWindow).__shadCls = measurement
     new PerformanceObserver((list) => {
       for (const entry of list.getEntries()) {
-        const shift = entry as PerformanceEntry & { value: number; hadRecentInput: boolean }
-        if (!shift.hadRecentInput) measurement.value += shift.value
+        const shift = entry as PerformanceEntry & {
+          value: number
+          hadRecentInput: boolean
+          sources: { node?: Node; previousRect: DOMRectReadOnly; currentRect: DOMRectReadOnly }[]
+        }
+        if (!shift.hadRecentInput) {
+          measurement.value += shift.value
+          measurement.entries.push({
+            value: shift.value,
+            sources: shift.sources.map((source) => ({
+              element:
+                source.node instanceof Element
+                  ? source.node.outerHTML.slice(0, 180)
+                  : source.node?.parentElement?.outerHTML.slice(0, 180),
+              previous: source.previousRect.toJSON(),
+              current: source.currentRect.toJSON(),
+            })),
+          })
+        }
       }
     }).observe({ type: 'layout-shift', buffered: true })
   })
+}
+
+export async function layoutShiftDetails(page: Page) {
+  return page.evaluate(() => (window as ShiftWindow).__shadCls?.entries ?? [])
 }
 
 export async function layoutShiftScore(page: Page) {

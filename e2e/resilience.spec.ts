@@ -3,7 +3,12 @@ import { addEth, formatEth } from '@/lib/money'
 import { NFT_IDS } from './support/data'
 import { expect, test } from './support/fixtures'
 import { expectCatalog, market } from './support/pages/catalog'
-import { expectSameBox, layoutShiftScore, observeLayoutShifts } from './support/pages/performance'
+import {
+  expectSameBox,
+  layoutShiftDetails,
+  layoutShiftScore,
+  observeLayoutShifts,
+} from './support/pages/performance'
 
 test('slow catalog reserves its grid and filters without layout shift', async ({
   app,
@@ -82,7 +87,12 @@ test('slow cart summary keeps its reserved space while the quote loads', async (
   await expectSameBox(before!, summary)
   const cls = await layoutShiftScore(page)
   await testInfo.attach('cart-layout', {
-    body: JSON.stringify({ before, after: await summary.boundingBox(), cls }),
+    body: JSON.stringify({
+      before,
+      after: await summary.boundingBox(),
+      cls,
+      shifts: await layoutShiftDetails(page),
+    }),
     contentType: 'application/json',
   })
   expect(cls).toBeLessThanOrEqual(0.01)
@@ -172,7 +182,7 @@ test('timeout aborts after 15 seconds per attempt, then offers a working retry',
   page.on('request', (request) => {
     if (new URL(request.url()).pathname === '/api/nfts') requests.push(request.url())
   })
-  await app.goto('/', { scenario: 'timeout' })
+  await app.goto('/', { scenario: 'timeout', settle: false })
   await expect(page.getByRole('status', { name: 'Carregando NFTs', exact: true })).toBeVisible()
   await expect.poll(() => requests.length).toBe(1)
   await page.clock.fastForward(15_001)

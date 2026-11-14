@@ -60,7 +60,7 @@ export function NftCard({
                 : '(min-width: 1280px) 250px, (min-width: 768px) 250px, calc((100vw - 72px) / 2)'
             }
             className={cn(
-              'w-[calc(100%-8px)] rounded-2xl md:max-w-[250px]',
+              'w-[calc(100%-8px)] -translate-y-1 rounded-2xl md:max-w-[250px] md:translate-y-0',
               compact && 'max-w-[212px]',
               soldOut && 'opacity-40',
             )}

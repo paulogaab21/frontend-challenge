@@ -78,7 +78,10 @@ export function ProfileForm({
         <div className="mt-6">
           <FormServerFeedback error={formError} successMessage={successMessage} />
         </div>
-        <fieldset disabled={pending} className="mt-6 grid min-w-0 gap-x-7 gap-y-6 md:grid-cols-2">
+        <fieldset
+          disabled={pending}
+          className="mt-6 grid min-w-0 gap-x-7 gap-y-[23px] md:grid-cols-2"
+        >
           <FormField
             control={form.control}
             name="displayName"
@@ -217,9 +220,22 @@ export function ProfileForm({
               </FormItem>
             )}
           />
-          <div className="min-w-0">{avatarField}</div>
+          <div className="min-w-0 xl:flex xl:items-end xl:justify-between xl:gap-6">
+            {avatarField}
+            <Button
+              type="submit"
+              className="hidden w-[131px] rounded-[3px] text-sm xl:inline-flex"
+              loading={busy}
+            >
+              Salvar
+            </Button>
+          </div>
         </fieldset>
-        <Button type="submit" className="mt-8 w-[131px] rounded-[3px] text-sm" loading={busy}>
+        <Button
+          type="submit"
+          className="mt-8 w-[131px] rounded-[3px] text-sm xl:hidden"
+          loading={busy}
+        >
           Salvar
         </Button>
       </form>

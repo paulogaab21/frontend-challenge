@@ -28,7 +28,7 @@ export function AvatarField({
   return (
     <div>
       <p className="text-15 leading-6">Avatar</p>
-      <div className="mt-1 flex flex-wrap items-center gap-5">
+      <div className="mt-1 flex flex-wrap items-center gap-6">
         <Avatar className="size-[50px] border border-line">
           <AvatarImage src={avatarUrl ?? undefined} alt={`Avatar de ${displayName}`} />
           <AvatarFallback className="bg-surface-raised text-copper">

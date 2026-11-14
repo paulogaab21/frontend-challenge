@@ -64,12 +64,12 @@ export function PasswordForm({
         <div className="mt-4">
           <FormServerFeedback error={formError} successMessage={successMessage} />
         </div>
-        <fieldset disabled={pending} className="mt-5 max-w-[417px] space-y-6">
+        <fieldset disabled={pending} className="mt-4 max-w-[417px] space-y-[23px]">
           <FormField
             control={form.control}
             name="currentPassword"
             render={({ field }) => (
-              <FormItem className="gap-2">
+              <FormItem className="gap-1">
                 <FormLabel>Senha atual</FormLabel>
                 <FormControl>
                   <PasswordInput
@@ -88,7 +88,7 @@ export function PasswordForm({
             control={form.control}
             name="newPassword"
             render={({ field }) => (
-              <FormItem className="gap-2">
+              <FormItem className="gap-1">
                 <FormLabel>Nova senha</FormLabel>
                 <FormControl>
                   <PasswordInput
@@ -107,7 +107,7 @@ export function PasswordForm({
             control={form.control}
             name="confirmPassword"
             render={({ field }) => (
-              <FormItem className="gap-2">
+              <FormItem className="gap-1">
                 <FormLabel>Confirmar nova senha</FormLabel>
                 <FormControl>
                   <PasswordInput
