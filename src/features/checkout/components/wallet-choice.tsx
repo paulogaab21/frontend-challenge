@@ -119,8 +119,12 @@ export function WalletChoiceGroup({
         const info = describe(wallet)
         const optionId = `${id}-${wallet.id}`
         return (
-          <div key={wallet.id} className="flex items-center gap-[9px]">
-            <RadioGroupItem id={optionId} value={wallet.id} className="border-2 border-copper" />
+          <div key={wallet.id} className="flex items-center gap-2">
+            <RadioGroupItem
+              id={optionId}
+              value={wallet.id}
+              className="size-[15px] border-2 border-copper"
+            />
             <label htmlFor={optionId} className="cursor-pointer text-15 leading-6">
               {info.title}
               <span className="text-sand">
@@ -131,8 +135,12 @@ export function WalletChoiceGroup({
           </div>
         )
       })}
-      <div className="flex items-center gap-[9px]">
-        <RadioGroupItem id={`${id}-other`} value="other" className="border-2 border-copper" />
+      <div className="flex items-center gap-2">
+        <RadioGroupItem
+          id={`${id}-other`}
+          value="other"
+          className="size-[15px] border-2 border-copper"
+        />
         <label htmlFor={`${id}-other`} className="cursor-pointer text-15 leading-6">
           Usar outra carteira?
         </label>

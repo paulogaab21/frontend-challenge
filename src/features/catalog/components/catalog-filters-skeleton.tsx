@@ -15,7 +15,7 @@ export function CatalogFiltersSkeleton({
       aria-label="Carregando filtros"
       className="w-full bg-surface p-5 lg:w-[310px]"
     >
-      <Skeleton className="mb-2.5 h-[18px] w-24" />
+      <Skeleton className="mb-3 h-4 w-24" />
       {Array.from({ length: categoryCount }, (_, index) => (
         <div key={index} className="flex h-10 items-center justify-between px-3">
           <Skeleton variant="line" className="w-32" />
@@ -23,17 +23,17 @@ export function CatalogFiltersSkeleton({
         </div>
       ))}
       <div className="mt-10">
-        <Skeleton className="mb-2.5 h-[18px] w-40" />
+        <Skeleton className="mb-[13.5px] h-4 w-40" />
         <div className="pl-3">
           <Skeleton className="h-[18px] w-full" />
-          <Skeleton className="mt-3 h-6 w-full" />
-          <Skeleton className="mt-3 h-9 w-[92px]" />
+          <Skeleton className="mt-[11.5px] h-6 w-full" />
+          <Skeleton className="mt-2.5 h-9 w-[92px]" />
         </div>
       </div>
       <div className="mt-10">
-        <Skeleton className="mb-2.5 h-[18px] w-16" />
+        <Skeleton className="mb-3 h-4 w-16" />
         {Array.from({ length: networkCount }, (_, index) => (
-          <div key={index} className="flex h-10 items-center px-3">
+          <div key={index} className="flex h-10 items-center pl-3">
             <Skeleton variant="line" className="w-full" />
           </div>
         ))}

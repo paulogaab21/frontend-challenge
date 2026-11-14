@@ -59,7 +59,7 @@ function CheckoutSkeleton() {
     <div
       role="status"
       aria-label="Carregando pagamento"
-      className="mt-[26px] grid min-w-0 gap-x-8 gap-y-10 lg:grid-cols-[minmax(0,1fr)_405px]"
+      className="mt-7 grid min-w-0 gap-x-8 gap-y-10 lg:grid-cols-[minmax(0,1fr)_405px]"
     >
       <div className="min-w-0">
         <Skeleton variant="line" className="mb-[9px] h-6 w-56" />
@@ -252,7 +252,7 @@ export function CheckoutPage() {
       activeNav="mercado"
       mobileTab={false}
       mobileTopBar={{ variant: 'inner', title: 'Pagamento com carteira', backTo: '/carrinho' }}
-      mainClassName="md:pt-8"
+      mainClassName="md:pt-[30px]"
     >
       <div className="container-page pb-10 md:pb-0">
         <h1 className="sr-only">Pagamento</h1>

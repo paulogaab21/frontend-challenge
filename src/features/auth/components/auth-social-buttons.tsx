@@ -29,7 +29,7 @@ export function AuthSocialButtons({
       >
         <Button
           variant="social"
-          className="w-full"
+          className="w-full md:gap-3 md:rounded-[5px]"
           onClick={() => onSelect('google')}
           disabled={disabled}
         >
@@ -38,7 +38,7 @@ export function AuthSocialButtons({
         </Button>
         <Button
           variant="social"
-          className="w-full"
+          className="w-full md:gap-3 md:rounded-[5px]"
           onClick={() => onSelect('facebook')}
           disabled={disabled}
         >

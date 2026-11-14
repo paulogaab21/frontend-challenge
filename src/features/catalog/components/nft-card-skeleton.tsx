@@ -16,13 +16,13 @@ export function NftCardSkeleton({ variant = 'default', className }: NftCardSkele
       />
       <div
         className={cn(
-          'mt-2 flex h-5 items-center px-2 md:mt-3 md:h-6 md:px-0',
-          compact && 'mt-3 px-0 md:h-5',
+          'mt-2 flex h-5 items-center px-2 md:mt-2.5 md:px-0',
+          compact && 'mt-[13px] h-[18px] px-0 md:mt-[13px]',
         )}
       >
         <Skeleton variant="line" className="w-4/5" />
       </div>
-      <div className={cn('flex h-6 items-center px-2 md:h-7 md:px-0', compact && 'px-0 md:h-6')}>
+      <div className={cn('flex h-6 items-center px-2 md:px-0', compact && 'h-5 px-0')}>
         <Skeleton variant="line" className="w-2/5" />
       </div>
     </div>

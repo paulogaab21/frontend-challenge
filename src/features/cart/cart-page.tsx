@@ -144,7 +144,7 @@ export function CartPage() {
       activeNav="mercado"
       mobileTab={false}
       mobileTopBar={{ variant: 'inner', title: 'Carrinho de NFTs', backTo: '/' }}
-      mainClassName="md:pt-8"
+      mainClassName="md:pt-[30px]"
     >
       <h1 className="sr-only">Carrinho de NFTs</h1>
       <div className="container-page mb-2 hidden md:block">
@@ -225,7 +225,7 @@ export function CartPage() {
         />
       )}
 
-      <div className="container-page mt-20 hidden md:block">
+      <div className="container-page mt-[94px] hidden md:block">
         <AlsoViewed exclude={new Set(items.map((item) => item.nftId))} />
       </div>
     </AppShell>

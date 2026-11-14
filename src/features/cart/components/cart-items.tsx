@@ -3,6 +3,7 @@ import { TrashIcon } from '@/components/icons'
 import { SiteLink } from '@/components/layout/site-link'
 import type { CartItem, QuoteIssue } from '@/contracts'
 import { formatEth } from '@/lib/money'
+import { cn } from '@/lib/utils'
 
 import { CartItemFeedback } from './cart-item-feedback'
 import { CartMobileItem } from './cart-mobile-item'
@@ -57,16 +58,20 @@ export function CartItems({
           </colgroup>
           <thead>
             <tr>
-              {['NFTs', 'Preço', 'Edições', 'Total'].map((label) => (
+              {/* Weights as drawn: "NFTs" and "Edições" bold, "Preço" and "Total" medium. */}
+              {['NFTs', 'Preço', 'Edições', 'Total'].map((label, index) => (
                 <th
                   key={label}
                   scope="col"
-                  className="border-b border-copper/30 pb-[7px] leading-5 font-medium first:font-bold"
+                  className={cn(
+                    'border-b border-copper/30 pb-[9px] leading-5',
+                    index % 2 === 0 ? 'font-bold' : 'font-medium',
+                  )}
                 >
                   {label}
                 </th>
               ))}
-              <th scope="col" className="border-b border-copper/30 pb-[7px]">
+              <th scope="col" className="border-b border-copper/30 pb-[9px]">
                 <span className="sr-only">Remover</span>
               </th>
             </tr>
@@ -96,14 +101,14 @@ export function CartItems({
                           className="w-[70px] rounded-md"
                         />
                       </SiteLink>
-                      <div className="min-w-0 py-2 pr-2">
+                      <div className="min-w-0 py-1.5 pr-2">
                         <SiteLink
                           to={getHref(item)}
                           className="block text-base leading-5 font-bold break-words hover:text-amber"
                         >
                           {item.name}
                         </SiteLink>
-                        <p className="mt-1 text-sm leading-5 text-sand">
+                        <p className="mt-0.5 text-sm leading-5 text-khaki">
                           ID do token: {item.tokenId}
                         </p>
                         {soldOut && <span className="text-xs font-bold text-coral">Esgotado</span>}
@@ -120,17 +125,25 @@ export function CartItems({
                     {formatEth(item.unitPrice)}
                   </td>
                   <td className="p-0 pr-2">
-                    <QuantityStepper
-                      name={item.name}
-                      quantity={item.quantity}
-                      maxQuantity={item.maxQuantity}
-                      disabled={soldOut}
-                      onChange={(quantity) => onQuantityChange(item, quantity)}
-                    />
-                    <p className="mt-1 text-10 leading-3 text-sand">Edição {item.editionLabel}</p>
-                    {!soldOut && item.quantity >= item.maxQuantity && (
-                      <p className="mt-1 text-10 leading-3 text-sand">Máximo disponível</p>
-                    )}
+                    {/* The stepper stays centred in the row, as drawn; the edition (and
+                        the stock limit) hang below it without moving it. */}
+                    <div className="relative w-fit">
+                      <QuantityStepper
+                        name={item.name}
+                        quantity={item.quantity}
+                        maxQuantity={item.maxQuantity}
+                        disabled={soldOut}
+                        onChange={(quantity) => onQuantityChange(item, quantity)}
+                      />
+                      {!soldOut && item.quantity >= item.maxQuantity && (
+                        <p className="absolute bottom-full left-0 mb-0.5 w-max text-10 leading-3 text-sand">
+                          Máximo disponível
+                        </p>
+                      )}
+                      <p className="absolute top-full left-0 mt-0.5 w-max text-10 leading-3 text-sand">
+                        Edição {item.editionLabel}
+                      </p>
+                    </div>
                   </td>
                   <td className="p-0 pr-2 font-bold break-words text-amber">
                     {formatEth(item.lineTotal)}
@@ -142,7 +155,7 @@ export function CartItems({
                       aria-label={`Remover ${item.name} do carrinho`}
                       className="inline-flex size-10 items-center justify-center text-khaki hover:text-amber"
                     >
-                      <TrashIcon size={20} />
+                      <TrashIcon size={24} />
                     </button>
                   </td>
                 </tr>

@@ -1,23 +1,12 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import type { NftSummary } from '@/contracts'
-import { ArrowLeft2Icon, ArrowRight2Icon } from '@/components/icons'
-import { Button } from '@/components/ui/button'
+import { countPages } from './carousel-pages'
 import { NftCard } from './nft-card'
 import { cn } from '@/lib/utils'
 export interface NftCarouselProps {
   title: string
   items: NftSummary[]
   getHref: (nft: NftSummary) => string
-}
-/**
- * How many "screens" the track scrolls through. A track that is not laid out (a
- * hidden ancestor, a collapsed section) has no width: it has a single page rather
- * than the division by zero that would otherwise ask for an infinite list of dots.
- */
-function countPages(track: HTMLElement, itemCount: number): number {
-  if (track.clientWidth <= 0) return 1
-  const pages = Math.ceil(track.scrollWidth / track.clientWidth)
-  return Math.min(Math.max(1, pages), Math.max(1, itemCount))
 }
 export function NftCarousel({ title, items, getHref }: NftCarouselProps) {
   const id = useId()
@@ -44,30 +33,10 @@ export function NftCarousel({ title, items, getHref }: NftCarouselProps) {
   }
   return (
     <section aria-labelledby={id} className="min-w-0">
-      <div className="flex items-center justify-between border-b border-hairline pb-3">
-        <h2 id={id} className="text-17 font-bold text-amber">
+      <div className="border-b border-hairline pb-[9px]">
+        <h2 id={id} className="text-17 leading-5 font-bold text-amber">
           {title}
         </h2>
-        <div className="flex gap-2">
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            disabled={page === 0}
-            onClick={() => scroll(page - 1)}
-            aria-label={`Anterior: ${title}`}
-          >
-            <ArrowLeft2Icon />
-          </Button>
-          <Button
-            variant="ghost"
-            size="icon-sm"
-            disabled={page >= pages - 1}
-            onClick={() => scroll(page + 1)}
-            aria-label={`Próximo: ${title}`}
-          >
-            <ArrowRight2Icon />
-          </Button>
-        </div>
       </div>
       <ul
         ref={track}
@@ -91,7 +60,7 @@ export function NftCarousel({ title, items, getHref }: NftCarouselProps) {
           </li>
         ))}
       </ul>
-      <div className="mt-6 flex justify-center gap-3">
+      <div className="mt-[15px] -mb-1.5 flex justify-center">
         {Array.from({ length: pages }, (_, index) => (
           <button
             key={index}
@@ -99,7 +68,8 @@ export function NftCarousel({ title, items, getHref }: NftCarouselProps) {
             aria-label={`Ir para a página ${index + 1} de ${title}`}
             aria-current={index === page ? 'true' : undefined}
             onClick={() => scroll(index)}
-            className="flex size-4 items-center justify-center"
+            // 24px hit area around the 12px dot: the minimum target size of WCAG 2.5.8.
+            className="flex size-6 items-center justify-center"
           >
             <span
               className={cn(

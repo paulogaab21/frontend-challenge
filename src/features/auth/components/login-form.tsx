@@ -97,7 +97,7 @@ export function LoginForm({
               </FormItem>
             )}
           />
-          <div className="pt-0 text-right">
+          <div className="pt-0 text-right md:-translate-y-[3px]">
             <Button
               variant="link"
               className="text-sm"

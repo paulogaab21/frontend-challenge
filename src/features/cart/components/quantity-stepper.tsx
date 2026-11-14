@@ -26,7 +26,7 @@ export function QuantityStepper({
       >
         <MinusIcon size={12} />
       </button>
-      <span aria-live="polite" aria-atomic="true" className="min-w-3 text-center">
+      <span aria-live="polite" aria-atomic="true" className="min-w-3 text-center md:min-w-[11px]">
         <span className="sr-only">Quantidade de {name}: </span>
         {quantity}
       </span>

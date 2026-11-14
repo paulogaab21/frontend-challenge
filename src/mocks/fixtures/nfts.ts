@@ -485,9 +485,9 @@ function toRecord(seed: Seed, index: number): NftRecord {
     badges: seed.badges ?? [],
     featured: seed.featured ?? false,
     listedAt,
-    description: `Um colecionável digital finalizado à mão da coleção ${collectionName}, verificado na ${networkLabel}, com arte desbloqueável e acesso para colecionadores.`,
+    description: `Um colecionável digital finalizado à mão da coleção Kurio Editions, verificado na ${networkLabel}, com arte desbloqueável e acesso para colecionadores.`,
     details: [
-      `${fullName} é uma obra digital ${defaultEdition?.label ?? '1/50'} finalizada à mão da coleção ${collectionName}. Cada atributo fica armazenado nos metadados do token e verificado na ${networkLabel}. A obra explora identidade, movimento e luz em um mundo digital sem fronteiras.`,
+      `${fullName} é uma obra digital ${defaultEdition?.label ?? '1/50'} finalizada à mão da coleção Kurio Editions. Cada atributo fica armazenado nos metadados do token e verificado na ${networkLabel}. A obra explora identidade, movimento e luz em um mundo digital sem fronteiras.`,
       `A propriedade inclui a arte em alta resolução, lançamentos exclusivos para colecionadores e um registro permanente de procedência registrada na rede. ${seed.creator} recebe 5% de direitos autorais nas vendas secundárias, apoiando novos trabalhos e lançamentos da comunidade.`,
     ],
     attributes: seed.attributes,
@@ -496,7 +496,8 @@ function toRecord(seed: Seed, index: number): NftRecord {
     reviews: buildReviews(id, index + 3),
     creator: { name: seed.creator, royaltyPercent: 5 },
     contract: {
-      address: `0x7A42${addressTail}`,
+      // The first NFT carries the address drawn in the layout (0x7A42...19E8).
+      address: `0x7A42${index === 0 ? `${addressTail.slice(0, 32)}19E8` : addressTail}`,
       standard: seed.network === 'solana' ? 'Metaplex' : 'ERC-721',
     },
     provenance: `Cunhado na ${networkLabel} com procedência imutável e metadados armazenados no IPFS.`,

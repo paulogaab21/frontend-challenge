@@ -60,8 +60,8 @@ export function BlogSection({
 }: BlogSectionProps) {
   return (
     <section>
-      <h2 className="text-center text-28 leading-9 font-bold">{title}</h2>
-      <p className="mt-3 text-center text-sm leading-6 text-sand">{description}</p>
+      <h2 className="text-center text-28 leading-[37px] font-bold">{title}</h2>
+      <p className="mt-3 text-center text-sm leading-[18px] text-sand">{description}</p>
       <ul className="mt-10 grid gap-6 sm:grid-cols-2 xl:grid-cols-4 xl:pr-14">
         {items.map((item) => (
           <li key={item.id} className="overflow-hidden rounded-lg bg-surface">
@@ -73,7 +73,7 @@ export function BlogSection({
                 className="h-[195px] w-full"
               />
             </div>
-            <article className="p-4">
+            <article className="px-4 pt-3 pb-[17px]">
               <p className="text-xs leading-4 font-medium text-sand">
                 {item.date} &nbsp;|&nbsp; Leitura de {item.readingMinutes} min
               </p>
@@ -81,10 +81,13 @@ export function BlogSection({
               <p className="mt-2 text-xs leading-4 font-medium text-sand">{item.description}</p>
               <SiteLink
                 to={item.to}
-                className="mt-2 inline-flex items-center gap-2 text-xs leading-4 font-bold text-amber"
+                className="mt-[7px] flex w-fit items-center gap-1 text-xs leading-4 font-bold text-amber"
                 aria-label={`Ler mais: ${item.title}`}
               >
-                Ler mais <span aria-hidden="true">→</span>
+                Ler mais
+                <span aria-hidden="true" className="translate-y-px font-normal">
+                  →
+                </span>
               </SiteLink>
             </article>
           </li>

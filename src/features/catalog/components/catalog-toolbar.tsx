@@ -44,7 +44,7 @@ export function CatalogToolbar({
           role="tablist"
           tabIndex={-1}
           aria-label="Categorias de NFTs"
-          className="flex max-w-full min-w-0 flex-1 gap-4 overflow-x-auto whitespace-nowrap md:flex-none md:gap-5 md:gap-6"
+          className="flex max-w-full min-w-0 flex-1 gap-4 overflow-x-auto whitespace-nowrap md:flex-none md:gap-[21px]"
           onKeyDown={(event) => {
             const index = tabs.findIndex((item) => item.id === tab)
             const next =
@@ -75,7 +75,7 @@ export function CatalogToolbar({
               disabled={disabled}
               onClick={() => onTabChange(item.id)}
               className={cn(
-                'shrink-0 border-b-2 border-transparent pb-0 text-sm leading-5 font-medium text-cream hover:text-amber disabled:opacity-50 md:text-15',
+                'shrink-0 border-b-2 border-transparent pb-0 text-sm leading-5 font-medium text-cream hover:text-amber disabled:opacity-50 md:pb-[3px] md:text-15 md:leading-[18px]',
                 tab === item.id && 'border-copper text-amber',
               )}
             >
@@ -98,7 +98,7 @@ export function CatalogToolbar({
             <SelectTrigger
               id={id}
               aria-label="Ordenar por"
-              className="h-[22px] w-5 min-w-0 gap-1 rounded-none border-0 p-0 text-xs data-[size=default]:h-[22px] md:w-auto md:text-15"
+              className="h-[22px] w-5 min-w-0 gap-1 rounded-none border-0 p-0 text-xs data-[size=default]:h-[22px] md:h-5 md:w-auto md:text-15 md:data-[size=default]:h-5"
             >
               <span className="hidden md:inline-flex">
                 <SelectValue />

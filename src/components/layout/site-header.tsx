@@ -73,7 +73,7 @@ export function SiteHeader({
         </Link>
         <nav
           aria-label={navigationLabel}
-          className="order-3 flex min-h-[45px] w-full flex-wrap justify-center gap-x-10 gap-y-3 xl:absolute xl:left-[31.333333%] xl:order-none xl:w-auto xl:flex-nowrap"
+          className="order-3 flex min-h-[45px] w-full flex-wrap justify-center gap-x-10 gap-y-3 xl:absolute xl:left-[31.333333%] xl:order-none xl:w-auto xl:flex-nowrap xl:gap-x-[40.6px]"
         >
           {navigation.map((item) => (
             <Link

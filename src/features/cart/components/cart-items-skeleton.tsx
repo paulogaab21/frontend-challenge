@@ -9,7 +9,7 @@ export function CartItemsSkeleton({ rows = 3 }: CartItemsSkeletonProps) {
     <div role="status" aria-label="Carregando NFTs do carrinho" className="min-w-0">
       <div
         aria-hidden="true"
-        className="hidden h-7 grid-cols-[39.8%_17.7%_17.45%_16.05%_9%] border-b border-copper/30 md:grid"
+        className="hidden h-[30px] grid-cols-[39.8%_17.7%_17.45%_16.05%_9%] border-b border-copper/30 md:grid"
       >
         {['NFTs', 'Preço', 'Edições', 'Total'].map((label) => (
           <span key={label} className="text-base leading-5">

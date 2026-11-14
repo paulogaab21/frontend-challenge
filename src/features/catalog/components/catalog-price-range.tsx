@@ -26,7 +26,7 @@ export function CatalogPriceRange({
   ])
   return (
     <fieldset disabled={pending} className="mt-10">
-      <legend className="mb-2.5 text-lg leading-[18px] font-bold">Faixa de preço</legend>
+      <legend className="mb-[13.5px] text-lg leading-4 font-bold">Faixa de preço</legend>
       <div className="pl-3">
         <Slider
           className="h-[18px]"
@@ -38,13 +38,13 @@ export function CatalogPriceRange({
           disabled={pending || min === max}
           thumbLabels={['Preço mínimo', 'Preço máximo']}
         />
-        <p className="mt-3 leading-6 whitespace-nowrap text-cream">
+        <p className="mt-[11.5px] leading-6 whitespace-nowrap text-cream">
           Preço: {formatEth(stepToPrice(range[0] ?? min), { unit: false }).replace('.', ',')} -{' '}
           {formatEth(stepToPrice(range[1] ?? max), { unit: false }).replace('.', ',')} ETH
         </p>
         <Button
           size="sm"
-          className="mt-3 w-[92px]"
+          className="mt-2.5 w-[92px]"
           disabled={pending}
           onClick={() => onApply(stepToPrice(range[0] ?? min), stepToPrice(range[1] ?? max))}
         >

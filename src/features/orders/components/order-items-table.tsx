@@ -48,7 +48,7 @@ export function OrderItemsTable({ order }: OrderItemsTableProps) {
                     <p className="text-xs leading-5 font-bold break-words md:text-base">
                       {item.name}
                     </p>
-                    <p className="mt-1 text-10 leading-5 break-words text-sand md:text-sm">
+                    <p className="mt-1 text-10 leading-5 break-words text-khaki md:text-sm">
                       ID do token: {item.tokenId}
                     </p>
                   </div>

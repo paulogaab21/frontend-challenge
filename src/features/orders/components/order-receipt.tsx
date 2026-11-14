@@ -23,7 +23,7 @@ export function OrderReceipt({ order, closeTo, explorerTo }: OrderReceiptProps) 
     <OrderPanel closeTo={closeTo} labelledBy={id}>
       <header className="px-6 pt-[22px] pb-[14px] text-center">
         <ThankYouIcon size={80} className="mx-auto text-copper" />
-        <h1 id={id} className="mt-4 text-base leading-6 font-bold text-sand">
+        <h1 id={id} className="mt-3 text-base leading-6 font-bold text-sand">
           Seus NFTs agora estão na sua carteira
         </h1>
       </header>

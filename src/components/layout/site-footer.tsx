@@ -125,8 +125,8 @@ export function SiteFooter({
             >
               {service.mark}
             </div>
-            <h2 className="mt-3 text-17 leading-5 font-bold">{service.title}</h2>
-            <p className="mt-2 max-w-[200px] text-sm leading-[22px] text-sand">
+            <h2 className="mt-2.5 text-17 leading-5 font-bold">{service.title}</h2>
+            <p className="mt-2.5 max-w-[200px] text-sm leading-[22px] text-sand">
               {service.description}
             </p>
           </div>
@@ -157,7 +157,7 @@ export function SiteFooter({
               <Button
                 type="submit"
                 loading={newsletterPending}
-                className="h-10 w-[85px] rounded-l-none px-2 text-lg"
+                className="h-10 w-[85px] justify-start rounded-l-none pr-0 pl-4 text-lg"
               >
                 Enviar
               </Button>
@@ -172,7 +172,7 @@ export function SiteFooter({
               {newsletterError ?? newsletterMessage}
             </p>
           )}
-          <p className="mt-5 text-13 leading-[22px] text-sand">
+          <p className="mt-3 text-13 leading-[22px] text-sand">
             Receba lançamentos selecionados, histórias de criadores e novidades do mercado.
           </p>
         </div>
@@ -196,8 +196,8 @@ export function SiteFooter({
       <div className="grid gap-8 bg-surface p-8 md:grid-cols-2 xl:min-h-[236px] xl:grid-cols-[repeat(3,minmax(0,1fr))_228px]">
         {linkColumns.map((column) => (
           <nav key={column.title} aria-label={column.title}>
-            <h2 className="text-lg leading-6 font-bold">{column.title}</h2>
-            <ul className="mt-1 space-y-1.5 text-sm leading-6">
+            <h2 className="text-lg leading-4 font-bold">{column.title}</h2>
+            <ul className="mt-[11px] space-y-1.5 text-sm leading-6">
               {column.links.map((link) => (
                 <li key={link.to}>
                   <Link to={link.to} className="hover:text-amber hover:underline">
@@ -209,8 +209,8 @@ export function SiteFooter({
           </nav>
         ))}
         <div>
-          <h2 className="text-lg font-bold">Redes sociais</h2>
-          <ul className="mt-3 flex flex-wrap gap-2">
+          <h2 className="text-lg leading-4 font-bold">Redes sociais</h2>
+          <ul className="mt-[19px] flex flex-wrap gap-2">
             {socials.map(({ id: socialId, label, Icon }) => (
               <li key={socialId}>
                 {socialLinks?.[socialId] ? (
@@ -233,16 +233,16 @@ export function SiteFooter({
               </li>
             ))}
           </ul>
-          <h2 className="mt-[27px] text-lg font-bold">Carteiras compatíveis</h2>
+          <h2 className="mt-[31px] text-lg leading-4 font-bold">Carteiras compatíveis</h2>
           <Badge
             variant="outline"
-            className="mt-1 min-h-[26px] max-w-full px-[10px] py-0 text-center text-2xs leading-3 font-bold tracking-[0.1px] whitespace-normal xl:whitespace-nowrap"
+            className="mt-3 min-h-[26px] max-w-full justify-start py-0 pr-0 pl-[10px] text-2xs leading-3 font-bold tracking-[0.1px] whitespace-normal xl:whitespace-nowrap"
           >
             METAMASK&nbsp; • &nbsp;WALLETCONNECT&nbsp; • &nbsp;COINBASE
           </Badge>
         </div>
       </div>
-      <p className="py-4 text-center text-sm leading-6">
+      <p className="pt-[9px] pb-[27px] text-center text-sm leading-6">
         © {year} Kurio. Propriedade digital para todos.
       </p>
     </footer>

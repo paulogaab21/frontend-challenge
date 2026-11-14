@@ -23,7 +23,7 @@ export function NftGrid({
   headingLevel = 2,
 }: NftGridProps) {
   return (
-    <ul className="grid min-w-0 grid-cols-2 gap-x-4 gap-y-4 pb-8 md:gap-x-[34px] md:gap-y-16 md:pb-0 xl:grid-cols-3">
+    <ul className="grid min-w-0 grid-cols-2 gap-x-4 gap-y-4 pb-8 md:gap-x-[34px] md:gap-y-[71px] md:pb-0 xl:grid-cols-3">
       {items.map((nft, index) => (
         <li key={nft.id} className="min-w-0 even:translate-y-8 md:even:translate-y-0">
           <NftCard

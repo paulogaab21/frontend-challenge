@@ -110,7 +110,7 @@ function Loaded({ nft, requestedEdition }: { nft: NftDetail; requestedEdition?: 
 
   return (
     <>
-      <div className="mb-2 hidden md:block">
+      <div className="mb-2.5 hidden md:block">
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem>
@@ -128,7 +128,7 @@ function Loaded({ nft, requestedEdition }: { nft: NftDetail; requestedEdition?: 
         </Breadcrumb>
       </div>
 
-      <div className="grid min-w-0 md:grid-cols-2 md:gap-8 xl:grid-cols-[572px_minmax(0,1fr)]">
+      <div className="grid min-w-0 md:grid-cols-2 md:gap-8 xl:grid-cols-[572px_minmax(0,1fr)] xl:gap-[33px]">
         <NftGallery
           views={nft.gallery}
           name={nft.name}
@@ -174,7 +174,7 @@ function Loaded({ nft, requestedEdition }: { nft: NftDetail; requestedEdition?: 
         />
       </div>
 
-      <div className="mt-24 px-6 md:px-0">
+      <div className="mt-24 px-6 md:mt-[94px] md:px-0">
         <NftDetailTabs nft={nft} />
       </div>
     </>
@@ -203,11 +203,11 @@ export function NftDetailPage({ nftId, requestedEdition }: NftDetailPageProps) {
       mobileTab={false}
       mainClassName={detail.data ? 'pb-[calc(190px+env(safe-area-inset-bottom))] md:pb-0' : 'pb-10'}
     >
-      <div className="md:container-page md:mt-8">
+      <div className="md:container-page md:mt-[30px]">
         {detail.data ? (
           <>
             <Loaded nft={detail.data} requestedEdition={requestedEdition} />
-            <div className="mt-24 px-6 md:px-0">
+            <div className="mt-24 px-6 md:mt-[94px] md:px-0">
               <MoreFromCollection nft={detail.data} />
             </div>
           </>

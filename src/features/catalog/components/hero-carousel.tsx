@@ -144,7 +144,7 @@ export function HeroCarousel({
       <div
         role="group"
         aria-label="Selecionar destaque"
-        className="absolute bottom-1 left-1/2 flex -translate-x-1/2 items-center md:bottom-[39px] md:left-[51.6667%]"
+        className="absolute bottom-1 left-1/2 flex -translate-x-1/2 items-center md:bottom-[35px] md:left-[51.6667%]"
       >
         {slides.map((slide, index) => (
           <button

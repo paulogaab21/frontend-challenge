@@ -1,12 +1,14 @@
 import {
   Pagination,
   PaginationContent,
-  PaginationEllipsis,
   PaginationItem,
   PaginationLink,
 } from '@/components/ui/pagination'
 import { ArrowLeft2Icon, ArrowRight2Icon } from '@/components/icons'
 import { SiteLink } from '@/components/layout/site-link'
+/** Number of page links shown at once. */
+const PAGE_WINDOW = 4
+
 export interface CatalogPaginationProps {
   page: number
   totalPages: number
@@ -20,17 +22,13 @@ export function CatalogPagination({
   onNavigate,
 }: CatalogPaginationProps) {
   if (totalPages < 2) return null
-  const pages = [
-    ...new Set([
-      1,
-      totalPages,
-      ...Array.from({ length: totalPages <= 5 ? totalPages : 3 }, (_, i) =>
-        totalPages <= 5 ? i + 1 : Math.min(Math.max(page - 1, 2), Math.max(2, totalPages - 3)) + i,
-      ),
-    ]),
-  ]
-    .filter((p) => p >= 1 && p <= totalPages)
-    .sort((a, b) => a - b)
+  // Four consecutive pages, as drawn in the layout ("1 2 3 4 >"): the window slides
+  // with the current page and the arrows reach everything outside it.
+  const first = Math.max(1, Math.min(page - 1, totalPages - (PAGE_WINDOW - 1)))
+  const pages = Array.from(
+    { length: Math.min(PAGE_WINDOW, totalPages) },
+    (_, index) => first + index,
+  )
   const notify = (target: number) => (event: React.MouseEvent<HTMLAnchorElement>) => {
     if (!event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey && event.button === 0)
       onNavigate?.(target)
@@ -47,12 +45,7 @@ export function CatalogPagination({
             </PaginationLink>
           </PaginationItem>
         )}
-        {pages.flatMap((number, index) => [
-          index > 0 && number - (pages[index - 1] ?? 0) > 1 ? (
-            <PaginationItem key={`gap-${number}`}>
-              <PaginationEllipsis />
-            </PaginationItem>
-          ) : null,
+        {pages.map((number) => (
           <PaginationItem key={number}>
             <PaginationLink asChild isActive={number === page}>
               <SiteLink
@@ -63,8 +56,8 @@ export function CatalogPagination({
                 {number}
               </SiteLink>
             </PaginationLink>
-          </PaginationItem>,
-        ])}
+          </PaginationItem>
+        ))}
         {page < totalPages && (
           <PaginationItem>
             <PaginationLink asChild aria-label="Próxima página">

@@ -70,7 +70,7 @@ export function CatalogFilters({
       className={cn('w-full bg-surface p-5 text-15 lg:w-[310px]', className)}
     >
       <fieldset disabled={pending}>
-        <legend className="mb-2.5 text-lg leading-[18px] font-bold">Coleções</legend>
+        <legend className="mb-3 text-lg leading-4 font-bold">Coleções</legend>
         <ul>
           {facets.categories.map((facet) => (
             <li key={facet.id}>
@@ -105,7 +105,7 @@ export function CatalogFilters({
         onApply={(priceMin, priceMax) => onChange({ ...value, priceMin, priceMax })}
       />
       <fieldset disabled={pending} className="mt-10">
-        <legend className="mb-2.5 text-lg leading-[18px] font-bold">Rede</legend>
+        <legend className="mb-3 text-lg leading-4 font-bold">Rede</legend>
         <ul>
           {facets.networks.map((facet) => (
             <li key={facet.id}>
@@ -114,7 +114,7 @@ export function CatalogFilters({
                 onClick={() => toggleNetwork(facet.id)}
                 aria-pressed={value.network.some((item) => item === facet.id)}
                 className={cn(
-                  'relative flex min-h-10 w-full items-center justify-between gap-2 px-3 text-left text-sand hover:text-amber',
+                  'relative flex min-h-10 w-full items-center justify-between gap-2 pl-3 text-left text-sand hover:text-amber',
                   facet.count === 0 && 'opacity-50',
                   value.network.some((item) => item === facet.id) && 'text-amber',
                 )}

@@ -94,7 +94,7 @@ export function CheckoutSummary({
       <h2 id={`${id}-title`} className="text-17 leading-6 font-bold">
         Seus NFTs
       </h2>
-      <div className="mt-1 flex items-baseline justify-between border-b border-hairline pb-[9px] text-base leading-6">
+      <div className="mt-0.5 flex items-baseline justify-between border-b border-hairline pb-[7px] text-base leading-6">
         <span className="font-bold">NFTs</span>
         <span className="font-medium">Subtotal</span>
       </div>
@@ -121,7 +121,7 @@ export function CheckoutSummary({
         </ul>
       )}
 
-      <div className="mt-[14px] text-center text-sm leading-6">
+      <div className="mt-2 text-center text-sm leading-6">
         {coupon.applied ? (
           <p className="flex flex-wrap items-center justify-center gap-x-3">
             <span>
@@ -194,7 +194,7 @@ export function CheckoutSummary({
         </div>
       )}
 
-      <dl className="mt-[6px] text-15 leading-8">
+      <dl className="mt-0.5 text-15 leading-8">
         <div className="flex items-center justify-between gap-3">
           <dt>Subtotal</dt>
           <dd className="text-lg">{amount(quote?.subtotal)}</dd>
@@ -214,9 +214,11 @@ export function CheckoutSummary({
         <div className="flex flex-wrap items-center justify-between gap-x-3">
           <dt>Taxa de rede</dt>
           <dd className="text-lg">{amount(quote?.networkFee)}</dd>
-          <dd className="basis-full text-center text-xs leading-6 text-amber">Taxa estimada</dd>
+          <dd className="basis-full pt-0.5 text-center text-xs leading-6 text-amber">
+            Taxa estimada
+          </dd>
         </div>
-        <div className="mt-[3px] flex items-center justify-between gap-3 border-t border-hairline px-[42px] pt-[10px] text-base font-bold">
+        <div className="mt-2 flex items-center justify-between gap-3 border-t border-hairline px-[42px] pt-1 text-base font-bold">
           <dt>Total</dt>
           <dd className="text-lg text-amber" data-testid="checkout-total">
             {amount(quote?.total)}

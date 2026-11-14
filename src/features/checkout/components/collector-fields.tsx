@@ -35,6 +35,8 @@ export interface CollectorFieldsProps {
 
 /** Field box of the frame: 39px high, 1px line border, 3px radius. */
 const FIELD = 'rounded-[3px]'
+/** Selects of the frame: value 12px from the left edge, chevron 32px from the right. */
+const SELECT = `${FIELD} pr-[29px] pl-[11px]`
 
 /**
  * The ten fields of "Perfil do colecionador" in the payment frame, on its
@@ -107,7 +109,7 @@ export function CollectorFields({ form, addressLocked }: CollectorFieldsProps) {
             <FormLabel required>Rede</FormLabel>
             <Select value={field.value ?? ''} onValueChange={field.onChange}>
               <FormControl>
-                <SelectTrigger ref={field.ref} onBlur={field.onBlur} className={FIELD}>
+                <SelectTrigger ref={field.ref} onBlur={field.onBlur} className={SELECT}>
                   <SelectValue placeholder="Selecione uma rede" />
                 </SelectTrigger>
               </FormControl>
@@ -159,7 +161,9 @@ export function CollectorFields({ form, addressLocked }: CollectorFieldsProps) {
                 className={`${FIELD} read-only:text-sand`}
               />
             </FormControl>
-            <FormDescription className="text-xs leading-4 text-khaki">
+            {/* Announced with the field; on screen the placeholder and, when needed,
+                the validation message carry the same information. */}
+            <FormDescription className="sr-only">
               {addressLocked
                 ? 'Endereço da carteira cadastrada selecionada.'
                 : addressHint(network)}
@@ -199,7 +203,7 @@ export function CollectorFields({ form, addressLocked }: CollectorFieldsProps) {
             <FormLabel required>Tipo de carteira</FormLabel>
             <Select value={field.value ?? ''} onValueChange={field.onChange}>
               <FormControl>
-                <SelectTrigger ref={field.ref} onBlur={field.onBlur} className={FIELD}>
+                <SelectTrigger ref={field.ref} onBlur={field.onBlur} className={SELECT}>
                   <SelectValue placeholder="Selecione uma carteira" />
                 </SelectTrigger>
               </FormControl>
@@ -265,7 +269,7 @@ export function CollectorFields({ form, addressLocked }: CollectorFieldsProps) {
                         <SelectTrigger
                           ref={suffix.ref}
                           onBlur={suffix.onBlur}
-                          className={`w-[77px] px-2 text-15 ${FIELD}`}
+                          className={`w-[77px] pr-1.5 pl-2 text-15 ${FIELD}`}
                         >
                           <SelectValue />
                         </SelectTrigger>

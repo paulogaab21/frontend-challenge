@@ -228,7 +228,7 @@ export function HomePage({ search }: HomePageProps) {
               </p>
             )}
 
-            <div className="mt-4 md:mt-7" aria-busy={list.isFetching || undefined}>
+            <div className="mt-4 md:mt-[27px]" aria-busy={list.isFetching || undefined}>
               {failed ? (
                 <CatalogError
                   message={errorMessage(list.error)}
@@ -263,7 +263,7 @@ export function HomePage({ search }: HomePageProps) {
             </div>
 
             {page && !failed && page.totalPages > 1 && (
-              <div className="mt-20">
+              <div className="mt-20 md:mt-[84px]">
                 <CatalogPagination
                   page={page.page}
                   totalPages={page.totalPages}

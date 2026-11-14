@@ -46,7 +46,8 @@ export function NftCard({
         <div
           className={cn(
             'relative flex aspect-[175/200] items-center justify-center overflow-hidden rounded-3xl bg-linear-to-br from-surface to-surface-raised md:aspect-auto md:h-[300px] md:rounded-none md:bg-surface md:bg-none',
-            compact && 'aspect-auto h-[255px] rounded-none bg-surface bg-none md:h-[255px]',
+            compact &&
+              'aspect-auto h-[255px] items-start rounded-none bg-surface bg-none pt-5 md:h-[255px]',
           )}
         >
           <Artwork
@@ -81,22 +82,22 @@ export function NftCard({
         <Heading
           title={nft.name}
           className={cn(
-            'mt-2 truncate px-2 text-15 leading-5 font-normal text-cream md:mt-3 md:px-0 md:text-base md:leading-6',
-            compact && 'mt-3 px-0 md:text-15 md:leading-5',
+            'mt-2 truncate px-2 text-15 leading-5 font-normal text-cream md:mt-2.5 md:px-0 md:text-base',
+            compact && 'mt-[13px] px-0 leading-[18px] md:mt-[13px] md:text-15',
           )}
         >
           {nft.name}
         </Heading>
         <div
           className={cn(
-            'flex items-baseline gap-x-2 px-2 text-base leading-6 font-bold text-amber md:px-0 md:text-lg md:leading-7',
-            compact && 'px-0 md:text-base md:leading-6',
+            'flex items-baseline gap-x-2 px-2 text-base leading-6 font-bold text-amber md:gap-x-3 md:px-0 md:text-lg',
+            compact && 'px-0 leading-5 md:text-base',
           )}
         >
           {nft.compareAtPrice && <span className="sr-only">por </span>}
           {formatEth(nft.price)}
           {nft.compareAtPrice && (
-            <span className="text-xs font-normal text-khaki md:text-lg">
+            <span className="text-xs leading-none font-normal text-khaki md:text-lg">
               <span className="sr-only">de </span>
               <del>{formatEth(nft.compareAtPrice)}</del>
             </span>

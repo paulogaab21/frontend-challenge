@@ -86,7 +86,7 @@ export function NftGallery({
               onClick={() => select(index)}
               className={cn(
                 'size-[100px] overflow-hidden rounded-lg border border-transparent bg-surface',
-                selected === index && 'border-copper ring-1 ring-copper',
+                selected === index && 'border-copper',
               )}
             >
               <GalleryArtwork

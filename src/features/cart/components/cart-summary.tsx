@@ -61,7 +61,7 @@ export function CartSummary({
     >
       <h2
         id={`${id}-title`}
-        className="sr-only md:not-sr-only md:mb-6 md:h-7 md:border-b md:border-copper/30 md:pb-2 md:text-lg md:leading-5 md:font-bold"
+        className="sr-only md:not-sr-only md:mb-[22px] md:h-[30px] md:border-b md:border-copper/30 md:pb-[9px] md:text-lg md:leading-5 md:font-bold"
       >
         Resumo da carteira
       </h2>
@@ -75,7 +75,7 @@ export function CartSummary({
       >
         <label
           htmlFor={`${id}-code`}
-          className="sr-only text-sm leading-5 font-bold md:not-sr-only md:mb-1 md:block"
+          className="sr-only text-sm leading-5 font-bold md:not-sr-only md:mb-1.5 md:block"
         >
           Código promocional
         </label>
@@ -144,7 +144,7 @@ export function CartSummary({
       )}
       <div className={refreshing ? 'motion-safe:animate-pulse' : undefined}>
         <dl className="mt-3 space-y-3 text-15 leading-5 md:mt-6">
-          <div className="flex flex-wrap items-center justify-between gap-x-2">
+          <div className="flex flex-wrap items-center justify-between gap-x-2 md:items-baseline">
             <dt>Subtotal</dt>
             <dd className="text-base leading-5 md:text-lg md:leading-5">
               {amount(quote?.subtotal)}
@@ -164,7 +164,7 @@ export function CartSummary({
             </dd>
           </div>
         </dl>
-        <dl className="mt-3 text-base leading-5 font-bold md:mt-6">
+        <dl className="mt-3 text-base leading-5 font-bold md:mt-[22px]">
           <div className="flex flex-wrap items-center justify-between gap-x-2">
             <dt>Total</dt>
             <dd className="text-lg leading-5 text-amber">{amount(quote?.total)}</dd>
@@ -175,7 +175,7 @@ export function CartSummary({
         asChild
         disabled={disabled}
         aria-describedby={checkoutDisabledReason ? `${id}-disabled` : undefined}
-        className="mt-[30px] h-[60px] w-full rounded-[30px] bg-copper-gradient px-3 text-base whitespace-normal md:mt-5 md:h-10 md:rounded-[3px] md:bg-none md:text-15"
+        className="mt-[30px] h-[60px] w-full rounded-[30px] bg-copper-gradient px-3 text-base whitespace-normal md:mt-[22px] md:h-10 md:rounded-[3px] md:bg-none md:text-15"
       >
         <SiteLink to={checkoutTo}>Conectar e finalizar</SiteLink>
       </Button>

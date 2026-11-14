@@ -1,24 +1,34 @@
 import { useId } from 'react'
 import type { NftDetail } from '@/contracts'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs'
+import { cn } from '@/lib/utils'
 import { RatingStars } from './rating-stars'
 export interface NftDetailTabsProps {
   nft: NftDetail
   defaultTab?: 'details' | 'reviews'
 }
 const networkNames = { ethereum: 'Ethereum', polygon: 'Polygon', solana: 'Solana' } as const
+/**
+ * Desktop tab, as measured in the layout: a 20px text line, 7px of air and a 3px
+ * marker that sits on top of the rule of the list and runs 8px past the label.
+ */
+const tabClassName =
+  'text-17 md:-mb-px md:min-h-0 md:border-b-[3px] md:pr-2 md:pb-[7px] md:leading-5'
+/** "0x7A42...19E8", the shortened form the layout uses for contract addresses. */
+const shortAddress = (address: string) =>
+  address.length > 12 ? `${address.slice(0, 6)}...${address.slice(-4)}` : address
 export function NftDetailTabs({ nft, defaultTab = 'details' }: NftDetailTabsProps) {
   const id = useId()
   return (
-    <Tabs defaultValue={defaultTab} className="gap-4">
+    <Tabs defaultValue={defaultTab} className="gap-4 md:gap-3">
       <TabsList
         aria-label="Informações do NFT"
-        className="w-full justify-start border-b border-hairline"
+        className="w-full justify-start border-b border-hairline md:gap-x-8"
       >
-        <TabsTrigger value="details" className="text-17 font-bold">
+        <TabsTrigger value="details" className={cn(tabClassName, 'font-bold')}>
           Detalhes do NFT
         </TabsTrigger>
-        <TabsTrigger value="reviews" className="text-17 font-normal">
+        <TabsTrigger value="reviews" className={cn(tabClassName, 'font-normal')}>
           Avaliações de colecionadores ({nft.rating.count})
         </TabsTrigger>
       </TabsList>
@@ -28,7 +38,7 @@ export function NftDetailTabs({ nft, defaultTab = 'details' }: NftDetailTabsProp
             <p key={index}>{paragraph}</p>
           ))}
         </div>
-        <dl className="mt-6 space-y-5 text-sm leading-6">
+        <dl className="mt-6 space-y-5 text-sm leading-6 md:mt-3 md:space-y-3">
           <div>
             <dt className="font-bold">Rede:</dt>
             <dd className="text-sand">
@@ -38,8 +48,9 @@ export function NftDetailTabs({ nft, defaultTab = 'details' }: NftDetailTabsProp
           </div>
           <div>
             <dt className="font-bold">Contrato:</dt>
-            <dd className="break-all text-sand">
-              {nft.contract.address} • Contrato inteligente {nft.contract.standard} verificado.
+            <dd className="text-sand">
+              <span title={nft.contract.address}>{shortAddress(nft.contract.address)}</span> •
+              Contrato inteligente {nft.contract.standard} verificado.
             </dd>
           </div>
           <div>

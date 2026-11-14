@@ -27,7 +27,7 @@ function BrandsChip() {
   return (
     <span
       aria-hidden="true"
-      className="inline-flex h-[26px] items-center rounded-md border border-line-strong bg-band px-2 text-2xs leading-3 font-bold tracking-[0.1px] whitespace-nowrap text-amber"
+      className="inline-flex h-[26px] w-[224px] items-center rounded-md border border-line-strong bg-band pr-0 pl-[7px] text-2xs leading-3 font-bold tracking-[0.1px] whitespace-nowrap text-amber"
     >
       METAMASK&nbsp;&nbsp;•&nbsp;&nbsp;WALLETCONNECT&nbsp;&nbsp;•&nbsp;&nbsp;COINBASE
     </span>
@@ -58,7 +58,7 @@ export function ProviderOptions({
         value={value ?? ''}
         onValueChange={(next) => onChange(next as WalletProvider)}
         disabled={disabled}
-        className={variant === 'rows' ? 'gap-[17px]' : 'gap-4'}
+        className="gap-4"
       >
         {PROVIDERS.map((provider) => {
           const optionId = `${id}-${provider}`
@@ -68,7 +68,7 @@ export function ProviderOptions({
               key={provider}
               htmlFor={optionId}
               className={cn(
-                'flex h-[45px] cursor-pointer items-center gap-[11px] rounded-[3px] border border-line px-[12px]',
+                'flex h-[45px] cursor-pointer items-center gap-2.5 rounded-[3px] border border-line px-[11px] pt-1.5',
                 checked && 'border-copper',
               )}
             >

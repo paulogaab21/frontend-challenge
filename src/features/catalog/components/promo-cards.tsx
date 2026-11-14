@@ -5,8 +5,9 @@ import { SiteLink } from '@/components/layout/site-link'
 import { Button } from '@/components/ui/button'
 export interface PromoCardContent {
   id: string
-  title: string
-  description: string
+  /** One entry per line, as broken in the layout. */
+  title: string[]
+  description: string[]
   artwork: ArtworkId
   to: string
   ctaLabel?: string
@@ -17,16 +18,24 @@ export interface PromoCardsProps {
 const defaults: PromoCardContent[] = [
   {
     id: 'genesis',
-    title: 'Lançamentos gênesis de edição limitada',
-    description: 'Colecione edições escassas diretamente dos criadores antes da revelação pública.',
+    title: ['Lançamentos gênesis', 'de edição limitada'],
+    description: [
+      'Colecione edições escassas',
+      'diretamente dos criadores antes',
+      'da revelação pública.',
+    ],
     artwork: 'emerald-ape',
     to: '/em-breve/lancamentos',
   },
   {
     id: 'curadoria',
-    title: 'Arte digital selecionada e muito mais',
-    description:
-      'Explore novos artistas, coleções verificadas e obras digitais que definem a cultura.',
+    title: ['Arte digital selecionada', 'e muito mais'],
+    description: [
+      'Explore novos artistas,',
+      'coleções verificadas e obras',
+      'digitais que definem a',
+      'cultura.',
+    ],
     artwork: 'ivory-baron',
     to: '/em-breve/curadoria',
   },
@@ -37,7 +46,7 @@ export function PromoCards({ items = defaults }: PromoCardsProps) {
       {items.map((item) => (
         <article
           key={item.id}
-          className="relative grid grid-cols-1 overflow-hidden rounded-lg bg-surface md:h-[250px] md:grid-cols-2"
+          className="relative grid grid-cols-1 overflow-hidden rounded-lg bg-surface md:h-[250px] md:grid-cols-[287px_minmax(0,1fr)]"
         >
           <div className="h-[200px] overflow-hidden rounded-[18px] md:h-[250px]">
             <Artwork
@@ -47,12 +56,24 @@ export function PromoCards({ items = defaults }: PromoCardsProps) {
               className="h-full w-full"
             />
           </div>
-          <div className="relative z-10 flex flex-col items-end px-4 py-6 text-right md:pt-[38px] md:pr-[30px] md:pb-[46px] md:pl-0">
-            <h2 className="text-base leading-6 font-bold md:text-lg">{item.title}</h2>
-            <p className="mt-2 text-xs leading-6 text-sand md:text-sm">{item.description}</p>
+          <div className="relative z-10 flex flex-col items-end px-4 py-6 text-right md:pt-[37px] md:pr-[30px] md:pb-[46px] md:pl-0">
+            <h2 className="text-base leading-6 font-bold md:text-lg">
+              {item.title.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </h2>
+            <p className="mt-[9px] text-xs leading-6 text-sand md:text-sm">
+              {item.description.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </p>
             <Button
               asChild
-              className="mt-4 w-[140px] max-w-full text-sm font-medium md:absolute md:right-[30px] md:bottom-[46px] md:mt-0"
+              className="mt-4 w-[140px] max-w-full gap-px text-sm font-medium md:absolute md:right-[30px] md:bottom-[46px] md:mt-0"
             >
               <SiteLink to={item.to}>
                 {item.ctaLabel ?? 'Explorar'}
@@ -60,14 +81,15 @@ export function PromoCards({ items = defaults }: PromoCardsProps) {
               </SiteLink>
             </Button>
           </div>
+          {/* The two copper rings of the layout, centred outside the bottom-left corner. */}
           <svg
             aria-hidden="true"
-            className="pointer-events-none absolute -bottom-40 -left-40 size-[263px] text-copper/30"
-            viewBox="0 0 263 263"
+            className="pointer-events-none absolute top-0 left-0 hidden h-[250px] w-[586px] text-copper md:block"
+            viewBox="0 0 586 250"
             fill="none"
           >
-            <circle cx="131.5" cy="131.5" r="130" stroke="currentColor" strokeWidth="2" />
-            <circle cx="131.5" cy="131.5" r="95" stroke="currentColor" strokeWidth="2" />
+            <circle cx="-63" cy="270" r="127" stroke="currentColor" strokeWidth="2" />
+            <circle cx="-71" cy="262" r="127.5" stroke="currentColor" />
           </svg>
         </article>
       ))}

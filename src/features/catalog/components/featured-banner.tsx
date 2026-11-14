@@ -1,6 +1,7 @@
 import type { NftSummary } from '@/contracts'
 import { Artwork } from '@/components/artwork'
 import { SiteLink } from '@/components/layout/site-link'
+import { FeaturedBannerShapes } from './featured-banner-shapes'
 import { FeaturedBannerSkeleton } from './featured-banner-skeleton'
 export interface FeaturedBannerProps {
   nft?: NftSummary
@@ -13,9 +14,9 @@ export function FeaturedBanner({ nft, to }: FeaturedBannerProps) {
       to={to}
       className="relative block h-[470px] w-full max-w-[310px] overflow-hidden bg-linear-to-b from-copper/10 to-copper/3 pt-6 text-center"
     >
-      <h2 className="text-2xl leading-8 font-bold text-amber">NFT EM DESTAQUE</h2>
-      <p className="mt-4 text-22 leading-7 font-bold">OFERTA LIMITADA</p>
-      <div className="mt-2 h-[368px] overflow-hidden rounded-[22px]">
+      <h2 className="pl-5 text-left text-2xl leading-8 font-bold text-amber">NFT EM DESTAQUE</h2>
+      <p className="mt-2.5 text-22 leading-7 font-bold">OFERTA LIMITADA</p>
+      <div className="mt-2.5 h-[368px] overflow-hidden rounded-[22px]">
         <Artwork
           id={nft.artwork}
           alt={nft.name}
@@ -23,14 +24,7 @@ export function FeaturedBanner({ nft, to }: FeaturedBannerProps) {
           className="h-[368px] w-full [&_img]:object-cover"
         />
       </div>
-      <span
-        aria-hidden="true"
-        className="absolute bottom-20 left-4 size-5 rounded-md border-2 border-copper/20"
-      />
-      <span
-        aria-hidden="true"
-        className="absolute right-4 bottom-20 size-11 rounded-full bg-copper/20"
-      />
+      <FeaturedBannerShapes />
     </SiteLink>
   )
 }

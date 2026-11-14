@@ -30,6 +30,7 @@ import { useQuoteReview } from '@/features/cart/use-quote-review'
 import { errorMessage, isApiError } from '@/lib/http'
 import { formatEth } from '@/lib/money'
 import { notify } from '@/lib/notify'
+import { cn } from '@/lib/utils'
 import { useIsDesktop } from '@/lib/use-media-query'
 
 import { CheckoutSummary } from './components/checkout-summary'
@@ -355,7 +356,7 @@ export function CheckoutForm({ userId, profile, wallets }: CheckoutFormProps) {
       control={control}
       name="note"
       render={({ field }) => (
-        <FormItem className="gap-0.5">
+        <FormItem className="gap-2">
           <FormLabel>Observação do colecionador (opcional)</FormLabel>
           <FormControl>
             <Textarea
@@ -363,10 +364,13 @@ export function CheckoutForm({ userId, profile, wallets }: CheckoutFormProps) {
               value={field.value ?? ''}
               maxLength={NOTE_MAX}
               rows={5}
-              className="min-h-[151px] rounded-[3px] md:max-w-[349px]"
+              className="min-h-[152px] rounded-[3px] md:max-w-[350px]"
             />
           </FormControl>
-          <FormDescription className="text-xs leading-4 text-khaki">
+          {/* The counter appears once there is something to count. */}
+          <FormDescription
+            className={cn('text-xs leading-4 text-khaki', !(note ?? '').length && 'sr-only')}
+          >
             {(note ?? '').length}/{NOTE_MAX} caracteres
           </FormDescription>
           <FormMessage />
@@ -392,13 +396,13 @@ export function CheckoutForm({ userId, profile, wallets }: CheckoutFormProps) {
         onSubmit={(event) => void form.handleSubmit(openReview, onInvalid)(event)}
       >
         {desktop ? (
-          <div className="mt-[26px] grid min-w-0 gap-x-8 gap-y-10 lg:grid-cols-[minmax(0,1fr)_405px]">
+          <div className="mt-7 grid min-w-0 gap-x-8 gap-y-10 lg:grid-cols-[minmax(0,1fr)_405px]">
             <section aria-labelledby={headingId} className="min-w-0">
               <h2 id={headingId} className="mb-[9px] text-17 leading-6 font-bold">
                 Perfil do colecionador
               </h2>
               <CollectorFields form={form} addressLocked={walletChoice !== 'other'} />
-              <div className="mt-[18px]">
+              <div className="mt-[22px]">
                 <WalletChoiceGroup
                   variant="inline"
                   wallets={wallets}
@@ -407,7 +411,7 @@ export function CheckoutForm({ userId, profile, wallets }: CheckoutFormProps) {
                   manageTo="/conta/carteiras"
                 />
               </div>
-              <div className="mt-[15px]">{noteField}</div>
+              <div className="mt-[18px]">{noteField}</div>
             </section>
 
             <div className="min-w-0">
@@ -415,7 +419,7 @@ export function CheckoutForm({ userId, profile, wallets }: CheckoutFormProps) {
               {summary}
               <h2
                 id={providerHeadingId}
-                className="mt-[14px] mb-[11px] text-center text-17 leading-6 font-bold"
+                className="mt-1 mb-[15px] text-center text-17 leading-6 font-bold"
               >
                 Carteira e rede
               </h2>

@@ -20,6 +20,10 @@ export function QuantityStepper({
 }: QuantityStepperProps) {
   const id = useId()
   const max = Math.min(maxQuantity, available)
+  const lowStock = available <= maxQuantity
+  // The limit is always described to assistive technology; on screen it shows up
+  // when it matters: little stock left, or the limit has been reached.
+  const hintVisible = lowStock || quantity >= max
   return (
     <div className="relative">
       <div
@@ -43,7 +47,10 @@ export function QuantityStepper({
         <output
           aria-live="polite"
           aria-atomic="true"
-          className={cn('min-w-4 text-center text-xl', compact && 'text-lg font-medium')}
+          className={cn(
+            'min-w-[13px] text-center text-xl',
+            compact && 'min-w-4 text-lg font-medium',
+          )}
         >
           {quantity}
         </output>
@@ -60,8 +67,14 @@ export function QuantityStepper({
           <PlusIcon size={compact ? 13 : 22} />
         </Button>
       </div>
-      <p id={id} className="absolute top-full left-0 mt-0.5 w-max text-2xs leading-3 text-sand">
-        {available <= maxQuantity ? `Restam ${available}` : `Máximo de ${maxQuantity} por pedido`}
+      <p
+        id={id}
+        className={cn(
+          'absolute top-full left-0 mt-0.5 w-max text-2xs leading-3 text-sand',
+          !hintVisible && 'sr-only',
+        )}
+      >
+        {lowStock ? `Restam ${available}` : `Máximo de ${maxQuantity} por pedido`}
       </p>
     </div>
   )
