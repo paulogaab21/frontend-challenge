@@ -59,33 +59,33 @@ Princípios que atravessam o projeto:
 - **Apresentação separada de dados.** `features/<x>/components` recebem props; `api.ts` é a
   única porta para o Axios e `queries.ts` a única para o TanStack Query.
 
-| Pasta             | Responsabilidade                                                                    |
-| ----------------- | ----------------------------------------------------------------------------------- |
-| `src/routes`      | Rotas por arquivo: validação de params/busca, guardas e a página correspondente     |
-| `src/features`    | `catalog`, `cart`, `checkout`, `orders`, `auth`, `account`, `realtime`              |
-| `src/contracts`   | Esquemas zod + tipos (REST e Socket.IO)                                             |
-| `src/lib`         | `http` (Axios), `realtime` (Socket.IO), `money`, sessão, chaves de cache, URL       |
-| `src/components`  | `ui/` (shadcn/ui tematizado), `icons/` (extraídos do Figma), `layout/`              |
-| `src/mocks`       | Banco, domínio, handlers MSW, cenários, servidor Socket.IO simulado, painel "Mocks" |
-| `src/app`         | Provedores, roteador, shell, efeitos globais (sessão e tempo real)                  |
+| Pasta            | Responsabilidade                                                                    |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| `src/routes`     | Rotas por arquivo: validação de params/busca, guardas e a página correspondente     |
+| `src/features`   | `catalog`, `cart`, `checkout`, `orders`, `auth`, `account`, `realtime`              |
+| `src/contracts`  | Esquemas zod + tipos (REST e Socket.IO)                                             |
+| `src/lib`        | `http` (Axios), `realtime` (Socket.IO), `money`, sessão, chaves de cache, URL       |
+| `src/components` | `ui/` (shadcn/ui tematizado), `icons/` (extraídos do Figma), `layout/`              |
+| `src/mocks`      | Banco, domínio, handlers MSW, cenários, servidor Socket.IO simulado, painel "Mocks" |
+| `src/app`        | Provedores, roteador, shell, efeitos globais (sessão e tempo real)                  |
 
 ## 2. Rotas
 
-| Rota                    | Tela                                   | Acesso     | Estado na URL                                                                   |
-| ----------------------- | -------------------------------------- | ---------- | ------------------------------------------------------------------------------- |
-| `/`                     | Início (destaques + catálogo)          | público    | `q`, `categoria*`, `rede*`, `precoMin`, `precoMax`, `aba`, `ordem`, `pagina`    |
-| `/nft/$nftId`           | Detalhes do NFT                        | público    | `edicao`                                                                        |
-| `/carrinho`             | Carrinho de NFTs                       | público    | —                                                                               |
-| `/entrar`, `/cadastro`  | Login e cadastro                       | visitante  | `redirect` (caminho interno de retorno), `motivo=sessao-expirada`               |
-| `/pagamento`            | Pagamento (dados, carteira, revisão)   | sessão     | —                                                                               |
-| `/pedido/$orderId`      | Pedido: pendente, recusado ou recibo   | sessão     | —                                                                               |
-| `/transacao/$hash`      | Explorador de blocos simulado          | sessão     | —                                                                               |
-| `/conta/perfil`         | Perfil do colecionador, avatar e senha | sessão     | —                                                                               |
-| `/conta/carteiras`      | Carteiras principal e secundária       | sessão     | —                                                                               |
-| `/conta/favoritos`      | Favoritos                              | sessão     | —                                                                               |
-| `/conta/atividade`      | Pedidos do colecionador                | sessão     | —                                                                               |
-| `/em-breve/$secao`      | Áreas fora do escopo                   | público    | —                                                                               |
-| qualquer outra          | Página 404                             | público    | —                                                                               |
+| Rota                   | Tela                                   | Acesso    | Estado na URL                                                                |
+| ---------------------- | -------------------------------------- | --------- | ---------------------------------------------------------------------------- |
+| `/`                    | Início (destaques + catálogo)          | público   | `q`, `categoria*`, `rede*`, `precoMin`, `precoMax`, `aba`, `ordem`, `pagina` |
+| `/nft/$nftId`          | Detalhes do NFT                        | público   | `edicao`                                                                     |
+| `/carrinho`            | Carrinho de NFTs                       | público   | —                                                                            |
+| `/entrar`, `/cadastro` | Login e cadastro                       | visitante | `redirect` (caminho interno de retorno), `motivo=sessao-expirada`            |
+| `/pagamento`           | Pagamento (dados, carteira, revisão)   | sessão    | —                                                                            |
+| `/pedido/$orderId`     | Pedido: pendente, recusado ou recibo   | sessão    | —                                                                            |
+| `/transacao/$hash`     | Explorador de blocos simulado          | sessão    | —                                                                            |
+| `/conta/perfil`        | Perfil do colecionador, avatar e senha | sessão    | —                                                                            |
+| `/conta/carteiras`     | Carteiras principal e secundária       | sessão    | —                                                                            |
+| `/conta/favoritos`     | Favoritos                              | sessão    | —                                                                            |
+| `/conta/atividade`     | Pedidos do colecionador                | sessão    | —                                                                            |
+| `/em-breve/$secao`     | Áreas fora do escopo                   | público   | —                                                                            |
+| qualquer outra         | Página 404                             | público   | —                                                                            |
 
 `*` = chave repetível (`?categoria=musica&categoria=jogos`).
 
@@ -114,39 +114,39 @@ Base: `VITE_API_URL` (padrão `/api`). Corpo JSON em UTF-8. Os esquemas completo
 
 ### 3.1 Convenções
 
-| Aspecto            | Regra                                                                                                                                                          |
-| ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Autenticação       | `Authorization: Bearer <token>` (token opaco devolvido por `POST /session` e `POST /users`)                                                                     |
-| Visitante          | `X-Cart-Token: <uuid>` identifica o carrinho antes do login                                                                                                    |
-| Dinheiro           | `ethAmountSchema`: string decimal `^\d+(\.\d{1,18})?$`                                                                                                         |
-| Datas              | ISO 8601 com _offset_                                                                                                                                          |
-| Versão             | `version`: inteiro monotônico por recurso (NFT, carrinho, pedido, perfil, carteira, conexão). É o mesmo número carregado pelos eventos Socket.IO               |
-| Paginação          | `{ items, page, pageSize, totalItems, totalPages }`                                                                                                            |
-| Listas na consulta | Chaves repetidas: `?category=musica&category=jogos`                                                                                                            |
-| Rastreamento       | Toda resposta traz `X-Request-Id`; erros repetem o valor em `requestId`                                                                                        |
-| Erro               | `apiErrorSchema`: `{ code, message, fieldErrors?, details?, requestId? }`. `fieldErrors` mapeia campo → mensagens, exibidas junto ao campo correspondente      |
+| Aspecto            | Regra                                                                                                                                                     |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Autenticação       | `Authorization: Bearer <token>` (token opaco devolvido por `POST /session` e `POST /users`)                                                               |
+| Visitante          | `X-Cart-Token: <uuid>` identifica o carrinho antes do login                                                                                               |
+| Dinheiro           | `ethAmountSchema`: string decimal `^\d+(\.\d{1,18})?$`                                                                                                    |
+| Datas              | ISO 8601 com _offset_                                                                                                                                     |
+| Versão             | `version`: inteiro monotônico por recurso (NFT, carrinho, pedido, perfil, carteira, conexão). É o mesmo número carregado pelos eventos Socket.IO          |
+| Paginação          | `{ items, page, pageSize, totalItems, totalPages }`                                                                                                       |
+| Listas na consulta | Chaves repetidas: `?category=musica&category=jogos`                                                                                                       |
+| Rastreamento       | Toda resposta traz `X-Request-Id`; erros repetem o valor em `requestId`                                                                                   |
+| Erro               | `apiErrorSchema`: `{ code, message, fieldErrors?, details?, requestId? }`. `fieldErrors` mapeia campo → mensagens, exibidas junto ao campo correspondente |
 
 ### 3.2 Recursos
 
 **Sessão e conta**
 
-| Método   | Caminho    | Corpo                   | Resposta             | Erros específicos                                         |
-| -------- | ---------- | ----------------------- | -------------------- | --------------------------------------------------------- |
-| `POST`   | `/users`   | `registerRequestSchema` | 201 `sessionSchema`  | 409 `EMAIL_TAKEN` · 409 `USERNAME_TAKEN` · 422            |
-| `POST`   | `/session` | `loginRequestSchema`    | 201 `sessionSchema`  | 401 `INVALID_CREDENTIALS` · 422                           |
-| `GET`    | `/session` | —                       | 200 `sessionSchema`  | 401 `UNAUTHENTICATED` · 401 `SESSION_EXPIRED`             |
-| `DELETE` | `/session` | —                       | 204                  | — (idempotente)                                           |
+| Método   | Caminho    | Corpo                   | Resposta            | Erros específicos                              |
+| -------- | ---------- | ----------------------- | ------------------- | ---------------------------------------------- |
+| `POST`   | `/users`   | `registerRequestSchema` | 201 `sessionSchema` | 409 `EMAIL_TAKEN` · 409 `USERNAME_TAKEN` · 422 |
+| `POST`   | `/session` | `loginRequestSchema`    | 201 `sessionSchema` | 401 `INVALID_CREDENTIALS` · 422                |
+| `GET`    | `/session` | —                       | 200 `sessionSchema` | 401 `UNAUTHENTICATED` · 401 `SESSION_EXPIRED`  |
+| `DELETE` | `/session` | —                       | 204                 | — (idempotente)                                |
 
 Ao criar a sessão, a API funde o carrinho do visitante (`X-Cart-Token`) no carrinho da conta.
 A sessão dura 30 minutos na simulação; `expiresAt` informa o instante exato.
 
 **NFTs e destaques** (públicos)
 
-| Método | Caminho        | Consulta / corpo      | Resposta                        | Erros           |
-| ------ | -------------- | --------------------- | ------------------------------- | --------------- |
-| `GET`  | `/nfts`        | `nftListParamsSchema` | 200 `nftListResponseSchema`     | 422             |
-| `GET`  | `/nfts/:nftId` | —                     | 200 `nftDetailSchema`           | 404 `NOT_FOUND` |
-| `GET`  | `/highlights`  | —                     | 200 `highlightsResponseSchema`  | —               |
+| Método | Caminho        | Consulta / corpo      | Resposta                       | Erros           |
+| ------ | -------------- | --------------------- | ------------------------------ | --------------- |
+| `GET`  | `/nfts`        | `nftListParamsSchema` | 200 `nftListResponseSchema`    | 422             |
+| `GET`  | `/nfts/:nftId` | —                     | 200 `nftDetailSchema`          | 404 `NOT_FOUND` |
+| `GET`  | `/highlights`  | —                     | 200 `highlightsResponseSchema` | —               |
 
 `GET /nfts` aceita `q`, `category*`, `network*`, `priceMin`, `priceMax`, `tab`
 (`todos|novos|em-alta`), `sort` (`recentes|preco-asc|preco-desc|nome-asc|nome-desc`),
@@ -155,24 +155,24 @@ A sessão dura 30 minutos na simulação; `expiresAt` informa o instante exato.
 
 **Favoritos** (sessão)
 
-| Método   | Caminho             | Resposta                      | Erros           |
-| -------- | ------------------- | ----------------------------- | --------------- |
-| `GET`    | `/favorites`        | 200 `favoritesResponseSchema` | 401             |
-| `PUT`    | `/favorites/:nftId` | 200 `favoritesResponseSchema` | 401 · 404       |
-| `DELETE` | `/favorites/:nftId` | 200 `favoritesResponseSchema` | 401             |
+| Método   | Caminho             | Resposta                      | Erros     |
+| -------- | ------------------- | ----------------------------- | --------- |
+| `GET`    | `/favorites`        | 200 `favoritesResponseSchema` | 401       |
+| `PUT`    | `/favorites/:nftId` | 200 `favoritesResponseSchema` | 401 · 404 |
+| `DELETE` | `/favorites/:nftId` | 200 `favoritesResponseSchema` | 401       |
 
 `PUT` e `DELETE` são idempotentes e devolvem a lista inteira, que substitui a entrada do cache.
 
 **Carrinho** (visitante ou sessão)
 
-| Método   | Caminho               | Corpo                         | Resposta         | Erros específicos                                              |
-| -------- | --------------------- | ----------------------------- | ---------------- | -------------------------------------------------------------- |
-| `GET`    | `/cart`               | —                             | 200 `cartSchema` | —                                                              |
-| `POST`   | `/cart/items`         | `addCartItemRequestSchema`    | 201 `cartSchema` | 404 · 409 `INSUFFICIENT_AVAILABILITY` · 409 `EDITION_UNAVAILABLE` |
-| `PATCH`  | `/cart/items/:itemId` | `updateCartItemRequestSchema` | 200 `cartSchema` | 404 · 409 `INSUFFICIENT_AVAILABILITY` · 409 `EDITION_UNAVAILABLE` |
-| `DELETE` | `/cart/items/:itemId` | —                             | 200 `cartSchema` | 404                                                            |
+| Método   | Caminho               | Corpo                         | Resposta         | Erros específicos                                                    |
+| -------- | --------------------- | ----------------------------- | ---------------- | -------------------------------------------------------------------- |
+| `GET`    | `/cart`               | —                             | 200 `cartSchema` | —                                                                    |
+| `POST`   | `/cart/items`         | `addCartItemRequestSchema`    | 201 `cartSchema` | 404 · 409 `INSUFFICIENT_AVAILABILITY` · 409 `EDITION_UNAVAILABLE`    |
+| `PATCH`  | `/cart/items/:itemId` | `updateCartItemRequestSchema` | 200 `cartSchema` | 404 · 409 `INSUFFICIENT_AVAILABILITY` · 409 `EDITION_UNAVAILABLE`    |
+| `DELETE` | `/cart/items/:itemId` | —                             | 200 `cartSchema` | 404                                                                  |
 | `PUT`    | `/cart/coupon`        | `applyCouponRequestSchema`    | 200 `cartSchema` | 422 `COUPON_INVALID` · 422 `COUPON_EXPIRED` (com `fieldErrors.code`) |
-| `DELETE` | `/cart/coupon`        | —                             | 200 `cartSchema` | —                                                              |
+| `DELETE` | `/cart/coupon`        | —                             | 200 `cartSchema` | —                                                                    |
 
 A linha do carrinho é identificada por NFT + edição (`<nftId>:<editionId>`). `available` e
 `maxQuantity` de cada linha refletem a disponibilidade **daquela edição** naquele instante.
@@ -193,12 +193,12 @@ e taxa): duas cotações com o mesmo `fingerprint` são equivalentes. Ao enviar
 
 **Pedidos** (sessão)
 
-| Método | Caminho               | Corpo / cabeçalhos                             | Resposta                              |
-| ------ | --------------------- | ---------------------------------------------- | ------------------------------------- |
-| `POST` | `/orders`             | `createOrderRequestSchema` + `Idempotency-Key` | 201 `orderSchema` (pedido `pending`)  |
-| `GET`  | `/orders`             | `?status=pending\|confirmed\|declined`         | 200 `orderListResponseSchema`         |
-| `GET`  | `/orders/:orderId`    | —                                              | 200 `orderSchema` (estado e recibo)   |
-| `GET`  | `/transactions/:hash` | —                                              | 200 `simulatedTransactionSchema`      |
+| Método | Caminho               | Corpo / cabeçalhos                             | Resposta                             |
+| ------ | --------------------- | ---------------------------------------------- | ------------------------------------ |
+| `POST` | `/orders`             | `createOrderRequestSchema` + `Idempotency-Key` | 201 `orderSchema` (pedido `pending`) |
+| `GET`  | `/orders`             | `?status=pending\|confirmed\|declined`         | 200 `orderListResponseSchema`        |
+| `GET`  | `/orders/:orderId`    | —                                              | 200 `orderSchema` (estado e recibo)  |
+| `GET`  | `/transactions/:hash` | —                                              | 200 `simulatedTransactionSchema`     |
 
 Regras de `POST /orders`, na ordem em que são avaliadas:
 
@@ -225,24 +225,24 @@ página interna (`/transacao/$hash`).
 
 **Perfil** (sessão)
 
-| Método   | Caminho             | Corpo                                    | Resposta            | Erros específicos                              |
-| -------- | ------------------- | ---------------------------------------- | ------------------- | ---------------------------------------------- |
-| `GET`    | `/profile`          | —                                        | 200 `profileSchema` | 401                                            |
-| `PUT`    | `/profile`          | `updateProfileRequestSchema`             | 200 `profileSchema` | 409 `EMAIL_TAKEN` · 409 `USERNAME_TAKEN` · 422 |
-| `PUT`    | `/profile/avatar`   | `multipart/form-data`, parte `file`      | 200 `profileSchema` | 422 (tipo diferente de PNG/JPEG/WebP ou > 2 MB) |
-| `DELETE` | `/profile/avatar`   | —                                        | 200 `profileSchema` | —                                              |
-| `PUT`    | `/profile/password` | `changePasswordRequestSchema`            | 204                 | 422 `WRONG_PASSWORD` · 422                     |
+| Método   | Caminho             | Corpo                               | Resposta            | Erros específicos                               |
+| -------- | ------------------- | ----------------------------------- | ------------------- | ----------------------------------------------- |
+| `GET`    | `/profile`          | —                                   | 200 `profileSchema` | 401                                             |
+| `PUT`    | `/profile`          | `updateProfileRequestSchema`        | 200 `profileSchema` | 409 `EMAIL_TAKEN` · 409 `USERNAME_TAKEN` · 422  |
+| `PUT`    | `/profile/avatar`   | `multipart/form-data`, parte `file` | 200 `profileSchema` | 422 (tipo diferente de PNG/JPEG/WebP ou > 2 MB) |
+| `DELETE` | `/profile/avatar`   | —                                   | 200 `profileSchema` | —                                               |
+| `PUT`    | `/profile/password` | `changePasswordRequestSchema`       | 204                 | 422 `WRONG_PASSWORD` · 422                      |
 
 **Carteiras** (sessão)
 
-| Método   | Caminho                              | Corpo                        | Resposta                             | Erros específicos                                         |
-| -------- | ------------------------------------ | ---------------------------- | ------------------------------------ | --------------------------------------------------------- |
-| `GET`    | `/wallets`                           | —                            | 200 `walletsResponseSchema`          | 401                                                       |
-| `POST`   | `/wallets`                           | `createWalletRequestSchema`  | 201 `walletSchema`                   | 409 `WALLET_ROLE_TAKEN` · 409 `WALLET_ADDRESS_TAKEN` · 422 |
-| `PUT`    | `/wallets/:walletId`                 | `updateWalletRequestSchema`  | 200 `walletSchema`                   | 403 · 404 · 409 `WALLET_ADDRESS_TAKEN` · 422              |
-| `GET`    | `/wallet-connections/current`        | —                            | 200 `activeConnectionResponseSchema` | 401                                                       |
-| `POST`   | `/wallet-connections`                | `connectWalletRequestSchema` | 201 `walletConnectionSchema`         | 403 `WALLET_CONNECTION_REJECTED` · 422                    |
-| `DELETE` | `/wallet-connections/:connectionId`  | —                            | 204                                  | —                                                         |
+| Método   | Caminho                             | Corpo                        | Resposta                             | Erros específicos                                          |
+| -------- | ----------------------------------- | ---------------------------- | ------------------------------------ | ---------------------------------------------------------- |
+| `GET`    | `/wallets`                          | —                            | 200 `walletsResponseSchema`          | 401                                                        |
+| `POST`   | `/wallets`                          | `createWalletRequestSchema`  | 201 `walletSchema`                   | 409 `WALLET_ROLE_TAKEN` · 409 `WALLET_ADDRESS_TAKEN` · 422 |
+| `PUT`    | `/wallets/:walletId`                | `updateWalletRequestSchema`  | 200 `walletSchema`                   | 403 · 404 · 409 `WALLET_ADDRESS_TAKEN` · 422               |
+| `GET`    | `/wallet-connections/current`       | —                            | 200 `activeConnectionResponseSchema` | 401                                                        |
+| `POST`   | `/wallet-connections`               | `connectWalletRequestSchema` | 201 `walletConnectionSchema`         | 403 `WALLET_CONNECTION_REJECTED` · 422                     |
+| `DELETE` | `/wallet-connections/:connectionId` | —                            | 204                                  | —                                                          |
 
 Cada conta tem no máximo uma carteira `primary` e uma `secondary`. O endereço é validado
 conforme a rede (`0x` + 40 hexadecimais em Ethereum/Polygon; base58 de 32 a 44 caracteres em
@@ -251,14 +251,14 @@ aplicativo da carteira (conectar, recusar, desconectar) — nenhuma extensão re
 
 ### 3.3 Erros
 
-| Situação exigida pelo enunciado | Status | Códigos                                                                                                                                   |
-| ------------------------------- | ------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| Validação                       | 422    | `VALIDATION_ERROR` (com `fieldErrors`), `COUPON_INVALID`, `COUPON_EXPIRED`, `WRONG_PASSWORD`                                              |
-| Sessão inválida                 | 401    | `UNAUTHENTICATED`, `SESSION_EXPIRED`, `INVALID_CREDENTIALS`                                                                               |
-| Falta de permissão              | 403    | `FORBIDDEN`, `WALLET_CONNECTION_REJECTED`                                                                                                 |
-| Recurso inexistente             | 404    | `NOT_FOUND`                                                                                                                               |
+| Situação exigida pelo enunciado | Status | Códigos                                                                                                                                                                                                                                          |
+| ------------------------------- | ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Validação                       | 422    | `VALIDATION_ERROR` (com `fieldErrors`), `COUPON_INVALID`, `COUPON_EXPIRED`, `WRONG_PASSWORD`                                                                                                                                                     |
+| Sessão inválida                 | 401    | `UNAUTHENTICATED`, `SESSION_EXPIRED`, `INVALID_CREDENTIALS`                                                                                                                                                                                      |
+| Falta de permissão              | 403    | `FORBIDDEN`, `WALLET_CONNECTION_REJECTED`                                                                                                                                                                                                        |
+| Recurso inexistente             | 404    | `NOT_FOUND`                                                                                                                                                                                                                                      |
 | Conflito                        | 409    | `EMAIL_TAKEN`, `USERNAME_TAKEN`, `WALLET_ROLE_TAKEN`, `WALLET_ADDRESS_TAKEN`, `INSUFFICIENT_AVAILABILITY`, `EDITION_UNAVAILABLE`, `QUOTE_STALE`, `QUOTE_EXPIRED`, `CART_EMPTY`, `ORDER_PENDING`, `IDEMPOTENCY_KEY_REUSED`, `WALLET_DISCONNECTED` |
-| Falha transitória               | 5xx    | `INTERNAL_ERROR`, `SERVICE_UNAVAILABLE`                                                                                                   |
+| Falha transitória               | 5xx    | `INTERNAL_ERROR`, `SERVICE_UNAVAILABLE`                                                                                                                                                                                                          |
 
 No cliente, toda falha vira uma de três classes (`src/lib/http/errors.ts`): `ApiError`
 (resposta com o envelope acima), `NetworkError` (nenhuma resposta) ou `TimeoutError` (15 s sem
@@ -273,20 +273,20 @@ Namespace `/`, somente servidor → cliente. O cliente autentica pelo _handshake
 
 Envelope comum:
 
-| Campo        | Significado                                                                                   |
-| ------------ | --------------------------------------------------------------------------------------------- |
-| `id`         | Identidade estável do evento. Uma reentrega carrega o mesmo `id`                              |
-| `type`       | Nome do evento                                                                                |
-| `resource`   | Recurso afetado: `{ type, id }`                                                               |
-| `version`    | Versão do recurso **depois** da mudança — o mesmo `version` do recurso na API REST            |
-| `occurredAt` | Instante da mudança                                                                           |
-| `userId`     | Presente nos eventos privados; identifica o dono                                              |
+| Campo        | Significado                                                                        |
+| ------------ | ---------------------------------------------------------------------------------- |
+| `id`         | Identidade estável do evento. Uma reentrega carrega o mesmo `id`                   |
+| `type`       | Nome do evento                                                                     |
+| `resource`   | Recurso afetado: `{ type, id }`                                                    |
+| `version`    | Versão do recurso **depois** da mudança — o mesmo `version` do recurso na API REST |
+| `occurredAt` | Instante da mudança                                                                |
+| `userId`     | Presente nos eventos privados; identifica o dono                                   |
 
-| Evento           | Recurso             | Privado | `data`                                                                                                  | Efeito no cliente                                                                                           |
-| ---------------- | ------------------- | ------- | ------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| Evento           | Recurso             | Privado | `data`                                                                                                    | Efeito no cliente                                                                                           |
+| ---------------- | ------------------- | ------- | --------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
 | `nft.updated`    | `nft`               | não     | `nftId`, `name`, `price`, `previousPrice`, `compareAtPrice`, `available`, `previousAvailable`, `editions` | Atualiza preço e disponibilidade no catálogo, no detalhe, nos favoritos e no carrinho; avisa o colecionador |
-| `order.updated`  | `order`             | sim     | `orderId`, `status`, `declineReason`, `statusMessage`, `transaction`, `settledAt`, `updatedAt`          | Atualiza o estado do pedido e apresenta a confirmação (recibo) ou a recusa                                  |
-| `wallet.updated` | `wallet-connection` | sim     | `connectionId`, `walletId`, `status`                                                                    | Marca a carteira como desconectada e bloqueia a confirmação até reconectar                                  |
+| `order.updated`  | `order`             | sim     | `orderId`, `status`, `declineReason`, `statusMessage`, `transaction`, `settledAt`, `updatedAt`            | Atualiza o estado do pedido e apresenta a confirmação (recibo) ou a recusa                                  |
+| `wallet.updated` | `wallet-connection` | sim     | `connectionId`, `walletId`, `status`                                                                      | Marca a carteira como desconectada e bloqueia a confirmação até reconectar                                  |
 
 **Tolerância a duplicatas e eventos antigos** (`src/lib/realtime/event-guard.ts`, com testes
 de unidade):
@@ -402,26 +402,26 @@ pendente → recibo ou recusa.
 
 Padrões (`src/app/query-client.ts`):
 
-| Opção                                         | Valor                                                                 | Motivo                                                                                           |
-| --------------------------------------------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-| `staleTime`                                   | 30 s                                                                  | Navegar de volta é instantâneo; nesse intervalo os eventos mantêm preço e estoque atualizados     |
-| `gcTime`                                      | 5 min                                                                 | Telas visitadas há pouco reabrem com dados, atualizados em segundo plano                         |
-| `retry` (queries)                             | 1 nova tentativa após 1 s, **só** para falha transitória              | Sem conexão, timeout e 5xx podem passar sozinhos; 4xx é definitivo e não é repetido              |
-| `retry` (mutations)                           | nunca                                                                 | Repetir às cegas poderia duplicar uma operação; a compra se recupera pela chave de idempotência  |
-| `refetchOnWindowFocus` / `refetchOnReconnect` | ativos                                                                | Voltar à aba ou à rede revalida o que está em tela                                               |
-| Tempo limite por requisição                   | 15 s                                                                  | Vira `TimeoutError`; encadeado ao `signal` de cancelamento da query                              |
+| Opção                                         | Valor                                                    | Motivo                                                                                          |
+| --------------------------------------------- | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `staleTime`                                   | 30 s                                                     | Navegar de volta é instantâneo; nesse intervalo os eventos mantêm preço e estoque atualizados   |
+| `gcTime`                                      | 5 min                                                    | Telas visitadas há pouco reabrem com dados, atualizados em segundo plano                        |
+| `retry` (queries)                             | 1 nova tentativa após 1 s, **só** para falha transitória | Sem conexão, timeout e 5xx podem passar sozinhos; 4xx é definitivo e não é repetido             |
+| `retry` (mutations)                           | nunca                                                    | Repetir às cegas poderia duplicar uma operação; a compra se recupera pela chave de idempotência |
+| `refetchOnWindowFocus` / `refetchOnReconnect` | ativos                                                   | Voltar à aba ou à rede revalida o que está em tela                                              |
+| Tempo limite por requisição                   | 15 s                                                     | Vira `TimeoutError`; encadeado ao `signal` de cancelamento da query                             |
 
 Exceções por recurso:
 
-| Consulta                 | `staleTime`                              | Observação                                                                                 |
-| ------------------------ | ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Sessão                   | 5 min                                    | O token é a fonte da verdade local; o usuário muda pouco                                   |
-| Carrinho                 | 15 s                                     | Invalidado por mutations e por `nft.updated`                                               |
-| Cotação                  | 0                                        | Só vale para o catálogo do instante em que foi calculada; refeita sempre que a tela abre   |
-| Pedido                   | 0 enquanto `pending`; `Infinity` depois  | Estados terminais não mudam; pendente é consultado a cada 5 s se o socket estiver fora     |
-| Lista de pedidos         | 0                                        | É a proteção contra um segundo pedido                                                      |
-| Conexão da carteira      | 0                                        | Pode cair a qualquer momento                                                               |
-| Transação simulada       | `Infinity`                               | Imutável                                                                                   |
+| Consulta            | `staleTime`                             | Observação                                                                               |
+| ------------------- | --------------------------------------- | ---------------------------------------------------------------------------------------- |
+| Sessão              | 5 min                                   | O token é a fonte da verdade local; o usuário muda pouco                                 |
+| Carrinho            | 15 s                                    | Invalidado por mutations e por `nft.updated`                                             |
+| Cotação             | 0                                       | Só vale para o catálogo do instante em que foi calculada; refeita sempre que a tela abre |
+| Pedido              | 0 enquanto `pending`; `Infinity` depois | Estados terminais não mudam; pendente é consultado a cada 5 s se o socket estiver fora   |
+| Lista de pedidos    | 0                                       | É a proteção contra um segundo pedido                                                    |
+| Conexão da carteira | 0                                       | Pode cair a qualquer momento                                                             |
+| Transação simulada  | `Infinity`                              | Imutável                                                                                 |
 
 **Chaves** (`src/lib/query-keys.ts`):
 
@@ -444,15 +444,15 @@ falha ao atualizar dados já exibidos não os apaga: aparece um aviso com nova t
 
 **Invalidação após mutations.**
 
-| Mutation                        | Efeito no cache                                                                                        |
-| ------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| Carrinho (adicionar/alterar/…)  | A resposta substitui o carrinho; a cotação muda de chave (versão do carrinho) e é refeita              |
-| Favoritar / desfavoritar        | Otimista; a resposta substitui a lista; em erro, rollback para o retrato anterior; depois, invalidação |
-| Perfil / avatar                 | A resposta substitui o perfil e atualiza o usuário da sessão (nome e avatar do cabeçalho)              |
-| Carteiras                       | A carteira devolvida é inserida/atualizada na lista; depois, invalidação                               |
-| Login / cadastro                | Cache privado descartado; sessão gravada; carrinho da conta buscado                                    |
-| Criar pedido                    | Pedido gravado; lista de pedidos, catálogo (estoque reservado) e carrinho invalidados                  |
-| 409 `QUOTE_STALE`               | A cotação nova, que veio no erro, é adotada na hora; carrinho e catálogo invalidados                   |
+| Mutation                       | Efeito no cache                                                                                        |
+| ------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| Carrinho (adicionar/alterar/…) | A resposta substitui o carrinho; a cotação muda de chave (versão do carrinho) e é refeita              |
+| Favoritar / desfavoritar       | Otimista; a resposta substitui a lista; em erro, rollback para o retrato anterior; depois, invalidação |
+| Perfil / avatar                | A resposta substitui o perfil e atualiza o usuário da sessão (nome e avatar do cabeçalho)              |
+| Carteiras                      | A carteira devolvida é inserida/atualizada na lista; depois, invalidação                               |
+| Login / cadastro               | Cache privado descartado; sessão gravada; carrinho da conta buscado                                    |
+| Criar pedido                   | Pedido gravado; lista de pedidos, catálogo (estoque reservado) e carrinho invalidados                  |
+| 409 `QUOTE_STALE`              | A cotação nova, que veio no erro, é adotada na hora; carrinho e catálogo invalidados                   |
 
 **Atualização otimista com rollback:** favoritos (`useToggleFavorite`), quantidade e remoção de
 itens do carrinho (`useUpdateCartItem`, `useRemoveCartItem`). O cenário `favorite-failure`
@@ -466,11 +466,11 @@ demonstra o rollback.
   um card, estado do pedido), sempre conferindo a versão da entrada;
 - **invalidate** — o que o evento não descreve por inteiro é refeito por REST.
 
-| Evento           | Patch imediato                                                              | Refeito por REST                                                                                         |
-| ---------------- | --------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| Evento           | Patch imediato                                                                | Refeito por REST                                                                                                           |
+| ---------------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
 | `nft.updated`    | Detalhe do NFT (preço, edições, disponibilidade), cards das listas, favoritos | Listagens visíveis (um preço novo pode mudar ordem, filtros e contagens); carrinho e cotação, se o NFT estiver no carrinho |
-| `order.updated`  | Pedido em cache (`status`, motivo, transação, datas)                        | Lista de pedidos; ao liquidar, carrinho e catálogo (itens removidos ou estoque devolvido)                |
-| `wallet.updated` | Conexão da carteira                                                         | —                                                                                                        |
+| `order.updated`  | Pedido em cache (`status`, motivo, transação, datas)                          | Lista de pedidos; ao liquidar, carrinho e catálogo (itens removidos ou estoque devolvido)                                  |
+| `wallet.updated` | Conexão da carteira                                                           | —                                                                                                                          |
 
 O carrinho é sempre refeito, nunca corrigido à mão: os valores são responsabilidade da API. O
 colecionador é avisado comparando as linhas antes e depois ("O preço de X mudou de A para B",
@@ -640,7 +640,77 @@ realtime/server.ts (Socket.IO) ◄─┘        │
 
 ## 15. Desvios do Figma, assets e ajustes de acessibilidade
 
-Ver a seção correspondente ao final da auditoria de fidelidade.
+**Como a fidelidade foi verificada.** Cada frame do Figma foi exportado (PNG, SVG e um
+"outline" com a geometria de cada camada) e comparado numericamente com a aplicação em execução:
+para cada texto, a posição da linha de base, tamanho, peso, cor e espaçamento; para cada
+retângulo e ícone, posição, tamanho e raio. Nos frames desktop o resultado final fica dentro de
+~1,5 px na grande maioria das camadas e as alturas de página coincidem com as dos frames
+(Início 3668 px, Detalhe 2247 px, Pagamento 1657 px). O que sobra é intencional e está listado
+abaixo.
+
+### Assets
+
+- **Artes dos NFTs**: as quatro artes originais do arquivo (1254x1254) são usadas sem
+  substituição, convertidas para AVIF e WebP em várias larguras (`npm run assets:images`).
+  Como o Figma só tem quatro artes, os 54 NFTs das fixtures as reutilizam; as "vistas" da
+  galeria do detalhe são enquadramentos (zoom/recorte) da mesma arte, como no frame, que repete
+  a mesma imagem nas quatro miniaturas.
+- **Ícones**: extraídos dos SVGs exportados do Figma (`src/components/icons`, cada arquivo cita
+  a camada de origem). Exceções: o spinner de carregamento e o ponto do radio, que não existem
+  no arquivo (lucide).
+- **Fonte**: Roboto Mono variável, auto-hospedada (sem dependência de Google Fonts).
+- **Dados de exemplo**: nomes, preços e quantidades dos frames vêm das fixtures (os 9 primeiros
+  NFTs são os do frame de Início). Onde o Figma usa texto de exemplo inconsistente (ex.: "ID do
+  token: #0009" para o Violet Nomad #314, endereço do contrato abreviado) a aplicação mostra o
+  dado real do recurso.
+
+### Ajustes de acessibilidade em relação ao layout
+
+| Onde                                                   | Figma                          | Implementação                                                                                                                                                                                       | Motivo                                       |
+| ------------------------------------------------------ | ------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| Pontos do carrossel (destaques e "Mais desta coleção") | pontos de 8–12 px              | mesmo desenho, área clicável de 24x24 px                                                                                                                                                            | WCAG 2.5.8 (tamanho mínimo de alvo)          |
+| Aba ativa (mobile) e abas do catálogo                  | só cor                         | cor + sublinhado                                                                                                                                                                                    | estado não depende só de cor                 |
+| Edição selecionada no detalhe                          | só cor da borda                | borda + marca de seleção sobre o aro (sem deslocar a linha)                                                                                                                                         | idem                                         |
+| Filtros selecionados                                   | só cor                         | cor + ícone de check + `aria-pressed`                                                                                                                                                               | idem                                         |
+| Edição esgotada                                        | —                              | riscada, desabilitada e anunciada                                                                                                                                                                   | estado não desenhado                         |
+| Ações do card (carrinho, favoritar, ver)               | visíveis só no card de exemplo | aparecem no hover **e no foco por teclado**                                                                                                                                                         | operação por teclado                         |
+| Anel de foco                                           | —                              | anel âmbar global em `:focus-visible`                                                                                                                                                               | foco visível                                 |
+| Mensagens de validação e dicas                         | não desenhadas                 | abaixo do campo, ligadas por `aria-describedby`; dicas que o layout não mostra (formato do endereço, contador da observação, limite por pedido) ficam só para leitores de tela até serem relevantes | erros associados sem poluir o layout         |
+| Toasts e regiões vivas                                 | não desenhados                 | `sonner` com os tokens do projeto                                                                                                                                                                   | feedback acessível de mutations e tempo real |
+
+### Desvios e decisões de layout
+
+- **Inconsistências do próprio Figma** — usado o valor dominante: deslocamentos aleatórios de
+  algumas artes nos cards (ex.: a arte 03 está 6 px acima das vizinhas, a do Cosmic Bloom é um
+  recorte 224x286), raios de 13/15/16/17 px para a mesma arte (usado 15 px, token
+  `rounded-2xl`), raio dos campos 2,5–5 px (usado 3 px no pagamento e 5 px nos diálogos),
+  textos ligeiramente fora de centro nos botões.
+- **Larguras intermediárias** (768–1279 px) não têm frame: o cabeçalho desktop passa a
+  navegação para uma segunda linha, a barra lateral de filtros vira painel deslizante abaixo de
+  1024 px e o rodapé usa duas colunas.
+- **Paginação**: o frame mostra "1 2 3 4 >"; a aplicação mostra uma janela de quatro páginas que
+  acompanha a página atual, com a seta "anterior" quando há página anterior.
+- **Selos dos cards** ("RARO", "NOVO", "EM ALTA") aparecem em todos os NFTs que os têm nos dados;
+  o frame só desenha um como exemplo.
+- **Carrinho**: abaixo do seletor de quantidade aparece a edição da linha ("Edição 1/50"),
+  porque o mesmo NFT pode estar no carrinho em edições diferentes; o aviso "Máximo disponível"
+  aparece acima quando o limite é atingido. Ambos ficam fora do fluxo e não deslocam a linha.
+- **Pagamento**: o frame desenha o formulário vazio. Para quem já tem carteiras cadastradas, a
+  lista de carteiras aparece antes de "Usar outra carteira?" e preenche o formulário. A revisão
+  do pedido (diálogo) e os estados de conexão da carteira não estão no Figma e seguem o padrão
+  visual dos diálogos de login.
+- **Recibo**: o frame é um diálogo sobre o pagamento; a aplicação usa uma rota própria
+  (`/pedido/$orderId`) com o mesmo cartão, para que o recibo tenha URL, sobreviva a refresh e
+  apareça em "Atividade". Uma nota informa que transação e explorador são simulados.
+- **Perfil**: um único botão "Salvar" por formulário (dados e senha); o avatar usa
+  "Alterar"/"Remover" como no frame.
+- **Barra lateral da conta**: "Dados do perfil", "Carteiras", "Atividade" (pedidos) e "Lista de
+  interesse" (favoritos) funcionam; "Ofertas", "Arquivos baixados" e "Suporte" estão fora do
+  escopo e levam à página "em breve".
+- **Painel "Mocks"**: ferramenta da demonstração, inexistente no Figma (botão no canto inferior
+  esquerdo; no mobile, uma aba estreita na borda direita, fora de qualquer controle).
+- **Estados não desenhados** (carregamento, vazio, erro, 404, pedido pendente/recusado, sessão
+  expirada, carrinho com itens esgotados) usam os mesmos tokens, tipografia e componentes.
 
 ## 16. Limitações conhecidas
 

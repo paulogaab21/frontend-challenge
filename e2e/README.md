@@ -117,37 +117,30 @@ All five feature specs import the same isolated fixtures and run on both project
 - `realtime.spec.ts`: live cart/review prices, quote acknowledgment, stock, duplicate/stale frames, foreign-account events, outage/reconnection, pending reload/terminal settlement and sign-out cleanup. Socket cases first require one connected mock client so a missing transport cannot make negative assertions pass vacuously. Separate active cases verify 409 responses, corrected quotes, page notices and no created order.
 - `visual.spec.ts`: the stable baselines and tablet captures described above.
 
-`support/purchase-page.ts` contains responsive cart-line locators, payment/review helpers, real UI login, REST contract parsers and receipt/quote assertions. `gotoPage` waits for the service worker and initial queries after full navigation. Mobile detail quantity is exercised with keyboard activation in the main flow while its separate pointer-overlap regression remains a fixme.
+`support/purchase-page.ts` contains responsive cart-line locators, payment/review helpers, real UI login, REST contract parsers and receipt/quote assertions. `gotoPage` waits for the service worker and initial queries after full navigation.
 
-Known product regressions retain their original assertions with explicit `test.fixme` reasons: the mobile mock-devtools pill intercepts the detail quantity-increase button; a stale-price or sold-out HTTP 409 closes the review dialog instead of retaining its changes/blockers. The latter runs once per scenario on both projects. Application source remains with the coordinator. The initial Socket.IO startup bug was fixed upstream in local commit `599c2f0`; its temporary fixmes and console diagnostics were removed, and wallet disconnection is active again.
+## Coverage of the challenge statement (section 9)
 
-The legacy reset sanity test in `mock-layer.spec.ts` predates the mounted app: it treats the already-created visitor cart counter as the pristine seed counter. A true reset returns the counter to zero. This file belongs to the coordinator in SEAPEN-04; report that failure without filtering it from the full run or changing its assertions here.
+| #   | Required scenario                                                     | Specs (both projects unless noted)                                                                                                                                                                                 |
+| --- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1   | Search, combined filters, sorting, pagination and history restoration | `catalog.spec.ts` (search + filters + sorting vs REST, pagination resets on filter change, back/forward/reload/deep links, out-of-order responses, invalid URL params); `mock-layer.spec.ts` (REST filters/facets) |
+| 2   | Direct access to the detail and unknown resource                      | `nft-detail.spec.ts` (cold load/reload, unknown NFT, unknown edition, quantity limit, gallery)                                                                                                                     |
+| 3   | Sign-up, sign-in, session expiry, sign-out and user switch            | `auth.spec.ts`                                                                                                                                                                                                     |
+| 4   | Favorites, including mutation failure and recovery                    | `favorites.spec.ts` (optimistic add/remove rollback, retry, per-user isolation)                                                                                                                                    |
+| 5   | Cart, quantities, removal, coupon, persistence after refresh/login    | `cart.spec.ts`                                                                                                                                                                                                     |
+| 6   | Complete purchase, from catalog to confirmed receipt                  | `purchase.spec.ts`                                                                                                                                                                                                 |
+| 7   | Payment failure, repeated click and timeout recovering the same order | `payment-failures.spec.ts`; `mock-layer.spec.ts` (idempotency replay / key reuse)                                                                                                                                  |
+| 8   | Profile, avatar, password and wallets, with validation errors         | `account.spec.ts`                                                                                                                                                                                                  |
+| 9   | Price/availability change via Socket.IO during checkout               | `realtime.spec.ts` (live change inside review, `price-change-at-checkout`, `sold-out-at-checkout`, availability events)                                                                                            |
+| 10  | Duplicate/stale events, disconnection and pending-order resumption    | `realtime.spec.ts` (duplicate/stale frames, foreign-account broadcast, socket outage, pending reload, terminal orders, sign-out cleanup)                                                                           |
+| 11  | Keyboard navigation, dialog focus and form validation                 | `a11y.spec.ts` (keyboard flows, focus traps/return, axe WCAG 2.1 A/AA scans, reflow at 390/768/1440/720 px, reduced motion); validation also in `account`, `auth`, `payment-failures`                              |
+| 12  | Skeletons under slow loading, failure feedback and retry              | `resilience.spec.ts` (layout-shift checks, 500/503/offline/timeout, inline recovery)                                                                                                                               |
+| —   | Visual regression of home, detail, cart and payment                   | `visual.spec.ts` (versioned baselines under `__screenshots__/{desktop,mobile}`)                                                                                                                                    |
+
+Realtime assertions always go through the application's `socket.io-client` (the mock server only emits frames) and REST through the MSW handlers; no test writes to application state or caches. Time-sensitive cases install the Playwright clock and trigger events explicitly through `window.__kurioMocks`.
 
 ## Results and troubleshooting
 
 HTML output is in `playwright-report/index.html`; `npm run e2e:report` opens it. Failed tests keep traces, screenshots and videos under `test-results/`. Open a trace with `npx playwright show-trace <path-to-trace.zip>`; these generated artifacts are ignored by git. A fresh run removes old test results. The console uses the list reporter and records results separately by project.
 
 If readiness times out, verify that the production build enables mocks, the origin supports service workers (`localhost`/HTTPS), and `/mockServiceWorker.js` is reachable. If assertions see real HTML instead of JSON, the request probably bypassed MSW or the target did not boot the worker. Use a page-side helper, not the Node request client. An occupied preview port or an incompatible existing build should be stopped/rebuilt before retrying.
-
-## Mount the operator panel
-
-The coordinator owns the application mount. Keep it lazy and render it only when mocks are enabled:
-
-```tsx
-const MockDevtools = lazy(() =>
-  import('@/mocks/devtools').then((module) => ({ default: module.MockDevtools })),
-)
-
-// Inside the app, after mock bootstrap is ready:
-{
-  env.enableMocks && (
-    <Suspense fallback={null}>
-      <MockDevtools />
-    </Suspense>
-  )
-}
-```
-
-The collapsed pill is fixed above the mobile tab bar and reserves no layout space. The expanded non-modal panel imports its own chunk only on first open, focuses its close button, closes on Esc, and returns focus to the pill. All reads and mutations use `MockControl`; snapshot/event polling runs once per second only while expanded. Native labeled controls and inline `role="status"` feedback keep it independent of app toasts and private feature code. Public test credentials live in a separate mock-only data module.
-
-Changes affect the simulated server; the application learns them from REST and Socket.IO. Reset/scenario actions do not clear application credentials or mutate Query caches. Expiring a server session leaves client state to react to its next authenticated response, matching a server-side expiry. The panel is a developer tool marked “Ambiente simulado,” not a Figma product screen.

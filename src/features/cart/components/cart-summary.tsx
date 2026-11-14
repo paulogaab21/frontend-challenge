@@ -144,7 +144,7 @@ export function CartSummary({
       )}
       <div className={refreshing ? 'motion-safe:animate-pulse' : undefined}>
         <dl className="mt-3 space-y-3 text-15 leading-5 md:mt-6">
-          <div className="flex flex-wrap items-center justify-between gap-x-2 md:items-baseline">
+          <div className="flex flex-wrap items-center justify-between gap-x-2 md:h-5 md:items-baseline">
             <dt>Subtotal</dt>
             <dd className="text-base leading-5 md:text-lg md:leading-5">
               {amount(quote?.subtotal)}
