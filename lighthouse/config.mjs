@@ -1,7 +1,7 @@
 import { defaultSettings } from 'lighthouse/core/config/constants.js'
 import desktopConfig from 'lighthouse/core/config/desktop-config.js'
 
-// Coordinator-editable data. Slugs also determine stable report directories.
+// Editable data. Slugs also determine stable report directories.
 export const pages = [
   { slug: 'home', title: 'Início', path: '/' },
   { slug: 'nft-detail', title: 'Detalhe do NFT', path: '/nft/emerald-ape-042' },

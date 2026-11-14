@@ -127,7 +127,7 @@ test('reset removes mutations, carts, favorites changes, registered users and al
     NFT_IDS.emeraldApe,
   )
   const registration = await api.request('POST', '/users', {
-    username: 'seapen.reset',
+    username: 'reset.collector',
     email: 'reset@kurio.test',
     password: 'Reset@2026',
   })
@@ -179,7 +179,7 @@ test('order retries replay one order and reject a changed body under the same id
   await api.login(users.ana)
   await api.addToCart(NFT_IDS.emeraldApe, 'fifty', 2)
   const body = await checkoutInput(api)
-  const headers = { 'Idempotency-Key': 'seapen-idempotent-order' }
+  const headers = { 'Idempotency-Key': 'e2e-idempotent-order' }
   const first = await api.request('POST', '/orders', body, headers)
   expect(first.status).toBe(201)
   const order = orderSchema.parse(first.body)
@@ -210,7 +210,7 @@ test('a stale checkout quote returns the fresh quote and creates no order', asyn
   const body = await checkoutInput(api)
   await mocks.setPrice(NFT_IDS.emeraldApe, '1.29', 'fifty')
   const response = await api.request('POST', '/orders', body, {
-    'Idempotency-Key': 'seapen-stale-quote',
+    'Idempotency-Key': 'e2e-stale-quote',
   })
   expect(response.status).toBe(409)
   const problem = apiErrorSchema.parse(response.body)
@@ -272,7 +272,7 @@ test('guest cart, user session and manually settled pending order survive reload
   expect(cartSchema.parse((await api.get('/cart')).body).items).toEqual(cart.items)
   const body = await checkoutInput(api)
   const created = await api.request('POST', '/orders', body, {
-    'Idempotency-Key': 'seapen-persist-order',
+    'Idempotency-Key': 'e2e-persist-order',
   })
   expect(created.status).toBe(201)
   const order = orderSchema.parse(created.body)

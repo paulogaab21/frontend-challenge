@@ -92,4 +92,4 @@ Only the selected page/profile directories are refreshed: surplus `run-*.report.
 
 Close heavy background work, keep the machine plugged in and record any unusual conditions separately. Thermal state, CPU contention, power management, Chrome/Lighthouse upgrades, antivirus, network access to external assets, and the localhost server can change results. Simulated throttling makes comparisons more repeatable but does not eliminate variance. Keep the lockfile and Chrome version fixed when comparing changes. Three runs and medians reduce outlier influence.
 
-The committed initial reports cover scaffold content, not completed marketplace performance. Rebuild and re-run both pages/profiles after the coordinator merges the UI, data and MSW boot code. Use the report's warning/error list and individual HTML audits to address score failures, and inspect actual page content before treating scores as final acceptance evidence.
+The committed reports are the final audit of the delivered build: `SUMMARY.md` names the source commit, the tool versions and the conditions of the run. To investigate a score, use the report's warning/error list and the individual HTML audits.

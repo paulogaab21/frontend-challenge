@@ -25,7 +25,7 @@ test('registration validates locally, reports both API conflicts and establishes
     name: isMobile ? 'Criar perfil' : 'Criar conta',
     exact: true,
   })
-  await form.getByRole('textbox', { name: 'Nome de usuário', exact: true }).fill('shad.collector')
+  await form.getByRole('textbox', { name: 'Nome de usuário', exact: true }).fill('new.collector')
   await form.getByRole('textbox', { name: 'E-mail', exact: true }).fill('invalid-email')
   await form.getByLabel('Senha', { exact: true }).fill('a1')
   await form.getByLabel('Confirmar senha', { exact: true }).fill('other')
@@ -41,8 +41,8 @@ test('registration validates locally, reports both API conflicts and establishes
   await form.getByLabel('Confirmar senha', { exact: true }).fill('Collector@2026')
 
   for (const [field, value, otherField, otherValue, apiField] of [
-    ['E-mail', users.ana.email, 'Nome de usuário', 'shad.collector', 'email'],
-    ['Nome de usuário', 'ana.souza', 'E-mail', 'shad.collector@kurio.test', 'username'],
+    ['E-mail', users.ana.email, 'Nome de usuário', 'new.collector', 'email'],
+    ['Nome de usuário', 'ana.souza', 'E-mail', 'new.collector@kurio.test', 'username'],
   ] as const) {
     await form.getByLabel(otherField, { exact: true }).fill(otherValue)
     await form.getByLabel(field, { exact: true }).fill(value)
@@ -60,13 +60,13 @@ test('registration validates locally, reports both API conflicts and establishes
     await expect(form.getByLabel(field, { exact: true })).toHaveAttribute('aria-invalid', 'true')
     expect(Object.keys((await mocks.snapshot()).users)).toHaveLength(initialUsers)
   }
-  await form.getByRole('textbox', { name: 'Nome de usuário', exact: true }).fill('shad.collector')
+  await form.getByRole('textbox', { name: 'Nome de usuário', exact: true }).fill('new.collector')
   await submit.click()
   await expect(page).toHaveURL('/conta/perfil')
   const session = sessionSchema.parse((await api.get('/session')).body)
   expect(session.user).toMatchObject({
-    username: 'shad.collector',
-    email: 'shad.collector@kurio.test',
+    username: 'new.collector',
+    email: 'new.collector@kurio.test',
   })
   expect(Object.keys((await mocks.snapshot()).users)).toHaveLength(initialUsers + 1)
   await expect(
