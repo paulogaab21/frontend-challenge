@@ -103,7 +103,7 @@ export function CartSummary({
             type="submit"
             loading={coupon.pending}
             disabled={loading}
-            className="h-full w-[97px] rounded-full bg-copper-gradient px-3 text-15 text-cream md:w-[102px] md:rounded-none md:rounded-r-[2px] md:bg-none md:text-ink"
+            className="-my-px -mr-px h-[50px] w-[97px] rounded-full bg-copper-gradient px-3 text-15 text-cream md:my-0 md:mr-0 md:h-full md:w-[102px] md:rounded-none md:rounded-r-[2px] md:bg-none md:text-ink"
           >
             Aplicar
           </Button>

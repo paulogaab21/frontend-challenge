@@ -54,6 +54,7 @@ export function toDetail(nft: NftRecord): NftDetail {
   return {
     ...toSummary(nft),
     description: nft.description,
+    summary: nft.summary,
     details: nft.details,
     attributes: nft.attributes,
     gallery: nft.gallery,

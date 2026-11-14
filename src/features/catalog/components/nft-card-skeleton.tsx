@@ -22,7 +22,12 @@ export function NftCardSkeleton({ variant = 'default', className }: NftCardSkele
       >
         <Skeleton variant="line" className="w-4/5" />
       </div>
-      <div className={cn('flex h-6 items-center px-2 md:px-0', compact && 'h-5 px-0')}>
+      <div
+        className={cn(
+          'flex h-[17px] items-center px-2 md:h-6 md:px-0',
+          compact && 'h-5 px-0 md:h-5',
+        )}
+      >
         <Skeleton variant="line" className="w-2/5" />
       </div>
     </div>

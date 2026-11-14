@@ -85,6 +85,8 @@ export type NftReview = z.infer<typeof nftReviewSchema>
 
 export const nftDetailSchema = nftSummarySchema.extend({
   description: z.string(),
+  /** Short version of the description, used where space is scarce (mobile). */
+  summary: z.string(),
   /** Long-form paragraphs of the "Detalhes do NFT" tab. */
   details: z.array(z.string()),
   attributes: z.array(z.string()),

@@ -60,11 +60,14 @@ export function PasswordForm({
           }
         })}
       >
-        <h2 className="text-base font-medium">Alterar senha</h2>
+        <h2 className="relative -top-1 text-base font-medium">Alterar senha</h2>
         <div className="mt-4">
           <FormServerFeedback error={formError} successMessage={successMessage} />
         </div>
-        <fieldset disabled={pending} className="mt-4 max-w-[417px] space-y-[23px]">
+        <fieldset
+          disabled={pending}
+          className="relative -top-0.5 mt-4 max-w-[417px] space-y-[23px] [&_[data-slot=form-label]]:relative [&_[data-slot=form-label]]:-top-1 [&_button[aria-controls]]:right-[7px]"
+        >
           <FormField
             control={form.control}
             name="currentPassword"
@@ -123,7 +126,11 @@ export function PasswordForm({
             )}
           />
         </fieldset>
-        <Button type="submit" className="mt-8 w-[131px] rounded-[3px] text-sm" loading={busy}>
+        <Button
+          type="submit"
+          className="-top-0.5 mt-8 w-[131px] rounded-[3px] text-sm"
+          loading={busy}
+        >
           Salvar
         </Button>
       </form>

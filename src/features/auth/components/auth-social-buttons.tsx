@@ -16,7 +16,7 @@ export function AuthSocialButtons({
 }: AuthSocialButtonsProps) {
   return (
     <div>
-      <div className="flex h-4 items-center gap-3">
+      <div className="flex h-4 items-center gap-[10px] md:gap-3">
         <Separator className="w-auto flex-1" />
         <span className="shrink-0 text-13 leading-4">Ou continue com</span>
         <Separator className="w-auto flex-1" />
@@ -29,7 +29,7 @@ export function AuthSocialButtons({
       >
         <Button
           variant="social"
-          className="w-full md:gap-3 md:rounded-[5px]"
+          className="w-full gap-[12.5px] rounded-[5px] pr-[38.5px] md:gap-3 md:rounded-[5px] md:pr-5"
           onClick={() => onSelect('google')}
           disabled={disabled}
         >
@@ -38,7 +38,7 @@ export function AuthSocialButtons({
         </Button>
         <Button
           variant="social"
-          className="w-full md:gap-3 md:rounded-[5px]"
+          className="w-full gap-[12.5px] rounded-[5px] pr-[38.5px] md:gap-3 md:rounded-[5px] md:pr-5"
           onClick={() => onSelect('facebook')}
           disabled={disabled}
         >

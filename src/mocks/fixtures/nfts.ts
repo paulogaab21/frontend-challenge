@@ -38,6 +38,7 @@ export interface NftRecord {
   featured: boolean
   listedAt: string
   description: string
+  summary: string
   details: string[]
   attributes: string[]
   gallery: GalleryView[]
@@ -486,6 +487,7 @@ function toRecord(seed: Seed, index: number): NftRecord {
     featured: seed.featured ?? false,
     listedAt,
     description: `Um colecionável digital finalizado à mão da coleção Kurio Editions, verificado na ${networkLabel}, com arte desbloqueável e acesso para colecionadores.`,
+    summary: `Um colecionável digital ${defaultEdition?.label ?? '1/50'} finalizado à mão da coleção Kurio Editions, verificado na ${networkLabel}.`,
     details: [
       `${fullName} é uma obra digital ${defaultEdition?.label ?? '1/50'} finalizada à mão da coleção Kurio Editions. Cada atributo fica armazenado nos metadados do token e verificado na ${networkLabel}. A obra explora identidade, movimento e luz em um mundo digital sem fronteiras.`,
       `A propriedade inclui a arte em alta resolução, lançamentos exclusivos para colecionadores e um registro permanente de procedência registrada na rede. ${seed.creator} recebe 5% de direitos autorais nas vendas secundárias, apoiando novos trabalhos e lançamentos da comunidade.`,

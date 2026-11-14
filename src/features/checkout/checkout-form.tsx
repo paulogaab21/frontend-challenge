@@ -509,7 +509,8 @@ export function CheckoutForm({ userId, profile, wallets }: CheckoutFormProps) {
               </span>
             </p>
 
-            <div className="pt-6">
+            {/* Anchored to the bottom of the screen, as in the mobile frame. */}
+            <div className="sticky bottom-8 z-10 pt-6">
               <Button
                 type="submit"
                 variant="gradient"

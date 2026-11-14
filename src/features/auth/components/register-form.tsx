@@ -67,6 +67,7 @@ export function RegisterForm({
                     placeholder="Nome de usuário"
                     required
                     sizeVariant="responsive"
+                    className="placeholder:text-center md:placeholder:text-left"
                   />
                 </FormControl>
                 <FormMessage className="mt-1" />
@@ -98,7 +99,7 @@ export function RegisterForm({
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem className="gap-0">
+              <FormItem className="gap-0 [&_button]:text-line-strong md:[&_button]:text-khaki">
                 <FormLabel className="sr-only">Senha</FormLabel>
                 <FormControl>
                   <PasswordInput
@@ -119,7 +120,7 @@ export function RegisterForm({
             control={form.control}
             name="confirmPassword"
             render={({ field }) => (
-              <FormItem className="gap-0">
+              <FormItem className="gap-0 [&_button]:text-line-strong md:[&_button]:text-khaki">
                 <FormLabel className="sr-only">Confirmar senha</FormLabel>
                 <FormControl>
                   <PasswordInput

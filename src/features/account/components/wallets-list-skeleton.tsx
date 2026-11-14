@@ -7,10 +7,10 @@ export function WalletsListSkeleton({ form = false, count = 2 }: WalletsListSkel
   return (
     <div role="status" aria-label="Carregando carteiras">
       <Skeleton className="h-4 w-48" />
-      <Skeleton className="mt-1.5 h-8 w-full md:h-4" />
+      <Skeleton className="mt-2 h-8 w-full md:h-4" />
       {form ? (
         <>
-          <div className="mt-8 grid gap-x-7 gap-y-6 md:grid-cols-2">
+          <div className="mt-8 grid gap-x-7 gap-y-[25px] md:grid-cols-2">
             {Array.from({ length: 10 }, (_, i) => (
               <div key={i}>
                 <Skeleton className="h-6 w-40" />

@@ -19,7 +19,7 @@ export function AuthPageLayout({
     <div className="mx-auto w-full max-w-[470px] px-7 pt-[124px] pb-6">
       <SiteLink
         to="/"
-        className="mx-auto block w-fit text-[32px] leading-[42px] font-bold tracking-brand"
+        className="mx-auto block w-fit translate-x-[1.5px] translate-y-[3.5px] text-[32px] leading-[42px] font-bold tracking-brand md:translate-x-0 md:translate-y-0"
         aria-label="Kurio — Início"
       >
         KURIO

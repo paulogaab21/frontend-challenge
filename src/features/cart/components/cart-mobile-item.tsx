@@ -28,28 +28,28 @@ export function CartMobileItem({
 }: CartMobileItemProps) {
   const soldOut = item.available === 0
   return (
-    <li aria-busy={pending || undefined} className="min-w-0 space-y-2">
-      <div className="grid min-h-[100px] grid-cols-[100px_minmax(0,1fr)] gap-x-[9px] overflow-hidden rounded-[14px] bg-surface shadow-lg max-[360px]:grid-cols-1">
+    <li aria-busy={pending || undefined} className="relative min-w-0">
+      <div className="relative grid min-h-[100px] grid-cols-[100px_minmax(0,1fr)] gap-x-[9px] rounded-[14px] bg-surface shadow-lg max-[360px]:grid-cols-1">
         <SiteLink
           to={href}
-          className={soldOut ? 'self-start opacity-40' : 'self-start'}
+          className={`self-start rounded-[14px] ${soldOut ? 'opacity-40' : ''}`}
           aria-label={`Ver ${item.name}`}
         >
           <Artwork id={item.artwork} sizes="100px" alt="" className="w-[100px] rounded-[14px]" />
         </SiteLink>
-        <div className="min-w-0 py-[10px] pr-3 max-[360px]:px-3">
+        <div className="min-w-0 pt-[11px] pr-3 pb-[9px] max-[360px]:px-3">
           <SiteLink
             to={href}
             className="block text-15 leading-5 font-bold break-words hover:text-amber"
           >
             {item.name}
           </SiteLink>
-          <p className="text-sm leading-[22px] text-sand">Edição: {item.editionLabel}</p>
+          <p className="mt-[1.5px] text-sm leading-[22px] text-sand">Edição: {item.editionLabel}</p>
           {soldOut && <span className="text-xs font-bold text-coral">Esgotado</span>}
-          <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
-            <p className="text-lg leading-[22px] font-bold text-amber">
-              {formatEth(item.lineTotal)}
-            </p>
+          <p className="mt-3 text-lg leading-[22px] font-bold text-amber">
+            {formatEth(item.lineTotal)}
+          </p>
+          <div className="absolute top-[38.5px] right-4 max-[360px]:static max-[360px]:mt-3">
             <QuantityStepper
               name={item.name}
               quantity={item.quantity}
@@ -57,21 +57,21 @@ export function CartMobileItem({
               disabled={soldOut}
               onChange={(quantity) => onQuantityChange(item, quantity)}
             />
+            {!soldOut && item.quantity >= item.maxQuantity && (
+              <p className="absolute top-full right-0 mt-0.5 w-max text-10 leading-3 text-sand">
+                Máximo disponível
+              </p>
+            )}
           </div>
         </div>
-      </div>
-      <div className="flex flex-wrap items-center justify-between gap-2 px-1">
-        <span className="text-xs text-sand">
-          {!soldOut && item.quantity >= item.maxQuantity ? 'Máximo disponível' : ''}
-        </span>
         <button
           type="button"
           onClick={() => onRemove(item)}
           aria-label={`Remover ${item.name} do carrinho`}
-          className="inline-flex min-h-8 items-center gap-2 text-xs text-sand hover:text-amber"
+          title={`Remover ${item.name} do carrinho`}
+          className="absolute top-0.5 right-0.5 flex size-6 items-center justify-center rounded-sm text-copper hover:text-amber"
         >
-          <TrashIcon size={18} />
-          Remover
+          <TrashIcon size={20} />
         </button>
       </div>
       <CartItemFeedback

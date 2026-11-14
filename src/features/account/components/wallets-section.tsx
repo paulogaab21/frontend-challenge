@@ -60,13 +60,15 @@ export function WalletsSection({
         </div>
       </div>
       {walletRole === 'primary' && (
-        <p className="mt-1.5 text-sm leading-4 text-sand">
+        <p className="mt-2 text-sm leading-4 text-sand">
           {helperText ??
             'Estas carteiras ficam disponíveis no pagamento e para receber NFTs comprados.'}
         </p>
       )}
       {walletRole === 'secondary' && !children && (
-        <p className="mt-2 text-sm text-sand">Você ainda não adicionou uma carteira secundária.</p>
+        <p className="mt-2.5 text-sm text-sand">
+          Você ainda não adicionou uma carteira secundária.
+        </p>
       )}
       {children && <div className={walletRole === 'primary' ? 'mt-8' : 'mt-5'}>{children}</div>}
     </section>

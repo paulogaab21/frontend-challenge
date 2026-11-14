@@ -81,7 +81,7 @@ export function LoginForm({
             control={form.control}
             name="password"
             render={({ field }) => (
-              <FormItem className="gap-0">
+              <FormItem className="gap-0 [&_button]:text-line-strong md:[&_button]:text-khaki">
                 <FormLabel className="sr-only">Senha</FormLabel>
                 <FormControl>
                   <PasswordInput
@@ -97,7 +97,7 @@ export function LoginForm({
               </FormItem>
             )}
           />
-          <div className="pt-0 text-right md:-translate-y-[3px]">
+          <div className="-translate-y-[3.5px] pt-0 text-right md:-translate-y-[3px]">
             <Button
               variant="link"
               className="text-sm"

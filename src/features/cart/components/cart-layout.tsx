@@ -11,7 +11,7 @@ export function CartLayout({ notices, items, summary }: CartLayoutProps) {
     <div className="mx-auto w-full max-w-[1248px] md:px-6">
       <div className="grid min-w-0 grid-cols-1 gap-y-1 xl:grid-cols-[minmax(0,782px)_332px] xl:gap-x-[86px]">
         {notices && <div className="px-7 pb-5 md:col-span-full md:px-0">{notices}</div>}
-        <div className="min-w-0 px-7 md:px-0">{items}</div>
+        <div className="min-h-[462px] min-w-0 px-7 md:min-h-0 md:px-0">{items}</div>
         <div className="min-w-0 md:mt-8 md:max-w-[480px] xl:mt-0 xl:max-w-none">{summary}</div>
       </div>
     </div>

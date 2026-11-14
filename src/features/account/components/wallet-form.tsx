@@ -121,7 +121,10 @@ export function WalletForm({
         })}
       >
         <FormServerFeedback error={formError} />
-        <fieldset disabled={pending} className="grid min-w-0 gap-x-7 gap-y-[25px] md:grid-cols-2">
+        <fieldset
+          disabled={pending}
+          className="grid min-w-0 gap-x-7 gap-y-[25px] md:grid-cols-2 [&_[data-slot=form-label]>span]:relative [&_[data-slot=form-label]>span]:top-px"
+        >
           <FormField
             control={form.control}
             name="displayName"
@@ -157,13 +160,15 @@ export function WalletForm({
             name="network"
             render={({ field }) => (
               <FormItem className="gap-0">
-                <FormLabel required>Rede</FormLabel>
+                <FormLabel required className="gap-[5px]">
+                  Rede
+                </FormLabel>
                 <Select value={field.value ?? ''} onValueChange={field.onChange}>
                   <FormControl>
                     <SelectTrigger
                       onBlur={deferBlurForSubmit(field.onBlur)}
                       ref={field.ref}
-                      className="rounded-[3px]"
+                      className="rounded-[3px] pr-[9px] pl-3"
                     >
                       <SelectValue placeholder="Selecione uma rede" />
                     </SelectTrigger>
@@ -214,7 +219,7 @@ export function WalletForm({
                         ? 'Endereço Solana da carteira'
                         : 'Endereço 0x da carteira'
                     }
-                    className="rounded-[3px]"
+                    className="rounded-[3px] px-3"
                   />
                 </FormControl>
                 <FormDescription className="sr-only">{addressHint(network)}</FormDescription>
@@ -235,7 +240,7 @@ export function WalletForm({
                     value={field.value ?? ''}
                     autoComplete="off"
                     placeholder="ENS ou carteira secundária (opcional)"
-                    className="rounded-[3px]"
+                    className="rounded-[3px] px-3"
                   />
                 </FormControl>
                 <FormMessage />
@@ -253,7 +258,7 @@ export function WalletForm({
                     <SelectTrigger
                       onBlur={deferBlurForSubmit(field.onBlur)}
                       ref={field.ref}
-                      className="rounded-[3px]"
+                      className="rounded-[3px] pr-[9px] pl-3"
                     >
                       <SelectValue placeholder="Selecione uma carteira" />
                     </SelectTrigger>
@@ -311,7 +316,9 @@ export function WalletForm({
               name="ensName"
               render={({ field }) => (
                 <FormItem className="gap-0">
-                  <FormLabel required>Nome ENS</FormLabel>
+                  <FormLabel required className="gap-[5px]">
+                    Nome ENS
+                  </FormLabel>
                   <div className="flex gap-[11px]">
                     <FormField
                       control={form.control}
@@ -324,7 +331,7 @@ export function WalletForm({
                               <SelectTrigger
                                 onBlur={deferBlurForSubmit(suffix.onBlur)}
                                 ref={suffix.ref}
-                                className="w-[77px] rounded-[3px] px-2"
+                                className="w-[77px] rounded-[3px] pr-[5px] pl-[9px] text-15 [&_svg]:text-cream"
                               >
                                 <SelectValue />
                               </SelectTrigger>

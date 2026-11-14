@@ -86,7 +86,8 @@ export function MobileTopBar(props: MobileTopBarProps) {
           </Link>
         </Button>
       )}
-      <p className="text-center text-xl leading-7 font-bold">{props.title}</p>
+      {/* The mobile frames centre inner titles 12px right of the screen centre. */}
+      <p className="min-w-0 translate-x-3 text-center text-xl leading-7 font-bold">{props.title}</p>
       <div className="flex size-9 items-center justify-center">{props.rightAction}</div>
     </header>
   )

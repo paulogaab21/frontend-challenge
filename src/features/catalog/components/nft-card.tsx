@@ -91,6 +91,8 @@ export function NftCard({
         <div
           className={cn(
             'flex items-baseline gap-x-2 px-2 text-base leading-6 font-bold text-amber md:gap-x-3 md:px-0 md:text-lg',
+            // Mobile frame: name and price baselines are 18.4px apart.
+            !compact && 'leading-[17px] md:leading-6',
             compact && 'px-0 leading-5 md:text-base',
           )}
         >

@@ -16,7 +16,7 @@ export function QuantityStepper({
   onChange,
 }: QuantityStepperProps) {
   return (
-    <div className="inline-flex items-center gap-3 text-base md:gap-3 md:text-17">
+    <div className="inline-flex items-center gap-[11px] text-base md:gap-3 md:text-17">
       <button
         type="button"
         disabled={disabled || quantity <= 1}
@@ -26,7 +26,11 @@ export function QuantityStepper({
       >
         <MinusIcon size={12} />
       </button>
-      <span aria-live="polite" aria-atomic="true" className="min-w-3 text-center md:min-w-[11px]">
+      <span
+        aria-live="polite"
+        aria-atomic="true"
+        className="min-w-[11px] text-center md:min-w-[11px]"
+      >
         <span className="sr-only">Quantidade de {name}: </span>
         {quantity}
       </span>

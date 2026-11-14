@@ -84,7 +84,7 @@ export function HeroCarousel({
               <p className="text-xs leading-4 font-medium md:text-sm md:leading-6 md:tracking-brand">
                 {slide.eyebrow}
               </p>
-              <Heading className="mt-2 text-lg leading-[29px] font-bold md:mt-1 md:text-28 md:leading-[42px] xl:text-hero xl:leading-[70px]">
+              <Heading className="mt-1.5 text-lg leading-[29px] font-bold md:mt-1 md:text-28 md:leading-[42px] xl:text-hero xl:leading-[70px]">
                 <span className="hidden md:block">
                   {slide.title.map((line, i) => (
                     <span key={i} className="block">
@@ -103,7 +103,7 @@ export function HeroCarousel({
               <p className="mt-1 hidden max-w-[590px] text-sm leading-6 text-sand md:block">
                 {slide.description}
               </p>
-              <p className="mt-2 text-xs leading-[18px] text-sand md:hidden">
+              <p className="mt-[5px] text-xs leading-[18px] text-sand md:hidden">
                 {slide.mobileDescription ?? slide.description}
               </p>
               <Button asChild className="mt-0 hidden w-[140px] md:mt-8 md:inline-flex">
@@ -111,7 +111,7 @@ export function HeroCarousel({
               </Button>
               <SiteLink
                 to={slide.ctaTo}
-                className="mt-0 inline-flex items-center gap-1 text-xs font-bold text-amber md:hidden"
+                className="flex w-fit items-center gap-2 text-xs leading-4 font-bold text-amber md:hidden"
               >
                 {slide.ctaLabel}
                 <ArrowRightIcon size={16} />

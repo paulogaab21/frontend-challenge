@@ -73,12 +73,15 @@ export function NftPurchasePanel({
           {nft.name}
         </h1>
         <span
-          className="inline-flex shrink-0 items-center gap-0.5 rounded-full border border-copper px-1.5 text-sm md:hidden"
+          role="img"
+          className="inline-flex h-[26px] shrink-0 items-center gap-[5px] rounded-full border border-copper pr-0.5 pl-1.5 text-sm font-medium md:hidden"
           aria-label={`${nft.rating.average.toLocaleString('pt-BR')} de 5, ${nft.rating.count} avaliações`}
         >
-          <StarIcon size={14} className="text-amber" />
-          {nft.rating.average.toLocaleString('pt-BR')}
-          <span className="text-sand">({nft.rating.count})</span>
+          <StarIcon size={12} className="text-amber" />
+          <span>
+            {nft.rating.average.toFixed(1)}
+            <span className="font-normal text-sand">({nft.rating.count})</span>
+          </span>
         </span>
       </div>
       <div className="hidden flex-wrap items-center justify-between gap-2 py-2 md:flex">
@@ -94,11 +97,11 @@ export function NftPurchasePanel({
       <div aria-hidden="true" className="hidden h-px max-w-[573px] bg-hairline md:block" />
       <h2 className="mt-2.5 hidden text-15 font-bold md:block">Sobre este NFT:</h2>
       <p className="mt-[11px] hidden text-sm leading-6 text-sand md:block">{nft.description}</p>
-      <p className="mt-4 text-sm leading-6 text-sand md:hidden">
-        {mobileDescription ?? nft.description}
+      <p className="mt-3 text-sm leading-6 text-sand md:hidden">
+        {mobileDescription ?? nft.summary}
       </p>
-      <fieldset disabled={disabled || buyPending} className="mt-3 md:mt-[5px]">
-        <legend className="mb-2 text-15 font-bold md:mb-2.5">Edição:</legend>
+      <fieldset disabled={disabled || buyPending} className="mt-2 md:mt-[5px]">
+        <legend className="mb-1.5 text-15 font-bold md:mb-2.5">Edição:</legend>
         <RadioPrimitive.Root
           aria-label="Edição"
           value={selectedEditionId}
@@ -106,7 +109,7 @@ export function NftPurchasePanel({
             const edition = editions.find((item) => item.id === value)
             if (edition) onEditionChange(edition.id)
           }}
-          className="flex flex-wrap gap-2 md:gap-1.5"
+          className="flex flex-wrap gap-3 md:gap-1.5"
         >
           {editions.map((edition) => (
             <RadioPrimitive.Item
@@ -114,7 +117,7 @@ export function NftPurchasePanel({
               value={edition.id}
               disabled={edition.available === 0}
               aria-label={`${edition.label}${edition.available === 0 ? ', esgotada' : ''}`}
-              className="group relative inline-flex h-7 items-center justify-center rounded-[50%] border-2 border-line px-1 text-sm text-sand disabled:cursor-not-allowed disabled:line-through disabled:opacity-50 data-[state=checked]:border-copper data-[state=checked]:font-medium data-[state=checked]:text-amber md:px-[3.4px]"
+              className="group relative inline-flex h-7 items-center justify-center rounded-[50%] border-2 border-line px-0.5 text-sm text-sand disabled:cursor-not-allowed disabled:line-through disabled:opacity-50 data-[state=checked]:border-copper data-[state=checked]:font-medium data-[state=checked]:text-amber md:px-[3.4px]"
             >
               {/* Selection is not conveyed by colour alone: a check mark sits on the
                   rim of the chosen edition without taking space in the row. */}
@@ -213,11 +216,11 @@ export function NftPurchasePanel({
               disabled={blocked}
             />
           </div>
-          <p className="pt-1 text-xl font-bold text-amber" aria-live="polite">
+          <p className="pt-px text-xl font-bold text-amber" aria-live="polite">
             {selected ? formatEth(selected.price) : 'Esgotado'}
           </p>
         </div>
-        <div className="mt-2 flex items-center gap-3">
+        <div className="mt-5 flex items-center gap-3">
           <Button
             variant="gradient"
             size="pill"

@@ -26,8 +26,8 @@ export function AvatarField({
   const [validationError, setValidationError] = useState<string>()
   const message = error ?? validationError
   return (
-    <div>
-      <p className="text-15 leading-6">Avatar</p>
+    <div className="relative -top-[5px]">
+      <p className="relative -top-[2px] text-15 leading-6">Avatar</p>
       <div className="mt-1 flex flex-wrap items-center gap-6">
         <Avatar className="size-[50px] border border-line">
           <AvatarImage src={avatarUrl ?? undefined} alt={`Avatar de ${displayName}`} />
@@ -71,7 +71,7 @@ export function AvatarField({
         </Button>
         <Button
           variant="ghost"
-          className="h-10 px-0 text-sm font-normal"
+          className="-ml-1 h-10 px-0 text-sm font-normal"
           onClick={() => {
             setValidationError(undefined)
             onRemove()

@@ -74,13 +74,13 @@ export function ProfileForm({
           }
         })}
       >
-        <h1 className="text-base leading-6 font-bold">Perfil do colecionador</h1>
+        <h1 className="relative -top-1 text-base leading-6 font-bold">Perfil do colecionador</h1>
         <div className="mt-6">
           <FormServerFeedback error={formError} successMessage={successMessage} />
         </div>
         <fieldset
           disabled={pending}
-          className="mt-6 grid min-w-0 gap-x-7 gap-y-[23px] md:grid-cols-2"
+          className="mt-6 grid min-w-0 gap-x-7 gap-y-[23px] md:grid-cols-2 [&_[data-slot=form-label]]:relative [&_[data-slot=form-label]]:top-[2px] [&_[data-slot=form-label]>span]:relative [&_[data-slot=form-label]>span]:top-px"
         >
           <FormField
             control={form.control}
@@ -152,7 +152,9 @@ export function ProfileForm({
               name="ensName"
               render={({ field }) => (
                 <FormItem className="gap-4">
-                  <FormLabel required>Nome ENS</FormLabel>
+                  <FormLabel required className="gap-[5px]">
+                    Nome ENS
+                  </FormLabel>
                   <div className="flex gap-[11px]">
                     <FormField
                       control={form.control}
@@ -165,7 +167,7 @@ export function ProfileForm({
                               <SelectTrigger
                                 onBlur={deferBlurForSubmit(suffix.onBlur)}
                                 ref={suffix.ref}
-                                className="w-[77px] rounded-[3px] px-2"
+                                className="w-[77px] rounded-[3px] pr-[5px] pl-[9px] text-15 [&_svg]:text-cream"
                               >
                                 <SelectValue />
                               </SelectTrigger>

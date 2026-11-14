@@ -143,7 +143,11 @@ export function CartPage() {
     <AppShell
       activeNav="mercado"
       mobileTab={false}
-      mobileTopBar={{ variant: 'inner', title: 'Carrinho de NFTs', backTo: '/' }}
+      mobileTopBar={{
+        variant: 'inner',
+        title: 'Carrinho de NFTs',
+        backTo: '/',
+      }}
       mainClassName="md:pt-[30px]"
     >
       <h1 className="sr-only">Carrinho de NFTs</h1>

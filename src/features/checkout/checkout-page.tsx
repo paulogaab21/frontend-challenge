@@ -254,7 +254,7 @@ export function CheckoutPage() {
       mobileTopBar={{ variant: 'inner', title: 'Pagamento com carteira', backTo: '/carrinho' }}
       mainClassName="md:pt-[30px]"
     >
-      <div className="container-page pb-10 md:pb-0">
+      <div className="container-page pb-10 max-md:px-7 md:pb-0">
         <h1 className="sr-only">Pagamento</h1>
         <div className="hidden md:block">
           <Breadcrumb>

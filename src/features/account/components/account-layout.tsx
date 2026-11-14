@@ -54,11 +54,23 @@ export function AccountLayout({
                   to={to}
                   aria-current={active === id ? 'page' : undefined}
                   className={cn(
-                    'flex min-h-[45px] items-center gap-3 border-b-[3px] border-transparent px-4 text-15 text-amber lg:border-b-0 lg:border-l-[6px] lg:pl-3',
+                    'flex min-h-[45px] items-center gap-3 border-b-[3px] border-transparent px-4 text-15 text-amber lg:border-b-0 lg:border-l-[6px] lg:pl-2.5',
+                    id === 'perfil' && 'lg:gap-4',
+                    id === 'carteiras' && 'lg:gap-3.5',
+                    (id === 'ofertas' || id === 'downloads' || id === 'suporte') && 'lg:gap-2.5',
                     active === id && 'border-copper',
                   )}
                 >
-                  <Icon size={18} className={active === id ? 'text-copper' : 'text-khaki'} />
+                  <Icon
+                    size={
+                      id === 'favoritos'
+                        ? 16
+                        : ['ofertas', 'downloads', 'suporte'].includes(id)
+                          ? 20
+                          : 18
+                    }
+                    className={active === id ? 'text-copper' : 'text-khaki'}
+                  />
                   {label}
                 </SiteLink>
               </li>
@@ -68,7 +80,7 @@ export function AccountLayout({
         <div className="border-t border-hairline">
           <Button
             variant="link"
-            className="flex h-12 items-center gap-2 px-4 text-15 font-bold"
+            className="flex h-[47px] items-center gap-2 px-4 pb-[9px] text-15 font-bold"
             onClick={onLogout}
             loading={logoutPending}
           >
