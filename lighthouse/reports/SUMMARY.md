@@ -1,36 +1,36 @@
 # Kurio Lighthouse audit
 
-Date (UTC): 2026-11-13T10:47:26.999Z. Source commit: `695902870e6d51a2d0c8fca99dda2df478a591da` (seapen; dirty: true).
+Date (UTC): 2026-11-14T02:46:13.106Z. Source commit: `41ddee830293e8d1c8007621ce2d9b43eb3ba103` (frontend-challenge-solution; dirty: true).
 
-Command: `npm run lighthouse -- --build --no-assert`
+Command: `npm run lighthouse -- --build`
 
-Base URL: http://127.0.0.1:4173. Runs per page/profile: 3. Overall: **FAIL**.
+Base URL: http://127.0.0.1:4173. Runs per page/profile: 3. Overall: **PASS**.
 
 Scores are on a 0–100 scale; assertions use unrounded medians. LCP/TBT are milliseconds; CLS is unitless.
 
 | Profile | Page | Performance ≥90 | Accessibility ≥95 | Best Practices ≥95 | SEO ≥90 | LCP ms | CLS | TBT ms | Result |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| mobile | Início | 100 PASS | 100 PASS | 100 PASS | 91 PASS | 753.1 | 0.0008 | 0 | PASS |
-| mobile | Detalhe do NFT | 100 PASS | 94 FAIL | 100 PASS | 91 PASS | 752.9 | 0 | 0 | FAIL |
-| desktop | Início | 100 PASS | 100 PASS | 100 PASS | 91 PASS | 203 | 0.0001 | 0 | PASS |
-| desktop | Detalhe do NFT | 100 PASS | 94 FAIL | 100 PASS | 91 PASS | 202.8 | 0 | 0 | FAIL |
+| mobile | Início | 98 PASS | 100 PASS | 100 PASS | 100 PASS | 1873 | 0.0006 | 129 | PASS |
+| mobile | Detalhe do NFT | 99 PASS | 100 PASS | 100 PASS | 100 PASS | 1725.9 | 0 | 127.8 | PASS |
+| desktop | Início | 100 PASS | 100 PASS | 100 PASS | 100 PASS | 545.1 | 0.0017 | 0 | PASS |
+| desktop | Detalhe do NFT | 100 PASS | 100 PASS | 100 PASS | 100 PASS | 539.2 | 0.0001 | 0 | PASS |
 
 ## Per-run values
 
 | Profile / page | Run | Performance | Accessibility | Best Practices | SEO | LCP ms | CLS | TBT ms | MSW controls warm-up |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| mobile / home | [1](./mobile/home/run-1.report.html) | 100 | 100 | 100 | 91 | 753.1 | 0.0008 | 0 | false |
-| mobile / home | [2](./mobile/home/run-2.report.html) | 100 | 100 | 100 | 91 | 753.1 | 0.0008 | 0 | false |
-| mobile / home | [3](./mobile/home/run-3.report.html) | 100 | 100 | 100 | 91 | 753.7 | 0.0008 | 0 | false |
-| mobile / nft-detail | [1](./mobile/nft-detail/run-1.report.html) | 100 | 94 | 100 | 91 | 753 | 0 | 0 | false |
-| mobile / nft-detail | [2](./mobile/nft-detail/run-2.report.html) | 100 | 94 | 100 | 91 | 752.9 | 0 | 0 | false |
-| mobile / nft-detail | [3](./mobile/nft-detail/run-3.report.html) | 100 | 94 | 100 | 91 | 752.9 | 0 | 0 | false |
-| desktop / home | [1](./desktop/home/run-1.report.html) | 100 | 100 | 100 | 91 | 202.9 | 0.0001 | 0 | false |
-| desktop / home | [2](./desktop/home/run-2.report.html) | 100 | 100 | 100 | 91 | 203 | 0.0001 | 0 | false |
-| desktop / home | [3](./desktop/home/run-3.report.html) | 100 | 100 | 100 | 91 | 203.1 | 0.0001 | 0 | false |
-| desktop / nft-detail | [1](./desktop/nft-detail/run-1.report.html) | 100 | 94 | 100 | 91 | 202.8 | 0 | 0 | false |
-| desktop / nft-detail | [2](./desktop/nft-detail/run-2.report.html) | 100 | 94 | 100 | 91 | 202.9 | 0 | 0 | false |
-| desktop / nft-detail | [3](./desktop/nft-detail/run-3.report.html) | 100 | 94 | 100 | 91 | 202.8 | 0 | 0 | false |
+| mobile / home | [1](./mobile/home/run-1.report.html) | 98 | 100 | 100 | 100 | 1879.6 | 0.0006 | 137 | true |
+| mobile / home | [2](./mobile/home/run-2.report.html) | 98 | 100 | 100 | 100 | 1868.7 | 0.0006 | 112 | true |
+| mobile / home | [3](./mobile/home/run-3.report.html) | 98 | 100 | 100 | 100 | 1873 | 0.0006 | 129 | true |
+| mobile / nft-detail | [1](./mobile/nft-detail/run-1.report.html) | 99 | 100 | 100 | 100 | 1724.2 | 0 | 127.8 | true |
+| mobile / nft-detail | [2](./mobile/nft-detail/run-2.report.html) | 98 | 100 | 100 | 100 | 1728.4 | 0 | 155.6 | true |
+| mobile / nft-detail | [3](./mobile/nft-detail/run-3.report.html) | 99 | 100 | 100 | 100 | 1725.9 | 0 | 125.9 | true |
+| desktop / home | [1](./desktop/home/run-1.report.html) | 100 | 100 | 100 | 100 | 545.1 | 0.0017 | 0 | true |
+| desktop / home | [2](./desktop/home/run-2.report.html) | 100 | 100 | 100 | 100 | 549.1 | 0.0017 | 0 | true |
+| desktop / home | [3](./desktop/home/run-3.report.html) | 100 | 100 | 100 | 100 | 538.6 | 0.0017 | 0 | true |
+| desktop / nft-detail | [1](./desktop/nft-detail/run-1.report.html) | 100 | 100 | 100 | 100 | 548.9 | 0.0001 | 0 | true |
+| desktop / nft-detail | [2](./desktop/nft-detail/run-2.report.html) | 100 | 100 | 100 | 100 | 537.6 | 0.0001 | 0 | true |
+| desktop / nft-detail | [3](./desktop/nft-detail/run-3.report.html) | 100 | 100 | 100 | 100 | 539.2 | 0.0001 | 0 | true |
 
 ## Environment and conditions
 
@@ -122,11 +122,11 @@ Scores are on a 0–100 scale; assertions use unrounded medians. LCP/TBT are mil
       "best-practices": 95,
       "seo": 90
     },
-    "assertionsEnabled": false
+    "assertionsEnabled": true
   }
 }
 ```
 
 ## Warnings / errors
 
-- No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring.
+None.

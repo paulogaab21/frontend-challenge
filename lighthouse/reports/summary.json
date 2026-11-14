@@ -1,15 +1,15 @@
 {
-  "date": "2026-11-13T10:47:26.999Z",
-  "command": "npm run lighthouse -- --build --no-assert",
+  "date": "2026-11-14T02:46:13.106Z",
+  "command": "npm run lighthouse -- --build",
   "git": {
-    "commit": "695902870e6d51a2d0c8fca99dda2df478a591da",
-    "branch": "seapen",
+    "commit": "41ddee830293e8d1c8007621ce2d9b43eb3ba103",
+    "branch": "frontend-challenge-solution",
     "dirty": true
   },
   "runsRequested": 3,
   "groupsExpected": 4,
   "baseUrl": "http://127.0.0.1:4173",
-  "pass": false,
+  "pass": true,
   "error": null,
   "versions": {
     "lighthouse": "13.6.0",
@@ -97,7 +97,7 @@
       "best-practices": 95,
       "seo": 90
     },
-    "assertionsEnabled": false
+    "assertionsEnabled": true
   },
   "results": [
     {
@@ -111,31 +111,36 @@
         {
           "number": 1,
           "scores": {
-            "performance": 100,
+            "performance": 98,
             "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 753.0852,
-            "cls": 0.0007826286596006384,
-            "tbt": 0
+            "lcp": 1879.6284,
+            "cls": 0.0005502395271922393,
+            "tbt": 137
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:47:35.898Z",
+          "date": "2026-11-14T02:46:26.780Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 2975.5,
+            "benchmarkIndex": 3142,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -204,31 +209,36 @@
         {
           "number": 2,
           "scores": {
-            "performance": 100,
+            "performance": 98,
             "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 753.0558000000001,
-            "cls": 0.0007826286596006384,
-            "tbt": 0
+            "lcp": 1868.7329999999997,
+            "cls": 0.0005502395271922393,
+            "tbt": 112
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:47:44.192Z",
+          "date": "2026-11-14T02:46:36.666Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3106.5,
+            "benchmarkIndex": 3163.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -297,31 +307,36 @@
         {
           "number": 3,
           "scores": {
-            "performance": 100,
+            "performance": 98,
             "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 753.7405000000001,
-            "cls": 0.0007826286596006384,
-            "tbt": 0
+            "lcp": 1872.9577999999997,
+            "cls": 0.0005502395271922393,
+            "tbt": 129
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:47:52.252Z",
+          "date": "2026-11-14T02:46:46.327Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 2982.5,
+            "benchmarkIndex": 3195.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -392,11 +407,11 @@
         "scores": {
           "performance": {
             "values": [
-              100,
-              100,
-              100
+              98,
+              98,
+              98
             ],
-            "median": 100,
+            "median": 98,
             "target": 90,
             "pass": true
           },
@@ -422,11 +437,11 @@
           },
           "seo": {
             "values": [
-              91,
-              91,
-              91
+              100,
+              100,
+              100
             ],
-            "median": 91,
+            "median": 100,
             "target": 90,
             "pass": true
           }
@@ -434,29 +449,29 @@
         "metrics": {
           "lcp": {
             "values": [
-              753.0852,
-              753.0558000000001,
-              753.7405000000001
+              1879.6284,
+              1868.7329999999997,
+              1872.9577999999997
             ],
-            "median": 753.0852,
+            "median": 1872.9577999999997,
             "unit": "ms"
           },
           "cls": {
             "values": [
-              0.0007826286596006384,
-              0.0007826286596006384,
-              0.0007826286596006384
+              0.0005502395271922393,
+              0.0005502395271922393,
+              0.0005502395271922393
             ],
-            "median": 0.0007826286596006384,
+            "median": 0.0005502395271922393,
             "unit": "unitless"
           },
           "tbt": {
             "values": [
-              0,
-              0,
-              0
+              137,
+              112,
+              129
             ],
-            "median": 0,
+            "median": 129,
             "unit": "ms"
           }
         },
@@ -474,31 +489,36 @@
         {
           "number": 1,
           "scores": {
-            "performance": 100,
-            "accessibility": 94,
+            "performance": 99,
+            "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 752.9856,
+            "lcp": 1724.1699000000003,
             "cls": 0,
-            "tbt": 0
+            "tbt": 127.79784999999993
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:48:00.212Z",
+          "date": "2026-11-14T02:46:55.939Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 2982,
+            "benchmarkIndex": 3169.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -567,31 +587,36 @@
         {
           "number": 2,
           "scores": {
-            "performance": 100,
-            "accessibility": 94,
+            "performance": 98,
+            "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 752.9392,
+            "lcp": 1728.4223999999997,
             "cls": 0,
-            "tbt": 0
+            "tbt": 155.60159999999996
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:48:08.224Z",
+          "date": "2026-11-14T02:47:05.693Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3128.5,
+            "benchmarkIndex": 3039.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -660,31 +685,36 @@
         {
           "number": 3,
           "scores": {
-            "performance": 100,
-            "accessibility": 94,
+            "performance": 99,
+            "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 752.9206999999999,
+            "lcp": 1725.9373999999998,
             "cls": 0,
-            "tbt": 0
+            "tbt": 125.92410000000007
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:48:16.172Z",
+          "date": "2026-11-14T02:47:15.474Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Linux; Android 11; moto g power (2022)) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Mobile Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3057.5,
+            "benchmarkIndex": 3147.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -755,23 +785,23 @@
         "scores": {
           "performance": {
             "values": [
-              100,
-              100,
-              100
+              99,
+              98,
+              99
             ],
-            "median": 100,
+            "median": 99,
             "target": 90,
             "pass": true
           },
           "accessibility": {
             "values": [
-              94,
-              94,
-              94
+              100,
+              100,
+              100
             ],
-            "median": 94,
+            "median": 100,
             "target": 95,
-            "pass": false
+            "pass": true
           },
           "best-practices": {
             "values": [
@@ -785,11 +815,11 @@
           },
           "seo": {
             "values": [
-              91,
-              91,
-              91
+              100,
+              100,
+              100
             ],
-            "median": 91,
+            "median": 100,
             "target": 90,
             "pass": true
           }
@@ -797,11 +827,11 @@
         "metrics": {
           "lcp": {
             "values": [
-              752.9856,
-              752.9392,
-              752.9206999999999
+              1724.1699000000003,
+              1728.4223999999997,
+              1725.9373999999998
             ],
-            "median": 752.9392,
+            "median": 1725.9373999999998,
             "unit": "ms"
           },
           "cls": {
@@ -815,15 +845,15 @@
           },
           "tbt": {
             "values": [
-              0,
-              0,
-              0
+              127.79784999999993,
+              155.60159999999996,
+              125.92410000000007
             ],
-            "median": 0,
+            "median": 127.79784999999993,
             "unit": "ms"
           }
         },
-        "pass": false
+        "pass": true
       }
     },
     {
@@ -840,28 +870,33 @@
             "performance": 100,
             "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 202.9212,
-            "cls": 0.0001260835303388495,
+            "lcp": 545.064425,
+            "cls": 0.001699830456744393,
             "tbt": 0
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:48:24.169Z",
+          "date": "2026-11-14T02:47:25.199Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 2728,
+            "benchmarkIndex": 3159,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -933,28 +968,33 @@
             "performance": 100,
             "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 203.002,
-            "cls": 0.0001260835303388495,
+            "lcp": 549.1303,
+            "cls": 0.001699830456744393,
             "tbt": 0
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:48:32.246Z",
+          "date": "2026-11-14T02:47:35.544Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3073.5,
+            "benchmarkIndex": 3164.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -1026,28 +1066,33 @@
             "performance": 100,
             "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 203.1411,
-            "cls": 0.0001260835303388495,
+            "lcp": 538.6493499999999,
+            "cls": 0.001699830456744393,
             "tbt": 0
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:48:40.270Z",
+          "date": "2026-11-14T02:47:45.820Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3090,
+            "benchmarkIndex": 3153,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -1148,11 +1193,11 @@
           },
           "seo": {
             "values": [
-              91,
-              91,
-              91
+              100,
+              100,
+              100
             ],
-            "median": 91,
+            "median": 100,
             "target": 90,
             "pass": true
           }
@@ -1160,20 +1205,20 @@
         "metrics": {
           "lcp": {
             "values": [
-              202.9212,
-              203.002,
-              203.1411
+              545.064425,
+              549.1303,
+              538.6493499999999
             ],
-            "median": 203.002,
+            "median": 545.064425,
             "unit": "ms"
           },
           "cls": {
             "values": [
-              0.0001260835303388495,
-              0.0001260835303388495,
-              0.0001260835303388495
+              0.001699830456744393,
+              0.001699830456744393,
+              0.001699830456744393
             ],
-            "median": 0.0001260835303388495,
+            "median": 0.001699830456744393,
             "unit": "unitless"
           },
           "tbt": {
@@ -1201,30 +1246,35 @@
           "number": 1,
           "scores": {
             "performance": 100,
-            "accessibility": 94,
+            "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 202.79020000000003,
-            "cls": 0,
+            "lcp": 548.8924,
+            "cls": 0.0001241788928971466,
             "tbt": 0
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:48:48.331Z",
+          "date": "2026-11-14T02:47:55.993Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3126.5,
+            "benchmarkIndex": 3129,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -1294,30 +1344,35 @@
           "number": 2,
           "scores": {
             "performance": 100,
-            "accessibility": 94,
+            "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 202.8977,
-            "cls": 0,
+            "lcp": 537.5896000000001,
+            "cls": 0.0001241788928971466,
             "tbt": 0
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:48:56.263Z",
+          "date": "2026-11-14T02:48:06.075Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 2993,
+            "benchmarkIndex": 3099,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -1387,30 +1442,35 @@
           "number": 3,
           "scores": {
             "performance": 100,
-            "accessibility": 94,
+            "accessibility": 100,
             "best-practices": 100,
-            "seo": 91
+            "seo": 100
           },
           "metrics": {
-            "lcp": 202.83300000000003,
-            "cls": 0,
+            "lcp": 539.1656000000002,
+            "cls": 0.0001241788928971466,
             "tbt": 0
           },
           "error": null,
           "chromeVersion": "Chrome/157.0.8103.52",
           "warmUp": {
             "url": "http://127.0.0.1:4173/",
-            "controlled": false,
-            "registrations": [],
+            "controlled": true,
+            "registrations": [
+              {
+                "scope": "http://127.0.0.1:4173/",
+                "scriptURL": "http://127.0.0.1:4173/mockServiceWorker.js"
+              }
+            ],
             "httpCacheCleared": true,
-            "warning": "No controlling service worker. Scaffold may not boot MSW yet; verify demo initialization before final scoring."
+            "warning": null
           },
-          "date": "2026-11-13T10:49:04.050Z",
+          "date": "2026-11-14T02:48:16.353Z",
           "lighthouseVersion": "13.6.0",
           "environment": {
             "networkUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
             "hostUserAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/157.0.0.0 Safari/537.36",
-            "benchmarkIndex": 3018,
+            "benchmarkIndex": 3101.5,
             "credits": {
               "axe-core": "4.14.0"
             }
@@ -1491,13 +1551,13 @@
           },
           "accessibility": {
             "values": [
-              94,
-              94,
-              94
+              100,
+              100,
+              100
             ],
-            "median": 94,
+            "median": 100,
             "target": 95,
-            "pass": false
+            "pass": true
           },
           "best-practices": {
             "values": [
@@ -1511,11 +1571,11 @@
           },
           "seo": {
             "values": [
-              91,
-              91,
-              91
+              100,
+              100,
+              100
             ],
-            "median": 91,
+            "median": 100,
             "target": 90,
             "pass": true
           }
@@ -1523,20 +1583,20 @@
         "metrics": {
           "lcp": {
             "values": [
-              202.79020000000003,
-              202.8977,
-              202.83300000000003
+              548.8924,
+              537.5896000000001,
+              539.1656000000002
             ],
-            "median": 202.83300000000003,
+            "median": 539.1656000000002,
             "unit": "ms"
           },
           "cls": {
             "values": [
-              0,
-              0,
-              0
+              0.0001241788928971466,
+              0.0001241788928971466,
+              0.0001241788928971466
             ],
-            "median": 0,
+            "median": 0.0001241788928971466,
             "unit": "unitless"
           },
           "tbt": {
@@ -1549,7 +1609,7 @@
             "unit": "ms"
           }
         },
-        "pass": false
+        "pass": true
       }
     }
   ]
