@@ -34,3 +34,6 @@ Thumbs.db
 
 # TanStack Router plugin cache
 .tanstack/
+
+# local deploy target
+deploy/deploy.env

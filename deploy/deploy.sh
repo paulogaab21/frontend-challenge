@@ -9,7 +9,7 @@
 #   bash deploy/deploy.sh check      smoke-test the published site
 #
 # Configuration (environment variables):
-#   DEPLOY_HOST        SSH destination             default: gabriel@34.151.226.121
+#   DEPLOY_HOST        SSH destination (user@host) required; e.g. in deploy/deploy.env
 #   DEPLOY_DOMAIN      canonical public host name  default: gabrieldevprojetos.com.br
 #   DEPLOY_ALIASES     host names redirected to it default: www.<DEPLOY_DOMAIN> ("" = none)
 #   DEPLOY_IP          public IPv4 of the server   default: taken from DEPLOY_HOST
@@ -24,7 +24,11 @@ set -euo pipefail
 
 cd "$(dirname "$0")/.."
 
-HOST="${DEPLOY_HOST:-gabriel@34.151.226.121}"
+# Local, git-ignored settings (the server address is not part of the repository).
+# shellcheck disable=SC1091
+[[ -f deploy/deploy.env ]] && source deploy/deploy.env
+
+HOST="${DEPLOY_HOST:?Set DEPLOY_HOST=user@host (for example in deploy/deploy.env)}"
 DOMAIN="${DEPLOY_DOMAIN:-gabrieldevprojetos.com.br}"
 ALIASES="${DEPLOY_ALIASES-www.${DOMAIN}}"
 IP="${DEPLOY_IP:-${HOST#*@}}"

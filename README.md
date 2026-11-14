@@ -182,7 +182,8 @@ bash deploy/deploy.sh rollback   # volta para a release anterior
 ```
 
 Destino e domínio são configuráveis por variáveis (`DEPLOY_HOST`, `DEPLOY_DOMAIN`,
-`DEPLOY_SSH_OPTS` — ver o cabeçalho de `deploy/deploy.sh`). O build é estático e também
+`DEPLOY_SSH_OPTS` — ver o cabeçalho de `deploy/deploy.sh`). O endereço do servidor não fica no
+repositório: `DEPLOY_HOST=usuario@host` vai em `deploy/deploy.env` (ignorado pelo git). O build é estático e também
 funciona em Vercel, Netlify e Cloudflare Pages: `vercel.json` e `public/_redirects` já trazem
 o _fallback_ de SPA.
 
