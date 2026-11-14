@@ -121,7 +121,7 @@ export function WalletForm({
         })}
       >
         <FormServerFeedback error={formError} />
-        <fieldset disabled={pending} className="grid min-w-0 gap-x-7 gap-y-6 md:grid-cols-2">
+        <fieldset disabled={pending} className="grid min-w-0 gap-x-7 gap-y-[25px] md:grid-cols-2">
           <FormField
             control={form.control}
             name="displayName"

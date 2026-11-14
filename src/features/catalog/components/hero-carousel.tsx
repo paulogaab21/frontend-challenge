@@ -5,6 +5,7 @@ import { ArrowRightIcon } from '@/components/icons'
 import { SiteLink } from '@/components/layout/site-link'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { HeroDecoration } from './hero-decoration'
 export interface HeroSlide {
   id: string
   eyebrow: string
@@ -77,10 +78,7 @@ export function HeroCarousel({
           aria-label={`${index + 1} de ${slides.length}`}
           className="relative overflow-hidden rounded-[30px] bg-linear-to-br from-copper/20 to-copper/10 md:min-h-[450px] md:overflow-visible md:rounded-none md:bg-none"
         >
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute -top-20 -left-32 size-[400px] rounded-full border-[72px] border-copper/10 md:hidden"
-          />
+          <HeroDecoration />
           <div className="relative grid min-h-[190px] grid-cols-[minmax(0,1fr)_clamp(114px,calc(100vw_-_276px),138px)] gap-1 px-4 pt-1.5 pb-3 md:min-h-[450px] md:grid-cols-2 md:items-start md:gap-8 md:p-0 xl:grid-cols-[minmax(0,1fr)_450px]">
             <div className="min-w-0 md:pt-6 md:pl-0 xl:pt-10 xl:pl-10">
               <p className="text-xs leading-4 font-medium md:text-sm md:leading-6 md:tracking-brand">
@@ -119,7 +117,7 @@ export function HeroCarousel({
                 <ArrowRightIcon size={16} />
               </SiteLink>
             </div>
-            <div className="relative pt-0 md:pt-0">
+            <div className="relative translate-y-[4.5px] md:translate-y-0">
               <Artwork
                 id={slide.artwork}
                 alt={slide.artworkAlt}

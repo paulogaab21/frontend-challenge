@@ -39,12 +39,12 @@ export function CatalogToolbar({
   const id = useId()
   return (
     <div className="min-w-0">
-      <div className="flex min-w-0 flex-nowrap items-start justify-between gap-x-1 gap-y-3 md:flex-wrap md:gap-x-5">
+      <div className="flex min-w-0 flex-nowrap items-start justify-between gap-x-0 gap-y-3 md:flex-wrap md:gap-x-5">
         <div
           role="tablist"
           tabIndex={-1}
           aria-label="Categorias de NFTs"
-          className="flex max-w-full min-w-0 flex-1 gap-4 overflow-x-auto whitespace-nowrap md:flex-none md:gap-5 md:gap-6"
+          className="flex max-w-full min-w-0 flex-1 gap-1 overflow-x-auto whitespace-nowrap md:flex-none md:gap-6"
           onKeyDown={(event) => {
             const index = tabs.findIndex((item) => item.id === tab)
             const next =
@@ -75,8 +75,8 @@ export function CatalogToolbar({
               disabled={disabled}
               onClick={() => onTabChange(item.id)}
               className={cn(
-                'shrink-0 border-b-2 border-transparent pb-0 text-sm leading-5 font-medium text-cream hover:text-amber disabled:opacity-50 md:text-15',
-                tab === item.id && 'border-copper text-amber',
+                'shrink-0 border-b-2 border-transparent pb-0 text-sm leading-5 font-normal text-cream hover:text-amber disabled:opacity-50 md:text-15',
+                tab === item.id && 'border-copper font-bold text-amber md:font-medium',
               )}
             >
               {item.label}
