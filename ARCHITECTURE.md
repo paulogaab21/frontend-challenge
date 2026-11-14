@@ -645,8 +645,9 @@ realtime/server.ts (Socket.IO) ◄─┘        │
 para cada texto, a posição da linha de base, tamanho, peso, cor e espaçamento; para cada
 retângulo e ícone, posição, tamanho e raio. Nos frames desktop o resultado final fica dentro de
 ~1,5 px na grande maioria das camadas e as alturas de página coincidem com as dos frames
-(Início 3668 px, Detalhe 2247 px, Pagamento 1657 px). O que sobra é intencional e está listado
-abaixo.
+(Início 3668 px, Detalhe 2247 px, Pagamento 1657 px). Os seis frames mobile (414 px) e os dois
+frames de conta (Perfil, Carteiras) passaram pela mesma medição. O que sobra é intencional ou
+vem de inconsistências do próprio arquivo, e está listado abaixo.
 
 ### Assets
 
@@ -709,6 +710,21 @@ abaixo.
   escopo e levam à página "em breve".
 - **Painel "Mocks"**: ferramenta da demonstração, inexistente no Figma (botão no canto inferior
   esquerdo; no mobile, uma aba estreita na borda direita, fora de qualquer controle).
+- **Mobile**:
+  - o frame de detalhe usa uma descrição mais curta que a do desktop ("Um colecionável digital
+    1/50 finalizado à mão…"); ela vem da API como `summary`, ao lado da `description` completa;
+  - o primeiro chip de edição do frame mobile diz "1/10" (repetido no segundo chip); a aplicação
+    mostra a edição real, "1/1", o que torna esse chip mais estreito;
+  - as artes dos quatro cards do frame de Início têm recuos diferentes (12, 16 e 20 px) e as
+    abas têm espaçamentos desiguais; foi usado um recuo e um espaçamento únicos;
+  - os títulos das páginas internas (Carrinho, Pagamento) ficam 12 px à direita do centro, como
+    nos dois frames; abaixo de 400 px de largura o título usa 18 px para caber em uma linha;
+  - Pagamento: o frame não tem campos de formulário. Os dados do colecionador (obrigatórios para
+    criar o pedido) e o resumo dos itens ficam em dois blocos recolhíveis antes do total, e a
+    opção "Usar outra carteira?" aparece depois das carteiras cadastradas. O frame desenha o botão
+    "Confirmar compra" preso ao rodapé; na aplicação ele segue o fluxo da página, para nunca
+    cobrir esses blocos. A ordem das carteiras segue os dados (principal primeiro);
+  - Carrinho e Pagamento usam a margem lateral de 28 px desses frames; as demais telas, 24 px.
 - **Estados não desenhados** (carregamento, vazio, erro, 404, pedido pendente/recusado, sessão
   expirada, carrinho com itens esgotados) usam os mesmos tokens, tipografia e componentes.
 
